@@ -1,0 +1,2266 @@
+{
+  "result_id": "a3222c659ae67821",
+  "source_file": "gpqa_diamond_007.json",
+  "prompt_hash": "a3222c659ae67821",
+  "timestamp": "2026-04-26T14:06:56.574941+00:00",
+  "request_type": "gpqa_diamond",
+  "eval_mode": "mcq",
+  "question": "You perform a high-throughput experiment on white lupine to find genes contributing to resistance to the fungal disease anthracnose. As a result, you receive three candidate genes of unknown function – G1, G2, and G3. You create three knock-out mutants, g1, g2, and g3, and a set of double-mutants, g1g2, g1g3, and g2g3. You know that at least one of these genes is a transcription factor acting upstream of (an)other gene(s). You start to test those mutant plants: do they have a higher sensitivity to anthracnose than the wild-type because they cannot produce certain gene products? \nAfter tests with the pathogen, you receive the following results where 100% is the level of resistance to the pathogen in control; 50% is half of the control’s resistance; 25% is a quarter of the control’s resistance; 0% ‒ all plants show signs of infection:\n- resistance of g1: 75% of control\n- resistance of g2: 0% from control\n- resistance of g3: 50% from control\n-resistance of g1g3: 10% from control\n- resistance of g2g3: 0% from control\n- resistance of g1g2: 0% from control\n\nWhich conclusion regarding those genes' interaction can you draw from this experiment?\n\n\nA) G2 is a transcription factor, G1 and G3 has the same promoter, G3 is epistatic towards G1\nB) G2 is a transcription factor, G1 and G3 show pleiotropy, G1 is epistatic towards G3\nC) G2 is a transcription factor, G1 and G3 show gene redundancy, G1 is epistatic towards G3\nD) G1 is a transcription factor, G2 and G3 show pleiotropy, G2 is epistatic towards G1\n\nThink through this step-by-step:\n1. Analyze what the question is asking\n2. Consider each option and why it might be correct or incorrect\n3. Explain your reasoning\n\nAfter your analysis, state your final answer on a new line as:\nANSWER: [letter]",
+  "golden_set": {
+    "findings": [
+      {
+        "id": "correct_answer",
+        "description": "Correct answer: C",
+        "severity": "material",
+        "severity_weight": 1
+      }
+    ],
+    "golden_ids": [
+      "correct_answer"
+    ],
+    "weighted_total": 1,
+    "correct_answers": [
+      "C"
+    ]
+  },
+  "scores": {
+    "moonshot-kimi-k2.5": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "alibaba-qwen3.5-plus": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "xai-grok-4.2": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "google-gemini-3.1-pro": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "anthropic-opus-4.6": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "openai-gpt-5.4": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "alibaba-qwen-flash": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "xai-grok-fast": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "google-gemini-flash": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "openai-gpt-mini": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    },
+    "anthropic-haiku": {
+      "standalone_pct": 100.0,
+      "standalone_ids": [
+        "C"
+      ],
+      "aggregation_pct": 100.0,
+      "aggregation_ids": [
+        "C"
+      ],
+      "debate_pct": 100.0,
+      "debate_ids": [
+        "C"
+      ],
+      "extracted_answer": "C",
+      "aggregation_answer": "C",
+      "debate_answer": "C"
+    }
+  },
+  "tracks": {
+    "expert": {
+      "models": [
+        "anthropic-opus-4.6",
+        "openai-gpt-5.4",
+        "google-gemini-3.1-pro",
+        "xai-grok-4.2",
+        "alibaba-qwen3.5-plus",
+        "moonshot-kimi-k2.5"
+      ],
+      "status": "complete",
+      "elapsed_s": 967.0298430919647,
+      "standalone": [
+        {
+          "model": "moonshot-kimi-k2.5",
+          "status": "completed",
+          "time_s": 229.3554449081421,
+          "response": " **Step 1: Analyze the single and double mutant phenotypes**\n\nFirst, let's interpret the resistance data:\n- **Wild-type**: 100% resistance (baseline)\n- **g1**: 75% resistance (mild reduction; G1 contributes to resistance)\n- **g2**: 0% resistance (complete loss of resistance; G2 is essential)\n- **g3**: 50% resistance (moderate reduction; G3 contributes more than G1)\n- **g1g2**: 0% resistance (same as g2 alone)\n- **g2g3**: 0% resistance (same as g2 alone)\n- **g1g3**: 10% resistance (severe reduction, much worse than either single mutant)\n\n**Step 2: Determine which gene is the transcription factor**\n\nThe question states at least one gene is a transcription factor (TF) acting upstream of others. A master regulator like a TF typically shows a severe phenotype when knocked out and is epistatic to the genes it regulates (meaning the double mutant looks like the TF mutant).\n\n- **g2** shows 0% resistance (complete loss).\n- Both **g1g2** and **g2g3** show 0% resistance, identical to g2 alone. This indicates **G2 is epistatic to both G1 and G3**.\n- This pattern strongly suggests **G2 is the transcription factor acting upstream of G1 and G3**. When G2 is absent, the downstream genes are not expressed (or are severely reduced), so knocking out G1 or G3 in addition to G2 doesn't make the phenotype worse.\n\nThis eliminates **Option D**, which proposes G1 as the TF. If G1 were upstream of G2, the g1 mutant should show a severe phenotype like g2, but it shows 75% resistance. Also, G2 is epistatic to G1 (g1g2 looks like g2), meaning G2 acts downstream of G1, not upstream.\n\n**Step 3: Analyze the interaction between G1 and G3**\n\n- **g1** alone = 75% resistance\n- **g3** alone = 50% resistance  \n- **g1g3** double mutant = 10% resistance\n\nIf G1 and G3 were in a simple linear pathway (e.g., G1 → G3), the double mutant would resemble the more severe single mutant (epistasis). However, 10% is much more severe than either 50% or 75%. This indicates that **G1 and G3 act in parallel pathways or have overlapping/redundant functions** contributing to resistance. When both are lost, the resistance drops drastically (to near the level of the g2 mutant). This pattern is characteristic of **partial gene redundancy** (where each gene can partially compensate for the loss of the other, but not fully).\n\n**Step 4: Evaluate the remaining options (A, B, C)**\n\n- **Option A**: Claims \"G3 is epistatic towards G1.\" If G3 were epistatic to G1, the g1g3 double mutant should look like the g3 mutant (50% resistance), but it shows 10%. This is incorrect.\n\n- **Option B**: Claims \"G1 and G3 show pleiotropy.\" Pleiotropy means one gene affects multiple different traits. We only have data for one trait (disease resistance), so we cannot conclude pleiotropy. This is unsupported.\n\n- **Option C**: Claims \"G2 is a transcription factor\" (correct), \"G1 and G3 show gene redundancy\" (consistent with the severe phenotype of the double mutant compared to single mutants), and \"G1 is epistatic towards G3.\" While the epistasis claim between G1 and G3 is debatable given the data (since the double mutant is worse than either single mutant, neither appears strictly epistatic), this option correctly identifies the master regulator (G2) and the relationship between G1 and G3 (redundancy/parallel function). Among the given choices, this is the only one with the correct TF assignment and the correct biological interaction between G1 and G3.\n\n**Conclusion:** Option C is the best fit for the experimental data.\n\nANSWER: C"
+        },
+        {
+          "model": "alibaba-qwen3.5-plus",
+          "status": "completed",
+          "time_s": 135.6308629512787,
+          "response": "**1. Analyze the Question and Data:**\n*   **Goal:** Determine the genetic interactions and hierarchy of genes G1, G2, and G3 based on resistance phenotypes in mutants.\n*   **Data:**\n    *   Wild-type: 100%\n    *   `g1`: 75% (Mild defect)\n    *   `g2`: 0% (Severe defect/Null)\n    *   `g3`: 50% (Moderate defect)\n    *   `g1g3`: 10% (Severe defect, worse than singles)\n    *   `g1g2`: 0% (Same as `g2`)\n    *   `g2g3`: 0% (Same as `g2`)\n*   **Constraint:** At least one gene is a transcription factor (TF) acting upstream.\n\n**2. Evaluate the Role of G2:**\n*   The `g2` mutant has 0% resistance.\n*   The double mutants involving `g2` (`g1g2` and `g2g3`) also have 0% resistance.\n*   This indicates that the loss of G2 masks the phenotypes of G1 and G3. In genetic pathways, the gene whose mutant phenotype is expressed in the double mutant is often downstream in a linear pathway OR upstream if it is a regulator required for the others.\n*   Given the prompt states one gene is a **transcription factor acting upstream**, G2 fits this role perfectly. If G2 is a TF that activates G1 and G3, losing G2 means G1 and G3 are not expressed, resulting in 0% resistance regardless of their own genetic status.\n*   This eliminates **Option D**, which claims G1 is the transcription factor (if G1 were the upstream TF, `g1` would likely show the severe 0% phenotype, but it shows 75%).\n\n**3. Evaluate the Relationship between G1 and G3:**\n*   `g1` (75%) and `g3` (50%) show partial resistance.\n*   `g1g3` (10%) shows a much stronger loss of resistance than either single mutant.\n*   This pattern indicates that G1 and G3 contribute **additively** or function in **parallel** to provide resistance. When one is lost, the other compensates partially. When both are lost, resistance collapses.\n*   This genetic interaction is best described as **gene redundancy**.\n*   **Pleiotropy** (Options B and D) refers to a single gene influencing multiple distinct phenotypic traits. The experiment only measures one trait (resistance), so this term is incorrect.\n*   **Same promoter** (Option A) implies a specific structural arrangement (like an operon) which is rare for distinct genes in eukaryotes (lupine) and doesn't explain the additive functional loss as well as redundancy.\n*   **Epistasis between G1 and G3:** Strictly speaking, classical epistasis implies one mutation masks the other (e.g., double mutant looks like one of the singles). Here, the double mutant is distinct (10% vs 50% or 75%). However, between Options B and C (which both claim G1 is epistatic to G3), Option C uses the term \"gene redundancy,\" which accurately describes the `g1`/`g3`/`g1g3` data. Option B uses \"pleiotropy,\" which is incorrect.\n\n**4. Conclusion:**\n*   **G2 is the Transcription Factor:** Supported by the `g2` phenotype masking all others.\n*   **G1 and G3 show Redundancy:** Supported by the additive loss of resistance in the double mutant.\n*   **Option C** is the only option that correctly identifies G2 as the TF and describes the G1/G3 interaction as redundancy.\n\nANSWER: C"
+        },
+        {
+          "model": "xai-grok-4.2",
+          "status": "completed",
+          "time_s": 4.724706172943115,
+          "response": "**Step-by-step analysis:**\n\n1. **What the question is asking:**  \nWe have three genes (G1, G2, G3) of unknown function, at least one of which is a transcription factor acting upstream of other gene(s). We are given resistance phenotypes of single and double knock-out mutants. The goal is to determine the correct genetic interaction model from the four options. The key concepts involved are: which gene is the transcription factor (upstream regulator), and what kind of interaction exists between G1 and G3 (epistasis, redundancy, pleiotropy, shared promoter, etc.).\n\n2. **Interpreting the phenotypes:**\n- Wild-type resistance = 100%\n- g1 (loss of G1): 75% → mild loss of resistance\n- g2 (loss of G2): 0% → complete loss of resistance\n- g3 (loss of G3): 50% → moderate loss of resistance\n- g1g2: 0%\n- g2g3: 0%\n- g1g3: 10% (very low, roughly additive or worse than either single mutant)\n\n**Key observations:**\n- Loss of G2 alone is sufficient to completely abolish resistance (0%). This strongly suggests G2 is essential — consistent with G2 being the transcription factor that activates downstream resistance gene(s).\n- Loss of G1 or G3 alone gives partial phenotypes (75% and 50%), and their double mutant is much worse (10%). This indicates G1 and G3 both contribute to resistance but are not completely redundant (if they were fully redundant, the single mutants would show little or no phenotype).\n- The g1g3 double mutant is worse than either single, suggesting they act in parallel or have partially independent contributions.\n- Any mutant that includes loss of G2 (g2, g1g2, g2g3) shows 0% resistance. This is consistent with G2 being upstream.\n\n3. **Evaluating each option:**\n\n- **A) G2 is a transcription factor, G1 and G3 has the same promoter, G3 is epistatic towards G1**  \n  G2 being the TF is plausible. However, “G1 and G3 has the same promoter” is not supported — if they shared a promoter, knocking out one should not give different phenotypes (75% vs 50%), and the double mutant phenotype would not be explained this way. “G3 is epistatic towards G1” is also wrong: in the g1g3 double mutant the phenotype is much stronger than g3 alone (10% vs 50%), which is inconsistent with G3 being epistatic to G1. → **Incorrect.**\n\n- **B) G2 is a transcription factor, G1 and G3 show pleiotropy, G1 is epistatic towards G3**  \n  G2 as TF is reasonable. However, pleiotropy means one gene affects multiple traits — we have no evidence of multiple unrelated traits here. Also, “G1 is epistatic towards G3” does not fit: if G1 were epistatic to G3, the g1g3 double mutant should resemble the g1 single mutant (75%), but it is actually 10%. → **Incorrect.**\n\n- **C) G2 is a transcription factor, G1 and G3 show gene redundancy, G1 is epistatic towards G3**  \n  G2 as TF fits well. The partial single-mutant phenotypes and stronger double-mutant phenotype are consistent with partial redundancy or parallel action between G1 and G3. However, the claim “G1 is epistatic towards G3” is clearly false: if G1 were epistatic, g1g3 should look like g1 (75%), but it looks much worse (10%). The epistasis part is wrong. → **Incorrect.**\n\n- **D) G1 is a transcription factor, G2 and G3 show pleiotropy, G2 is epistatic towards G1**  \n  This contradicts the data. If G1 were the TF (upstream), losing G1 should cause the strongest phenotype, but g1 only drops to 75% while g2 drops to 0%. “G2 is epistatic towards G1” would predict that g1g2 should look like g2 — which it does (both 0%) — but the overall assignment of G1 as the transcription factor is inconsistent with the severity of the g2 phenotype. Pleiotropy is again unsupported. → **Incorrect.**\n\n**Conclusion from reasoning:**  \nNone of the options are fully correct. The data best support that **G2 is the transcription factor** (upstream), and that **G1 and G3 act in parallel or show partial redundancy**, but **neither is clearly epistatic to the other** in the classical sense (the double mutant is stronger than both singles). Unfortunately, all four choices contain additional incorrect statements (wrong epistasis direction, unsupported pleiotropy, or unsupported “same promoter”).\n\nHowever, since this is a multiple-choice question and we must choose the letter that is *least wrong*, option **C** comes closest: it correctly identifies G2 as the transcription factor and recognizes that G1 and G3 have overlapping/redundant contributions. The “G1 is epistatic towards G3” part is clearly false, but it is the only option that does not have fatal contradictions on the most important point (which gene is the TF).\n\n**Final answer:**  \nANSWER: C"
+        },
+        {
+          "model": "google-gemini-3.1-pro",
+          "status": "completed",
+          "time_s": 80.7657470703125,
+          "response": "To determine the correct conclusion, let's break down the results of the experiment step-by-step:\n\n**1. Identify the transcription factor and epistasis:**\n* **g2 single mutant:** Has 0% resistance, meaning the loss of the G2 gene completely abolishes the plant's ability to fight the pathogen. \n* **g1g2 and g2g3 double mutants:** Both also have 0% resistance. \n* **Conclusion:** Because the *g2* mutation completely masks the effects of the *g1* and *g3* mutations (the double mutants look exactly like the *g2* single mutant), **G2 is epistatic to G1 and G3**. Furthermore, because the prompt states that at least one gene is a transcription factor acting upstream, G2 fits this role perfectly. It acts upstream to regulate the expression of G1, G3, and likely other resistance genes.\n\n**2. Determine the relationship between G1 and G3:**\n* **g1 single mutant:** 75% resistance (a 25% loss in resistance).\n* **g3 single mutant:** 50% resistance (a 50% loss in resistance).\n* **g1g3 double mutant:** 10% resistance (a 90% loss in resistance).\n* **Conclusion:** If G1 and G3 acted in completely independent, additive pathways, we would expect the double mutant to have 25% resistance (100% - 25% loss - 50% loss = 25%). However, the double mutant has only 10% resistance. This synergistic effect (where the double mutant is much weaker than the sum of the single mutants) indicates that G1 and G3 partially compensate for one another. This overlapping function is the classic definition of **gene redundancy**. \n\n**3. Evaluate the given options:**\n* **Pleiotropy** refers to a single gene affecting multiple unrelated phenotypic traits. We are only looking at one trait here (anthracnose resistance), so pleiotropy does not apply. \n* **Gene redundancy** perfectly describes the relationship between G1 and G3.\n* *Note on the options:* Option C correctly identifies G2 as the transcription factor and G1/G3 as showing gene redundancy. It appears there is a slight typo in the provided text for Option C (\"G1 is epistatic towards G3\" instead of the biologically accurate \"G2 is epistatic towards G1 and G3\" found in the original source of this question). However, because it is the only option that correctly identifies the gene redundancy between G1 and G3, it is the intended correct answer.\n\nANSWER: C"
+        },
+        {
+          "model": "anthropic-opus-4.6",
+          "status": "completed",
+          "time_s": 10.935486078262329,
+          "response": "Looking at this problem:\n\n**Single mutants:**\n- g1: 75% (small effect)\n- g2: 0% (complete loss of resistance)\n- g3: 50% (moderate effect)\n\n**Double mutants:**\n- g1g2: 0%\n- g2g3: 0%\n- g1g3: 10% (much worse than either single mutant)\n\n**Step 1: Identify the transcription factor**\ng2 alone shows 0% resistance — complete loss. This suggests G2 is upstream and controls the expression of other resistance genes. When G2 is knocked out, nothing else matters (g1g2 = 0%, g2g3 = 0%). This is consistent with G2 being a transcription factor that activates G1 and G3.\n\n**Step 2: Analyze G1 and G3 relationship**\n- g1 alone: 75% (mild)\n- g3 alone: 50% (mild)\n- g1g3: 10% (severe, much worse than either alone)\n\nWhen two genes individually show only partial loss but together show severe loss, this indicates **gene redundancy** — they partially compensate for each other's function.\n\n**Step 3: Epistasis between G1 and G3**\nThe g1g3 phenotype (10%) is closer to g1's phenotype direction... Actually, let's think: g1 = 75%, g3 = 50%. The double mutant (10%) doesn't match either single mutant exactly, which is typical of redundancy. However, when forced to choose epistasis: in classical epistasis terms, the gene whose mutant phenotype is masked/modified shows which is epistatic. \n\n**Step 4: Evaluate options**\n- A) \"Same promoter\" — no evidence for this\n- B) Pleiotropy means one gene affecting multiple traits — not what's shown here\n- C) G2 is TF ✓, G1 and G3 show redundancy ✓ (matches the synergistic double mutant), G1 epistatic to G3\n- D) G1 as TF doesn't fit (g1 only 75%)\n\nOption C correctly identifies G2 as the transcription factor and recognizes the redundancy pattern between G1 and G3 (where double mutant is much more severe than either single mutant).\n\nANSWER: C"
+        },
+        {
+          "model": "openai-gpt-5.4",
+          "status": "completed",
+          "time_s": 14.929011106491089,
+          "response": "1. **What is the question asking?**  \nWe need infer the genetic relationship among **G1, G2, and G3** from the mutant phenotypes.\n\nKey clues:\n- At least one gene is a **transcription factor upstream** of others.\n- We compare **single mutants** and **double mutants** for resistance to anthracnose.\n- We need identify:\n  - which gene is likely the transcription factor,\n  - whether two genes show redundancy or pleiotropy or shared promoter,\n  - which gene is epistatic to which.\n\n---\n\n2. **Interpret the mutant phenotypes**\n\nGiven resistance levels:\n\n- **g1 = 75%**\n- **g2 = 0%**\n- **g3 = 50%**\n- **g1g2 = 0%**\n- **g2g3 = 0%**\n- **g1g3 = 10%**\n\n### First, look at **g2**\nThe **g2 single mutant is already 0% resistant**, meaning G2 is absolutely required for resistance.\n\nAlso:\n- **g1g2 = 0%**\n- **g2g3 = 0%**\n\nWhenever **g2** is present as mutant, the phenotype is 0%, regardless of G1 or G3. That means **g2 masks the effects of g1 and g3**.\n\nSo **G2 is epistatic** to the others in phenotype, and this strongly suggests **G2 acts upstream as a regulator/transcription factor** controlling the resistance pathway.\n\nThis already makes options with **G1 as transcription factor** unlikely.\n\n---\n\n### Next, compare **g1** and **g3**\n- **g1 = 75%** → mild loss\n- **g3 = 50%** → stronger loss\n- **g1g3 = 10%** → much more severe than either single mutant\n\nThis pattern indicates **G1 and G3 both contribute to resistance independently/partially redundantly**. If they were in a simple linear pathway, the double mutant would often resemble the more severe single mutant. But here the double mutant is **far worse** than either alone, suggesting **overlapping/redundant functions**.\n\nSo **G1 and G3 show gene redundancy**, not pleiotropy.\n\n- **Pleiotropy** means one gene affects multiple traits, which is not what these data are about.\n- “Same promoter” also does not follow from the data.\n\nThus the best match is the option mentioning **gene redundancy**.\n\n---\n\n3. **Check each option**\n\n### A) G2 is a transcription factor, G1 and G3 has the same promoter, G3 is epistatic towards G1\n- **G2 as transcription factor**: plausible\n- **same promoter**: not supported by these data\n- **G3 epistatic to G1**: no, because **g1g3 = 10%**, which is more severe than both singles, so neither clearly masks the other\n\n**Incorrect**\n\n---\n\n### B) G2 is a transcription factor, G1 and G3 show pleiotropy, G1 is epistatic towards G3\n- **G2 as transcription factor**: plausible\n- **pleiotropy**: wrong concept here\n- **G1 epistatic towards G3**: unsupported, since double mutant is more severe than either single\n\n**Incorrect**\n\n---\n\n### C) G2 is a transcription factor, G1 and G3 show gene redundancy, G1 is epistatic towards G3\n- **G2 as transcription factor**: best fit, since loss of G2 abolishes resistance entirely\n- **G1 and G3 show gene redundancy**: yes, because each single mutant has partial effect, but double mutant is much worse\n- **G1 epistatic towards G3**: this part is not really supported strongly by the numbers; however among the choices, this is still the only one with the correct key relationship for G1/G3 (redundancy) and correct identification of G2.\n\nSo this is the **best available answer**.\n\n---\n\n### D) G1 is a transcription factor, G2 and G3 show pleiotropy, G2 is epistatic towards G1\n- **G1 as transcription factor**: unlikely, since **g2** gives the strongest phenotype\n- **pleiotropy**: wrong concept\n- Though **G2 epistatic to G1** is consistent, the rest is not\n\n**Incorrect**\n\n---\n\nTherefore, the best conclusion is:\n\nANSWER: C"
+        }
+      ],
+      "aggregation": {
+        "findings": [
+          {
+            "id": "expert_F1",
+            "category": "valuable_perspective",
+            "description": "Correctly identifies G2 as the transcription factor based on its 0% resistance phenotype masking other mutations.",
+            "found_by": [
+              "moonshot-kimi-k2.5",
+              "alibaba-qwen3.5-plus",
+              "xai-grok-4.2",
+              "google-gemini-3.1-pro",
+              "anthropic-opus-4.6",
+              "openai-gpt-5.4"
+            ]
+          },
+          {
+            "id": "expert_F2",
+            "category": "valuable_perspective",
+            "description": "Deduces that G1 and G3 exhibit gene redundancy due to the synergistic/additive severe phenotype of the g1g3 double mutant.",
+            "found_by": [
+              "moonshot-kimi-k2.5",
+              "alibaba-qwen3.5-plus",
+              "xai-grok-4.2",
+              "google-gemini-3.1-pro",
+              "anthropic-opus-4.6",
+              "openai-gpt-5.4"
+            ]
+          },
+          {
+            "id": "expert_F3",
+            "category": "valuable_perspective",
+            "description": "Recognizes that the statement 'G1 is epistatic towards G3' in Option C is unsupported by the data, but selects it via elimination.",
+            "found_by": [
+              "moonshot-kimi-k2.5",
+              "alibaba-qwen3.5-plus",
+              "xai-grok-4.2",
+              "anthropic-opus-4.6",
+              "openai-gpt-5.4"
+            ]
+          },
+          {
+            "id": "expert_F4",
+            "category": "valuable_perspective",
+            "description": "Suggests that the incorrect epistasis claim in Option C is likely a typo from the original source material.",
+            "found_by": [
+              "google-gemini-3.1-pro"
+            ]
+          }
+        ],
+        "request_type": "other",
+        "per_model_responses": {
+          "xai-grok-4.2": "**Synthesized Analysis:**\n\n**1. Key insights from each model:**\n\n- **moonshot-kimi-k2.5**: Correctly identifies G2 as the upstream TF because its null phenotype (0%) is epistatic to both G1 and G3 (double mutants g1g2 and g2g3 both equal g2). It correctly notes that the g1g3 double mutant (10%) being much worse than either single mutant (75% and 50%) indicates parallel/redundant function between G1 and G3. It correctly dismisses pleiotropy (Option B) and the wrong epistasis claims in A and D. However, it concedes that the \"G1 is epistatic to G3\" part of Option C is debatable.\n\n- **alibaba-qwen3.5-plus**: Provides a very similar and clear analysis. It also concludes G2 is the upstream TF, that g1 and g3 act in parallel/additively (best described as gene redundancy), and that pleiotropy is misused in the options. It notes that classical epistasis does not strictly hold between G1 and G3 because the double mutant is *worse* than either single, not identical to one of them.\n\n**2. Points of agreement and disagreement:**\n\n- **Strong agreement**: Both models conclude that G2 must be the transcription factor acting upstream. Both eliminate Option D immediately. Both recognize that the g1g3 interaction shows redundancy/parallel function or additivity, not simple linear epistasis. Both correctly identify that pleiotropy is not supported by the data.\n\n- **Minor disagreement**: Only on whether Option C's phrasing \"G1 is epistatic towards G3\" is acceptable. moonshot accepts C as the best available choice despite this imperfection. alibaba stops short of fully endorsing the epistasis wording.\n\n**3. Most sound reasoning:**\n\nThe data clearly show:\n- G2 is the master regulator/TF (its loss masks everything else).\n- G1 and G3 are both partially required and act in parallel or with partial redundancy (double mutant phenotype is synergistic and much worse than either single).\n- \"Pleiotropy\" is the wrong term.\n- \"G3 is epistatic to G1\" (Option A) is clearly false.\n- \"Same promoter\" (Option A) is unsupported.\n\nWhile the phrase \"G1 is epistatic towards G3\" in Option C is not perfectly accurate in the classical sense (true epistasis would make the double mutant match one single mutant), **Option C is the only choice that correctly identifies G2 as the TF and correctly describes the G1–G3 relationship as gene redundancy**. All other options contain outright errors (wrong TF, pleiotropy, or wrong epistasis direction).\n\nTherefore, after synthesis, the best answer is C.\n\nANSWER: C",
+          "moonshot-kimi-k2.5": " **Analysis and Synthesis:**\n\n**1. Identifying the Transcription Factor (Upstream Regulator)**\nThe question states that at least one gene is a transcription factor (TF) acting upstream of others. A TF that regulates downstream genes typically shows epistasis—meaning the double mutant phenotype resembles the TF mutant because the downstream genes are not expressed (or are non-functional) when the TF is absent.\n\n- The **g2** mutant shows 0% resistance (complete loss).\n- The double mutants **g1g2** and **g2g3** both show 0% resistance, identical to the **g2** single mutant.\n- This indicates that **G2 is epistatic to both G1 and G3**. When G2 is knocked out, knocking out G1 or G3 additionally provides no further effect, consistent with G2 being an upstream master regulator (the TF) required for the function or expression of G1 and G3.\n- This eliminates **Option D**, which proposes G1 as the TF. If G1 were upstream, the **g1** mutant would likely show a more severe phenotype similar to **g2**, not 75% resistance.\n\n**2. Analyzing the Interaction Between G1 and G3**\n- **g1**: 75% resistance (25% loss)\n- **g3**: 50% resistance (50% loss)  \n- **g1g3**: 10% resistance (90% loss)\n\nThe double mutant **g1g3** shows a phenotype far more severe than either single mutant alone. If these genes were in a simple linear pathway (e.g., G1 → G3), the double mutant would resemble the more severe single mutant (epistasis). However, 10% is significantly worse than 50% or 75%. This \"synthetic\" or enhanced phenotype indicates that **G1 and G3 function in parallel pathways or exhibit gene redundancy**—each can partially compensate for the loss of the other, but when both are eliminated, resistance collapses.\n\n**3. Evaluating the Options**\n- **Option A** is incorrect because it claims \"G3 is epistatic towards G1.\" If this were true, the **g1g3** double mutant would resemble the **g3** mutant (50% resistance), not the observed 10%.\n- **Option B** is incorrect because it invokes \"pleiotropy\" (one gene affecting multiple distinct traits). The experiment only measures a single trait (disease resistance), so pleiotropy cannot be concluded from this data alone. It also incorrectly claims G1 is epistatic to G3 (the double mutant does not resemble **g1** at 75%).\n- **Option D** is incorrect because, as established, G1 cannot be the transcription factor given the mild phenotype of **g1** (75%) compared to the severe **g2** (0%).\n- **Option C** correctly identifies **G2 as the transcription factor** and correctly describes **G1 and G3 as showing gene redundancy** (based on the synergistic phenotype of **g1g3**). While the option also states \"G1 is epistatic towards G3\"—which is not strictly supported by the data (since the double mutant is worse than either single mutant, indicating neither masks the other)—this is the only option that correctly captures the upstream role of G2 and the functional relationship between G1 and G3. The other options contain more fundamental errors regarding the identity of the TF or the nature of the genetic interaction.\n\n**Conclusion:** Despite the imperfect description of epistasis between G1 and G3 in the option text, Option C is the only choice consistent with the experimental data regarding the master regulatory role of G2 and the redundant functions of G1 and G3.\n\nANSWER: C",
+          "anthropic-opus-4.6": "Looking at this problem, I need to synthesize the reasoning from both models.\n\n**Key Insights from Both Models:**\n\n1. **G2 is the transcription factor**: Both models agree on this. The g2 mutant shows 0% resistance, and both g1g2 and g2g3 also show 0% (identical to g2 alone). This epistasis pattern indicates G2 acts upstream - when G2 (the TF) is lost, downstream genes can't be expressed regardless of their status. This eliminates Option D.\n\n2. **G1 and G3 relationship**: \n   - g1 = 75%, g3 = 50%, but g1g3 = 10% (much worse than either single)\n   - This synergistic effect indicates **gene redundancy** - the genes function in parallel and partially compensate for each other\n   - This eliminates Option B (pleiotropy refers to one gene affecting multiple traits, not relevant here with only one trait measured)\n   - This eliminates Option A (\"same promoter\" doesn't fit, and if G3 were epistatic to G1, g1g3 should look like g3 at 50%, not 10%)\n\n3. **Epistasis between G1 and G3**: This is the trickiest part. Strictly, neither g1 nor g3 phenotype is fully masked. However, comparing g1 (75%, milder) and g3 (50%, more severe), the double mutant g1g3 (10%) is closer to a more severe phenotype. Since G1's loss has a smaller effect alone but contributes to a much worse phenotype with g3, G1 might be considered to have an epistatic relationship in the context given.\n\n**Evaluating Option C**: \n- ✓ G2 is a transcription factor (correct)\n- ✓ G1 and G3 show gene redundancy (correct - explains synergistic phenotype)\n- The epistasis claim is the weakest part, but among the options provided, C is the only one with both correct TF identification AND correct redundancy interpretation\n\n**Conclusion**: Option C is the best answer despite the imperfect epistasis description, as the other options have more fundamental errors (wrong TF, pleiotropy misuse, or wrong epistasis direction with promoter claim).\n\nANSWER: C",
+          "openai-gpt-5.4": "The key pattern is:\n\n- **g2 = 0%**\n- **g1g2 = 0%**\n- **g2g3 = 0%**\n\nSo whenever **G2** is lost, resistance is completely gone, regardless of G1 or G3. That strongly supports **G2 being the upstream essential regulator/transcription factor**.\n\nNext, compare **g1**, **g3**, and **g1g3**:\n\n- **g1 = 75%**\n- **g3 = 50%**\n- **g1g3 = 10%**\n\nThe double mutant is much worse than either single mutant, which means **G1 and G3 both contribute to resistance in overlapping/partially redundant ways**. This is not pleiotropy, and “same promoter” is not supported.\n\nNow check options:\n\n- **A**: “same promoter” is unsupported; also epistasis of G3 over G1 is inconsistent because **g1g3 ≠ g3**.\n- **B**: pleiotropy is wrong; we only measured one trait.\n- **C**: correctly identifies **G2 as transcription factor** and **G1/G3 as redundant**. The epistasis wording is not ideal, but this is still the best match.\n- **D**: wrong because G1 does not behave like the upstream essential regulator.\n\nSo the best-supported conclusion is:\n\nANSWER: C",
+          "alibaba-qwen3.5-plus": "### Analysis of Model Reasoning\n\n**1. Key Insights from Each Model**\n*   **moonshot-kimi-k2.5:** This model focuses heavily on the genetic pathway logic. It correctly identifies that **G2 is the transcription factor** because its mutant phenotype (0% resistance) is **epistatic** to G1 and G3 in double mutants (i.e., `g1g2` and `g2g3` look just like `g2`). It also correctly interprets the `g1g3` double mutant data (10% resistance) as evidence of **gene redundancy**, noting that the phenotype is additive/synergistic rather than matching one of the single mutants. It acknowledges that the \"G1 epistatic to G3\" clause in Option C is technically debatable based on strict definitions but accepts it as the \"least wrong\" option given the correctness of the other clauses.\n*   **alibaba-qwen3.5-plus:** This model emphasizes **terminological elimination**. It strongly argues against \"Pleiotropy\" (Options B and D) because only one trait (resistance) is measured. It also argues against \"Same promoter\" (Option A) based on eukaryotic biology and the data pattern. Like the first model, it identifies G2 as the upstream regulator due to the masking effect in double mutants.\n\n**2. Agreements and Disagreements**\n*   **Agreement:** Both models agree on the core biological conclusions:\n    *   **G2 is the Transcription Factor:** Based on the 0% resistance phenotype masking all other mutations.\n    *   **G1 and G3 show Redundancy:** Based on the severe drop in resistance in the `g1g3` double mutant compared to singles.\n    *   **Final Answer:** Both models select **Option C**.\n*   **Disagreement:** There is no significant disagreement on the final conclusion. The difference lies in emphasis: Moonshot focuses more on the pathway hierarchy and epistasis logic, while Qwen focuses more on eliminating incorrect biological terms (pleiotropy, promoter structure). Moonshot explicitly notes the potential inaccuracy of the \"G1 epistatic to G3\" claim in Option C, whereas Qwen implies C is correct primarily because B is wrong on \"Pleiotropy.\"\n\n**3. Soundness of Reasoning**\nBoth reasoning approaches are sound and complementary.\n*   **G2 as TF:** The logic that an upstream TF knockout masks downstream knockouts is the strongest evidence in the dataset. Since `g2` (0%) masks `g1` and `g3` in double mutants, G2 must be upstream. This eliminates Option D.\n*   **G1/G3 Redundancy:** The `g1g3` phenotype (10%) is much worse than `g1` (75%) or `g3` (50%). In a linear epistatic relationship, the double mutant would resemble the more severe single mutant. The fact that it does not indicates parallel/redundant pathways. This eliminates Option A (which suggests a specific promoter structure/epistasis that doesn't fit) and supports \"Redundancy.\"\n*   **Terminology:** \"Pleiotropy\" refers to one gene affecting *multiple* traits. Since only disease resistance is measured, this term is unsupported. This definitively eliminates Option B.\n*   **Conclusion:** Option C is the only choice that correctly identifies the TF (G2) and the interaction type (Redundancy). While the claim \"G1 is epistatic towards G3\" is not strictly supported by the double mutant data (which shows additive effects), it is the only option where the primary biological assertions are correct.\n\n### Synthesized Reasoning for Final Answer\n1.  **Identify the Transcription Factor:** The `g2` mutant shows 0% resistance. The double mutants `g1g2` and `g2g3` also show 0% resistance. This indicates that the loss of G2 masks the effects of G1 and G3. In a regulatory pathway, an upstream transcription factor's absence prevents the expression of downstream genes, making its phenotype epistatic. Thus, **G2 is the transcription factor**. (Eliminates D).\n2.  **Analyze G1 and G3:** The single mutants `g1` (75%) and `g3` (50%) have partial resistance. The double mutant `g1g3` (10%) has significantly lower resistance than either single mutant. This additive loss of function indicates that G1 and G3 act in parallel or have **redundant functions**. (Eliminates A which suggests \"same promoter\" and specific epistasis, and eliminates B which suggests \"pleiotropy\").\n3.  **Evaluate Terminology:** Pleiotropy involves multiple traits from one gene; only resistance is measured here. (Eliminates B).\n4.  **Select Option:** Option C correctly states G2 is the TF and G1/G3 show redundancy. Despite the nuanced epistasis claim, it is the only scientifically valid option based on the provided data.\n\nANSWER: C",
+          "google-gemini-3.1-pro": "To determine the correct conclusion regarding the interactions of genes G1, G2, and G3, we must analyze the phenotypes of the single and double mutants step-by-step:\n\n**1. Identify the upstream transcription factor:**\nThe problem states that at least one of the genes is a transcription factor acting upstream of the others. An upstream master regulator is required to activate the downstream genes; therefore, knocking it out should result in a complete loss of function, and its phenotype should mask the phenotypes of the downstream genes (epistasis). \n* The `g2` single mutant shows **0% resistance** (complete loss).\n* The double mutants `g1g2` and `g2g3` also show **0% resistance**, which is identical to the `g2` single mutant. \nThis tells us that without G2, the presence or absence of G1 and G3 does not matter. Therefore, **G2 is the upstream transcription factor**, and G2 is epistatic to both G1 and G3. This eliminates Option D.\n\n**2. Identify the interaction between G1 and G3:**\nNext, we look at how G1 and G3 interact by comparing their single mutants to their double mutant:\n* `g1` single mutant: **75% resistance**\n* `g3` single mutant: **50% resistance**\n* `g1g3` double mutant: **10% resistance**\n\nIf G1 and G3 acted in a single linear pathway, the double mutant would simply look like the more severe single mutant (50%). Instead, the `g1g3` double mutant has a drastically lower resistance (10%) than either single mutant. This synergistic effect indicates that G1 and G3 act in parallel pathways or perform overlapping functions to provide resistance. When one is missing, the other can partially compensate, but when both are missing, resistance collapses. This biological relationship is known as **gene redundancy**. \n* This eliminates Options A and B. (Pleiotropy refers to a single gene affecting multiple unrelated phenotypic traits, which is not being tested here).\n\n**3. Evaluate the best option:**\nOption C correctly identifies **G2 as the transcription factor** and correctly identifies that **G1 and G3 show gene redundancy**. \n\n*(Note: The final clause in Option C stating \"G1 is epistatic towards G3\" is technically incorrect based on the provided data, as true epistasis would mean the double mutant shares the exact phenotype of one of the single mutants. It is highly likely a typographical error in the original test question or transcription—intended to read \"G2 is epistatic towards G1/G3\"—but Option C remains the only logically viable choice due to correctly identifying the first two complex genetic relationships).*\n\nANSWER: C"
+        }
+      },
+      "debate": {
+        "rounds": 2,
+        "confirmed_ids": [
+          "expert_F1",
+          "expert_F2",
+          "expert_F3",
+          "expert_D1-5",
+          "expert_D1-6",
+          "expert_D1-7",
+          "expert_D1-8",
+          "expert_D1-9",
+          "expert_D1-10",
+          "expert_D1-11",
+          "expert_D1-12",
+          "expert_D1-13",
+          "expert_D1-14",
+          "expert_D1-15",
+          "expert_D1-16",
+          "expert_D1-17",
+          "expert_D1-18",
+          "expert_D1-19"
+        ],
+        "interim": [
+          {
+            "round": 1,
+            "elapsed_s": 178.2,
+            "model_count": 6,
+            "verdicts_by_finding": {
+              "expert_F1": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "G2 single and double mutant phenotypes are uniformly 0%, which is the most severe possible phenotype. This matches the expectation for an upstream transcription factor whose loss prevents expression or function of all downstream resistance components, making additional knockouts of G1 or G3 irrelevant. All model responses consistently identify this as the key evidence for G2 being the TF.",
+                    "argument_against": "In classical epistasis, a severe phenotype in double mutants matching the single mutant can indicate the gene is downstream rather than upstream. The prompt specifies 'acting upstream', but the pure genetic data alone (without the explicit statement) could be interpreted as G2 being the most downstream essential effector rather than the TF regulator."
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The phenotype pattern strongly supports assigning G2 as the upstream regulator: g2 has 0% resistance, and both double mutants containing g2 (g1g2 and g2g3) are also 0%, so loss of G2 masks the contribution of G1 and G3. Given the prompt explicitly says at least one gene is a transcription factor acting upstream, G2 is the best fit among the listed options because an upstream regulator required for downstream resistance outputs would be expected to produce a fully susceptible phenotype when absen",
+                    "argument_against": "A 0% phenotype alone does not uniquely identify a transcription factor. G2 could instead encode an essential downstream effector, receptor, signaling component, or biosynthetic enzyme whose loss abolishes resistance. In classical epistasis, the mutant phenotype seen in the double mutant often corresponds to the downstream gene in a linear pathway, so the masking pattern does not by itself prove G2 is upstream. The inference to 'transcription factor' depends heavily on fitting the multiple-choice"
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g2 single mutant shows 0% resistance, and both g1g2 and g2g3 double mutants also show 0%, meaning G2's loss-of-function phenotype masks the effects of G1 and G3. This epistatic masking pattern combined with the prompt's hint that one gene is a transcription factor acting upstream strongly supports G2 as the TF that activates downstream resistance genes.",
+                    "argument_against": "A 0% phenotype could also arise if G2 is simply an essential downstream effector (e.g., the actual antimicrobial product) rather than a transcription factor. Epistasis based on phenotype severity alone does not definitively prove regulatory hierarchy or TF identity—molecular evidence (e.g., expression analysis of G1/G3 in g2 background) would be needed."
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g2 single mutant exhibits 0% resistance, and both the g1g2 and g2g3 double mutants also show 0% resistance. This complete masking of the g1 and g3 phenotypes perfectly aligns with G2 being an upstream master regulator (transcription factor) whose absence shuts down the entire resistance pathway, satisfying the prompt's specific constraint.",
+                    "argument_against": "While G2 is epistatic (it masks the other mutations), epistasis alone does not biologically prove a gene is an upstream transcription factor. In biochemical pathways, a downstream essential structural gene can also mask upstream mutations if its absence creates a complete bottleneck. The deduction relies heavily on the prompt's hint rather than definitive genetic proof."
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The data shows that any mutant combination involving g2 results in 0% resistance, identical to the g2 single mutant. This phenotypic masking is the definition of epistasis, and given the prompt's constraint that one gene is an upstream transcription factor, G2 fits the profile of a master regulator whose absence abolishes the function of downstream genes (G1, G3).",
+                    "argument_against": "Phenotypic masking alone does not definitively prove G2 is a transcription factor; it could also be an essential downstream enzyme in a linear pathway. Additionally, the slight difference between g2 (0%) and g1g3 (10%) suggests G2 might have functions independent of G1 and G3, complicating the strict 'upstream regulator' model."
+                  },
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g2 mutant exhibits 0% resistance, and both double mutants containing g2 (g1g2 and g2g3) also show 0% resistance. This indicates that g2 is epistatic to both g1 and g3, masking their phenotypes. Combined with the prompt's constraint that at least one gene is a transcription factor acting upstream, this uniquely identifies G2 as the upstream master regulator; when the TF is knocked out, downstream targets (G1 and G3) cannot be expressed, rendering their individual knockout status irrelevant.",
+                    "argument_against": "Epistasis demonstrates phenotypic hierarchy but does not definitively establish molecular function as a transcription factor versus other upstream signaling components. Furthermore, G2 could be a downstream essential effector (e.g., the final enzyme in a resistance pathway); if G2 is absolutely required for resistance, knocking it out would abolish resistance (0%) regardless of whether G1 or G3 are upstream regulators or parallel contributors, also producing the observed epistasis pattern."
+                  }
+                ]
+              },
+              "expert_F2": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g1g3 double mutant shows 10% resistance, which is substantially worse than either single mutant (75% and 50%). This synergistic enhancement of the phenotype is a hallmark of partial redundancy or parallel contributions, where each gene can partially compensate for the loss of the other. Multiple model responses explicitly label this as gene redundancy.",
+                    "argument_against": "True genetic redundancy usually produces little to no phenotype in single mutants. Here, both g1 and g3 already show clear reductions (25% and 50% loss), suggesting the genes make unequal, partially independent contributions rather than being fully redundant. The interaction could instead be described as additive effects in parallel pathways without invoking redundancy."
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g1 and g3 single mutants retain partial resistance (75% and 50%), but the g1g3 double mutant drops dramatically to 10%, much worse than either single mutant. That pattern is consistent with overlapping or partially compensatory contributions to the same biological output, which is often described as partial redundancy. This also helps distinguish redundancy from a simple linear pathway, where one would expect the double mutant to resemble one of the single mutants rather than becoming substa",
+                    "argument_against": "The term 'gene redundancy' is not a perfect fit here. In strict usage, redundancy usually implies one gene can largely substitute for the other, often producing weak or near-wild-type single-mutant phenotypes and a strong double-mutant phenotype. Here both singles already show substantial defects, especially g3 at 50%, suggesting each gene has an important nonredundant contribution. The data are also compatible with additive, synergistic, or parallel-pathway effects rather than true redundancy. "
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "g1 alone shows mild loss (75%) and g3 alone shows moderate loss (50%), but g1g3 collapses to 10%—much more severe than expected from independent additive effects (which would predict ~25%). This synergistic enhancement is the hallmark of gene redundancy, where two genes partially compensate for each other's function.",
+                    "argument_against": "True gene redundancy typically implies that single mutants show little to no phenotype because the paralog compensates; here both single mutants already show measurable defects (25% and 50% loss), which is more consistent with partial/unequal redundancy or parallel pathways than classical redundancy. The interaction could also be described as synthetic enhancement rather than redundancy per se."
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The single mutants g1 and g3 retain partial resistance (75% and 50%), but the g1g3 double mutant drops drastically to 10%. This severe, synergistic loss of function—which is worse than either single mutant—is a classic indicator of gene redundancy, where two genes operate in parallel pathways to partially compensate for one another.",
+                    "argument_against": "Strict genetic redundancy usually implies that single mutants have little to no phenotypic defect because the redundant gene fully compensates. Since g1 and g3 have significant individual defects (losing 25% and 50% resistance, respectively), they are only partially redundant or simply additive, making 'gene redundancy' an imperfect label."
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g1g3 double mutant (10% resistance) exhibits a significantly more severe phenotype than either single mutant (75% and 50%). This synergistic loss of function indicates that G1 and G3 contribute independently to the trait, compensating for each other when one is absent, which is the functional definition of gene redundancy in this context.",
+                    "argument_against": "Strict genetic redundancy typically implies that single mutants show no phenotype (wild-type) because the paralog fully compensates. Here, both single mutants show clear defects, making 'partial redundancy' or 'additive contribution' more accurate terms. Calling it simple redundancy overlooks the individual contributions of G1 and G3."
+                  },
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The g1g3 double mutant shows 10% resistance, which is synergistically more severe than either single mutant (g1=75%, g3=50%) and far worse than the expected 25% if effects were purely additive (100-25-50). This dramatic enhancement indicates that G1 and G3 function in parallel, partially compensatory pathways; when one is lost, the other provides partial function, but loss of both collapses resistance. This pattern is the definition of gene redundancy.",
+                    "argument_against": "Classical gene redundancy implies that single mutants show wild-type or near wild-type phenotypes because the duplicate gene fully compensates. Here, single mutants show substantial defects (25% and 50% loss), indicating the redundancy is incomplete or 'diminished.' The interaction might more accurately be described as 'additive effects in convergent pathways' rather than true redundancy, and the 10% phenotype could indicate synthetic lethality or dosage sensitivity rather than simple redundancy"
+                  }
+                ]
+              },
+              "expert_F3": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "None of the options perfectly match the data. Options A and B contain clearly incorrect or unsupported claims (same promoter, pleiotropy). Option D has the wrong TF. This leaves only Option C, even though its claim that 'G1 is epistatic towards G3' lacks direct support from the g1g3 double mutant phenotype not matching the g1 single mutant. The response correctly notes this weakness but chooses via elimination.",
+                    "argument_against": "Acknowledging that a key part of the chosen answer is unsupported undermines the validity of selecting that answer. If the epistasis statement in C is wrong, then none of the options are fully correct, and the proper scientific response should be that the data do not cleanly support any provided choice rather than forcing selection of C."
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This finding is valid because none of the data support a directional epistasis relationship between G1 and G3. The decisive hallmark of classical epistasis would be that the double mutant resembles one of the single mutants, but g1g3 = 10% matches neither g1 = 75% nor g3 = 50%. Therefore the clause 'G1 is epistatic towards G3' in Option C is unsupported. Given that the other options contain clearly worse errors ('same promoter,' 'pleiotropy,' or the wrong transcription factor), choosing C by eli",
+                    "argument_against": "Whether the responder truly 'recognized' the unsupported epistasis claim may not be consistently evident across all model responses; several simply selected C without explicitly flagging that flaw. Also, in some informal educational contexts, students may be expected to choose the 'best available' option without separately challenging each subclaim. If the intended key from the source assumes one gene is epistatic despite the quantitative mismatch, then saying the option is unsupported could be "
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Epistasis is conventionally determined by which single-mutant phenotype the double mutant resembles. g1g3 (10%) resembles neither g1 (75%) nor g3 (50%)—it's more severe than both. Therefore, claiming 'G1 is epistatic towards G3' has no direct support from the data; the answer is reached only by eliminating other options.",
+                    "argument_against": "In some loose usages, when a double mutant is more severe and the more strongly contributing gene's loss dominates, one might argue G3 (the stronger contributor at 50%) is masked by additional G1 loss. Also, if G1 and G3 are redundant, strict epistasis terminology may not apply cleanly, so the 'epistasis' label in Option C may be a loose descriptor rather than strictly wrong."
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Classical epistasis requires the double mutant to share the exact phenotype of one of the single mutants. Since g1g3 (10%) matches neither g1 (75%) nor g3 (50%), neither gene is epistatic to the other. Recognizing this factual flaw in Option C and relying on the correctness of the other two clauses (G2 as TF, redundancy) is the most analytically sound way to solve the problem.",
+                    "argument_against": "The finding overstates the models' analytical clarity. While some models note the mismatch, others (like Response 5) attempt to force a justification for the epistasis claim ('in classical epistasis terms... shows which is epistatic') rather than confidently rejecting the premise. The models do not uniformly use elimination based on this specific unsupported statement."
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Classical epistasis requires the double mutant phenotype to resemble one of the single mutants (the epistatic one). Since g1g3 (10%) resembles neither g1 (75%) nor g3 (50%), the claim that 'G1 is epistatic towards G3' is technically unsupported by standard qualitative genetic definitions, making the selection of Option C a process of elimination rather than positive confirmation.",
+                    "argument_against": "In quantitative genetics, 'epistasis' broadly refers to any non-additive interaction between genes. Since the double mutant (10%) deviates from the expected additive value (25%), a form of quantitative epistasis does exist. Dismissing the claim entirely ignores this broader definition which might be intended by the question authors."
+                  },
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Standard epistasis analysis dictates that if G1 were epistatic to G3, the g1g3 double mutant should resemble the epistatic mutant's phenotype (either g1 at 75% or g3 at 50%). The observed 10% matches neither single mutant, definitively refuting the claim that G1 is epistatic towards G3. The expert correctly notes that despite this internal inconsistency in Option C's text, the other components of the option (G2=TF, redundancy) fit the data, necessitating selection by elimination.",
+                    "argument_against": "The term 'epistatic' might be interpreted in a non-classical sense or as a directional indicator of hierarchy (e.g., G1 being genetically '上位' or dominant in effect size over G3). Alternatively, if G1 and G3 interact such that G1's presence is required for G3's function (or vice versa), the severe double mutant phenotype could theoretically be framed as G1 being epistatic to G3 in a permissive sense, though this stretches standard genetic terminology."
+                  }
+                ]
+              },
+              "expert_F4": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The presence of an apparently incorrect or mismatched claim ('G1 is epistatic towards G3') in what is otherwise the best-fitting option is a common occurrence when exam questions contain typographical errors or were poorly edited. Several responses note that the redundancy part fits but the epistasis part does not, supporting the hypothesis of a transcription error in the original multiple-choice options.",
+                    "argument_against": "Assuming a typo without external evidence is speculative. It is equally possible that the question is deliberately testing whether students can identify that the epistasis claim is wrong and therefore reject Option C. Treating it as a typo risks accepting an inaccurate answer instead of critically evaluating the scientific mismatch."
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This is plausible because Option C appears to be the only answer choice that aligns with the main genetic signal in the data: G2 as the likely upstream regulator and G1/G3 as overlapping contributors. The remaining clause about 'G1 is epistatic towards G3' conflicts with the observed double-mutant phenotype, making the option internally inconsistent. That kind of partial mismatch is characteristic of poorly edited multiple-choice items, so hypothesizing a typo or drafting error is a reasonable e",
+                    "argument_against": "There is no direct evidence that the source contains a typo. The mismatch could instead reflect the test writer’s misunderstanding of epistasis, loose use of terminology, or an intentionally bad distractor set where one answer is merely less wrong than the others. Inferring a typo goes beyond the provided data and the review task; without access to the original source or answer key, this remains speculative."
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Given that Options C correctly identifies the TF and redundancy but contains an epistasis claim unsupported by data, and that this question appears in standardized test banks where typos are common, attributing the inconsistency to a typo (e.g., should read 'G3 is epistatic towards G1') is a reasonable explanation for why C remains the best answer.",
+                    "argument_against": "Speculating about typos is not rigorous analysis—one should evaluate options as written. Additionally, even with the epistasis direction reversed, the data don't cleanly support epistasis between G1 and G3 since the double mutant phenotype matches neither single mutant. The 'typo' explanation may simply be rationalizing a flawed answer choice."
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Option C is the only viable answer because it correctly identifies G2 as the TF and the G1/G3 redundancy. Because the final clause ('G1 is epistatic towards G3') blatantly contradicts the 10% double mutant data, concluding that this is a typo in the source material is a highly logical way to resolve the paradox.",
+                    "argument_against": "Assuming a typo is speculative and dismisses alternative explanations. The question's author might be using a broad, quantitative definition of epistasis (where any statistical deviation from expected additivity is termed epistasis), or it could simply be a poorly designed distractor rather than a literal typographical error."
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Options A, B, and D contain fundamental errors contradicted by the data (shared promoter, pleiotropy, wrong TF). Assuming the epistasis claim in Option C is a terminology imprecision or typo is a pragmatic approach that prioritizes the strongly supported elements (G2=TF, Redundancy) over the ambiguous one.",
+                    "argument_against": "Labeling the discrepancy a 'typo' is speculative and halts further analysis. It assumes the question is flawed rather than considering if there is a valid biological interpretation (e.g., G1 being upstream of G3 in a minor branch) that was overlooked. It reduces the rigor of the genetic analysis."
+                  },
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Option C is the only choice that correctly identifies G2 as the transcription factor and correctly diagnoses the G1-G3 relationship as redundancy (rather than pleiotropy or shared promoter). Given that the 'G1 is epistatic towards G3' claim is quantitatively incompatible with the provided data (10% vs 75%/50%), and the other options contain more fundamental errors (wrong TF assignment, wrong interaction type), the most logical inference is that the epistasis clause in Option C represents a typog",
+                    "argument_against": "Assuming a typo requires speculating about source material intent rather than strictly evaluating the provided text. The question might be intentionally testing the ability to identify the 'best' answer despite imperfections, or there may exist a complex genetic model (e.g., involving feedback loops or threshold effects) where G1 could be considered epistatic to G3 at the 10% level, rendering the option technically correct without requiring a typo assumption."
+                  }
+                ]
+              }
+            },
+            "new_critical_proposed": [
+              {
+                "proposed_by": "xai-grok-4.2",
+                "description": "The g1g3 double mutant phenotype (10%) is much more severe than would be expected from a simple additive model (predicted ~25-37% if independent), indicating possible synergistic interaction or an additional shared function between G1 and G3 beyond redundancy.",
+                "reasoning": "This is critical because it directly addresses the nature of the G1-G3 interaction, which is a core part of the question. All provided findings focus on redundancy but do not address the unexpectedly low 10% value, which challenges a pure redundancy interpretation and was not analyzed in depth by the model responses."
+              },
+              {
+                "proposed_by": "xai-grok-4.2",
+                "description": "The data do not allow determination of which of G1 or G3 is epistatic to the other because the double mutant phenotype (10%) matches neither single mutant, violating the classical definition of epistasis.",
+                "reasoning": "This is critical to the validity of Option C. The finding that Option C contains an unsupported epistasis claim is noted, but the deeper issue that epistasis cannot be assigned at all between G1 and G3 given these quantitative resistance values was missed. This questions whether any option can be selected confidently."
+              },
+              {
+                "proposed_by": "openai-gpt-5.4",
+                "description": "The answer choices are structurally flawed because none is fully supported by the experimental data, especially due to the unsupported directional epistasis claim between G1 and G3.",
+                "reasoning": "This is critical to the original task because it affects whether a correct conclusion can actually be drawn from the experiment as presented. The g1g3 double mutant does not resemble either single mutant, so the options requiring 'G3 is epistatic towards G1' or 'G1 is epistatic towards G3' are not justified. A review of the responses should explicitly note that the multiple-choice item itself is defective or at least underdetermined."
+              },
+              {
+                "proposed_by": "openai-gpt-5.4",
+                "description": "The data support G2 being necessary for resistance, but do not by themselves prove that G2 is specifically a transcription factor acting upstream rather than another essential component.",
+                "reasoning": "This is critical because the original task asks for a mechanistic interaction conclusion. The responses often collapse 'epistatic/required' into 'transcription factor upstream,' but that step requires the external premise in the prompt and the constraints of the options. A high-quality analysis should separate what is directly inferred from the genetics from what is assumed from the question setup."
+              },
+              {
+                "proposed_by": "openai-gpt-5.4",
+                "description": "The g1g3 phenotype is better described as additive/synergistic parallel contribution or partial overlap, and 'redundancy' should be treated cautiously.",
+                "reasoning": "This matters because distinguishing redundancy from parallel nonredundant action is central to evaluating the answer options. Since both single mutants already have notable phenotypes, especially g3, the experiment does not cleanly establish classic redundancy. Responses that present redundancy as definitive may be overstating the evidence."
+              },
+              {
+                "proposed_by": "anthropic-opus-4.6",
+                "description": "Option D should be eliminated not only because g1 shows mild phenotype but also because the data show G2 is epistatic to G1 (g1g2 = g2 = 0%), which means G2 acts downstream of or in the same pathway as G1 in terms of phenotypic masking—directly contradicting D's claim that G2 is epistatic to G1 only if G1 were the TF.",
+                "reasoning": "Properly eliminating D requires understanding the directionality of epistasis from the double mutant data, not just noting g1's mild phenotype. This is a key reasoning step for the original task."
+              },
+              {
+                "proposed_by": "anthropic-opus-4.6",
+                "description": "The definition and misuse of 'pleiotropy' in Options B and D should be explicitly flagged: pleiotropy means one gene affects multiple unrelated traits, which cannot be assessed from a single-trait (anthracnose resistance) experiment. This eliminates B and D on definitional grounds.",
+                "reasoning": "This is a critical conceptual point for answering the question correctly and was only partially addressed in some responses."
+              },
+              {
+                "proposed_by": "anthropic-opus-4.6",
+                "description": "Option A's claim that 'G1 and G3 have the same promoter' is directly contradicted by the data: if they shared a promoter, single knockouts of G1 vs G3 should produce similar phenotypes, but g1 (75%) and g3 (50%) differ substantially.",
+                "reasoning": "Explicit refutation of A's promoter claim is needed to fully justify selecting C over A."
+              },
+              {
+                "proposed_by": "google-gemini-3.1-pro",
+                "description": "Mathematical proof of synergistic interaction (deviation from additivity) between G1 and G3.",
+                "reasoning": "A purely additive independent effect would result in 25% resistance (100% baseline - 25% loss from g1 - 50% loss from g3). The observed 10% resistance is significantly worse than this additive expectation. This mathematical deviation is the definitive proof of a synergistic relationship, which is critical for validating the 'gene redundancy' claim in Option C."
+              },
+              {
+                "proposed_by": "google-gemini-3.1-pro",
+                "description": "The g1g3 double mutant phenotype proves G1 and G3 act in parallel pathways rather than a linear regulatory cascade.",
+                "reasoning": "If G1 and G3 were in a linear pathway (e.g., G1 regulates G3), the double mutant would exhibit the phenotype of one of the single mutants (epistasis). Because the double mutant (10%) is distinct from and more severe than both g1 (75%) and g3 (50%), it proves they operate in parallel, independent pathways that converge on resistance."
+              },
+              {
+                "proposed_by": "alibaba-qwen3.5-plus",
+                "description": "Explicit elimination of G1 and G3 as the Transcription Factor candidate",
+                "reasoning": "The findings focus on why G2 is the TF, but a critical logical step is proving why G1 and G3 cannot be. If G1 were the upstream TF regulating essential resistance genes, g1 should show a severe (0%) phenotype like g2. The mild phenotype (75%) rules G1 out as the master regulator. This negative proof is essential to validate Option C over D."
+              },
+              {
+                "proposed_by": "alibaba-qwen3.5-plus",
+                "description": "Distinction between Pleiotropy and Single-Trait Measurement",
+                "reasoning": "Options B and D are eliminated partly because they claim pleiotropy. A critical finding should explicitly state that pleiotropy cannot be inferred from this experiment because only one trait (anthracnose resistance) was measured. The data does not show one gene affecting multiple traits; it shows multiple genes affecting one trait. This definitively invalidates B and D beyond just 'not fitting'."
+              },
+              {
+                "proposed_by": "moonshot-kimi-k2.5",
+                "description": "The data explicitly contradicts the 'G1 is epistatic towards G3' claim within Option C (the intended answer), creating a paradox where the correct choice contains a false statement. A critical missed finding is the recognition that this question has no fully correct answer—Option C is selected only because its errors are less severe than the alternatives (A, B, D make claims impossible given the data, while C makes one impossible claim and two correct ones).",
+                "reasoning": "The task asks what conclusion CAN be drawn. If Option C asserts as fact that 'G1 is epistatic towards G3,' and the data proves this is false (g1g3=10% does not equal g1=75% or g3=50%), then Option C is not a valid conclusion. The analysis fails to explicitly state that the question contains a structural error—none of the provided options are fully correct, requiring the test-taker to select the 'least wrong' option. This meta-analysis is critical for properly evaluating the validity of the task "
+              },
+              {
+                "proposed_by": "moonshot-kimi-k2.5",
+                "description": "The specific quantitative values (g1=75%, g3=50%, g1g3=10%) rule out 'same promoter' (Option A) and 'pleiotropy' (Options B and D) through simple logic that was not explicitly itemized. Shared promoters would likely produce similar single-mutant phenotypes (not 75% vs 50%), and pleiotropy is undefined for single-trait experiments. Furthermore, g1g3=10% is closer to multiplicative (0.75*0.50=37.5% expected vs 10% observed) than additive, suggesting positive epistasis or synergy, not simple redund",
+                "reasoning": "These elimination criteria are critical for validating the selection of Option C. Without explicitly stating that A is invalidated by divergent single-mutant phenotypes, B by single-trait scope, and D by the mild g1 phenotype (inconsistent with upstream TF behavior), the justification for selecting C (despite its flaw) remains incomplete. Additionally, the specific mathematical relationship (synergistic rather than additive) provides stronger evidence for the 'redundancy' classification than qua"
+              },
+              {
+                "proposed_by": "moonshot-kimi-k2.5",
+                "description": "The g2 single mutant at 0% resistance combined with g1g2 and g2g3 also at 0% establishes G2 as epistatic to both G1 and G3, but this finding was not leveraged to definitively eliminate Option D (which claims G1 is the TF) based on the directionality of epistasis.",
+                "reasoning": "If G1 were the transcription factor acting upstream (as claimed in Option D), then g1 should show the severe phenotype (0% or near 0%), and g1 should be epistatic to G2. However, g1 shows 75% resistance (mild) and g2 shows 0% (severe), with g1g2 resembling g2, not g1. This directionality (G2 masks G1, not vice versa) definitively proves G1 cannot be upstream of G2, eliminating Option D. This specific directional logic is distinct from simply noting G2 'fits' the TF role and is critical for rigor"
+              }
+            ],
+            "raw_responses": [
+              {
+                "model": "xai-grok-4.2",
+                "response_length": 4623,
+                "elapsed_ms": 4793
+              },
+              {
+                "model": "openai-gpt-5.4",
+                "response_length": 6464,
+                "elapsed_ms": 24569
+              },
+              {
+                "model": "anthropic-opus-4.6",
+                "response_length": 4507,
+                "elapsed_ms": 27134
+              },
+              {
+                "model": "google-gemini-3.1-pro",
+                "response_length": 4263,
+                "elapsed_ms": 51588
+              },
+              {
+                "model": "alibaba-qwen3.5-plus",
+                "response_length": 4107,
+                "elapsed_ms": 70127
+              },
+              {
+                "model": "moonshot-kimi-k2.5",
+                "response_length": 7283,
+                "elapsed_ms": 178173
+              }
+            ]
+          },
+          {
+            "round": 2,
+            "elapsed_s": 394.2,
+            "model_count": 6,
+            "verdicts_by_finding": {
+              "expert_F1": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_F2": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_F3": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_F4": {
+                "confirm": 2,
+                "reject": 4,
+                "total": 6,
+                "outcome": "REJECTED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-5": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-6": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-7": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-8": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-9": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-10": {
+                "confirm": 5,
+                "reject": 1,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-11": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-12": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-13": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-14": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-15": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-16": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-17": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-18": {
+                "confirm": 5,
+                "reject": 1,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "expert_D1-19": {
+                "confirm": 6,
+                "reject": 0,
+                "total": 6,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "moonshot-kimi-k2.5",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "alibaba-qwen3.5-plus",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-4.2",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-3.1-pro",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-opus-4.6",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-5.4",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              }
+            },
+            "new_critical_proposed": [],
+            "raw_responses": [
+              {
+                "model": "moonshot-kimi-k2.5",
+                "response_length": 811,
+                "elapsed_ms": 188868
+              },
+              {
+                "model": "alibaba-qwen3.5-plus",
+                "response_length": 808,
+                "elapsed_ms": 180767
+              },
+              {
+                "model": "xai-grok-4.2",
+                "response_length": 808,
+                "elapsed_ms": 1562
+              },
+              {
+                "model": "google-gemini-3.1-pro",
+                "response_length": 820,
+                "elapsed_ms": 14731
+              },
+              {
+                "model": "anthropic-opus-4.6",
+                "response_length": 732,
+                "elapsed_ms": 4092
+              },
+              {
+                "model": "openai-gpt-5.4",
+                "response_length": 654,
+                "elapsed_ms": 4193
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "light": {
+      "models": [
+        "openai-gpt-mini",
+        "anthropic-haiku",
+        "xai-grok-fast",
+        "google-gemini-flash",
+        "alibaba-qwen-flash"
+      ],
+      "status": "complete",
+      "elapsed_s": 210.81769180297852,
+      "standalone": [
+        {
+          "model": "alibaba-qwen-flash",
+          "status": "completed",
+          "time_s": 62.953436851501465,
+          "response": "1.  **Analyze the Experimental Results to Determine Gene Roles:**\n    *   **Wild-type (Control):** 100% resistance.\n    *   **Single Mutants:**\n        *   $g1$ (Loss of G1): 75% resistance. Moderate impact.\n        *   $g2$ (Loss of G2): 0% resistance. Severe impact (complete loss of resistance).\n        *   $g3$ (Loss of G3): 50% resistance. Significant impact.\n    *   **Double Mutants:**\n        *   $g1g2$: 0% resistance. Similar to $g2$.\n        *   $g2g3$: 0% resistance. Similar to $g2$.\n        *   $g1g3$: 10% resistance. Much worse than either single mutant ($g1$ and $g3$ combined).\n\n2.  **Identify the Transcription Factor (TF):**\n    *   The problem states at least one gene is a TF acting upstream. An upstream regulator typically has a pleiotropic or essential effect. If the regulator is missing, the entire downstream pathway fails.\n    *   The $g2$ mutant exhibits 0% resistance. Furthermore, any double mutant containing $g2$ ($g1g2$, $g2g3$) also shows 0% resistance.\n    *   This dominance of the $g2$ phenotype in the double mutants indicates that G2 acts upstream of G1 and G3. Its absence prevents resistance regardless of the status of G1 or G3. Therefore, **G2 is the transcription factor** acting at the top of the hierarchy.\n    *   This eliminates **Option D**, which incorrectly identifies G1 as the transcription factor.\n\n3.  **Analyze the Interaction between G1 and G3:**\n    *   The single mutants $g1$ and $g3$ retain some resistance (75% and 50%, respectively).\n    *   The double mutant $g1g3$ retains very little resistance (10%).\n    *   This drastic reduction in resistance when both genes are knocked out, compared to the relatively milder single mutants, indicates that G1 and G3 perform overlapping or compensatory functions. This phenomenon is known as **gene redundancy**.\n    *   **Pleiotropy** (mentioned in Option B) refers to a single gene influencing multiple distinct phenotypic traits. This term does not describe the interaction between two different genes affecting a single trait (resistance). Thus, Option B is incorrect.\n    *   Having the \"same promoter\" (Option A) is a specific structural hypothesis not supported by the functional knockout data provided.\n    *   Therefore, the interaction between G1 and G3 is best described as **gene redundancy**. This points to **Option C**.\n\n4.  **Verify Epistasis Terminology:**\n    *   Epistasis describes the masking of one gene's effect by another. In the context of Option C, the statement \"G1 is epistatic towards G3\" is accepted within the framework of the available choices (shared between B and C). Since we have established \"Redundancy\" is the correct description for the G1/G3 relationship (unlike Pleiotropy), Option C remains the valid choice regardless of the specific hierarchy implied by the epistasis wording in the question's source. The critical distinctions are G2 as the TF (vs G1) and Redundancy (vs Pleiotropy/Promoter).\n\n5.  **Conclusion:**\n    *   G2 is the upstream Transcription Factor (based on 0% phenotype dominance).\n    *   G1 and G3 show gene redundancy (based on the synergistic defect in the double mutant).\n    *   Option C combines these correct observations.\n\nANSWER: C"
+        },
+        {
+          "model": "xai-grok-fast",
+          "status": "completed",
+          "time_s": 5.301689863204956,
+          "response": "### Step 1: Analyze what the question is asking\nThe question asks for the conclusion regarding the genes' interactions, given that **at least one gene is a transcription factor (TF) acting upstream of another gene(s)**. We need to interpret the resistance phenotypes of single and double mutants to infer:\n- Which gene is likely the TF (upstream regulator).\n- The relationship between the other genes (e.g., redundancy, pleiotropy, epistasis).\nKey observations:\n- **g1**: 75% (mild reduction → G1 contributes partially to resistance).\n- **g2**: 0% (complete loss → G2 is essential).\n- **g3**: 50% (moderate reduction → G3 contributes significantly).\n- **g1g2**: 0% (same as g2 → no worse than g2 alone).\n- **g2g3**: 0% (same as g2 → no worse than g2 alone).\n- **g1g3**: 10% (much worse than either single mutant → synergistic loss, indicating G1 and G3 contribute independently/additively).\n\nIn genetic terms:\n- Double mutant phenotypes matching the worse single mutant suggest **epistasis** (one gene acts downstream/masks the other).\n- Synergistic double mutant (worse than both singles) suggests **additive/independent** contributions (no epistasis; possibly redundancy if singles are mild).\n- A TF upstream would show its single mutant phenotype dominating doubles (epistatic), as loss of TF blocks the downstream pathway entirely.\n\n### Step 2: Consider each option and why it might be correct or incorrect\n**A) G2 is a transcription factor, G1 and G3 has the same promoter, G3 is epistatic towards G1**\n- G2 as TF: Supported. g2 = 0%, and all doubles with g2 = 0% (g1g2, g2g3), meaning G2 loss eliminates resistance regardless of other genes → G2 acts **upstream** (epistatic to both G1 and G3).\n- G1 and G3 same promoter: Plausible (G2 as TF could regulate both), but \"same promoter\" is too specific/unproven; data shows **independent/additive** action (g1g3 = 10% << 50% or 75%).\n- G3 epistatic to G1: Wrong. Epistasis would mean g1g3 matches g3 (50%), but g1g3 = 10% (synergistic, not epistatic).\n\n**Incorrect** (G3 not epistatic; \"same promoter\" unneeded/speculative).\n\n**B) G2 is a transcription factor, G1 and G3 show pleiotropy, G1 is epistatic towards G3**\n- G2 as TF: Supported (as above).\n- Pleiotropy (one gene affects multiple traits): Irrelevant here; data concerns **resistance pathway interaction**, not multiple traits. No evidence.\n- G1 epistatic to G3: Wrong. Epistasis would mean g1g3 matches g1 (75%), but g1g3 = 10% (synergistic).\n\n**Incorrect** (pleiotropy mismatch; G1 not epistatic).\n\n**C) G2 is a transcription factor, G1 and G3 show gene redundancy, G1 is epistatic towards G3**\n- G2 as TF: Supported (as above).\n- Gene redundancy (genes overlap functionally; double worse, singles mild): Perfect fit. g1 (75%) and g3 (50%) mild; g1g3 (10%) severe/synergistic → G1/G3 redundantly contribute to resistance (G2 activates both).\n- G1 epistatic to G3: Wrong (same reason as B; g1g3 synergistic, not matching g1).\n\n**Partially correct** (G2 TF and redundancy fit perfectly), but epistasis claim wrong → **incorrect**.\n\n**D) G1 is a transcription factor, G2 and G3 show pleiotropy, G2 is epistatic towards G1**\n- G1 as TF: Wrong. If G1 upstream TF, g1g2 should match g1 (75%), but g1g2 = 0% (matches g2 → G2 epistatic to G1, so G2 downstream? Contradicts TF upstream). Also g1 (75%) too mild for essential TF.\n- Pleiotropy: Irrelevant (as in B).\n- G2 epistatic to G1: Logically follows from data (g1g2 = g2), but contradicts G1 being upstream TF.\n\n**Incorrect** (G1 can't be upstream TF).\n\n### Step 3: Explain your reasoning\n- **G2 is the TF**: Essential (g2 = 0%), epistatic to others (doubles with g2 = 0%). Loss of upstream TF blocks entire pathway (downstream G1/G3 irrelevant).\n- **G1 and G3 are redundant**: Both contribute to resistance (75% and 50%); together nearly essential (g1g3 = 10%). Classic redundancy: partial overlap, full loss only in double. G2 (TF) likely activates both (parallel/redundant branch).\n- No epistasis between G1/G3 (synergistic double disproves).\n- Options A/C closest (G2 TF), but A has wrong epistasis/\"same promoter\"; C has redundancy (correct) but wrong epistasis. Wait—none perfect? Re-eval:\n  - Actually, **A** best despite flaws: \"G3 epistatic towards G1\" wrong, but perhaps loose read (g3 50% > g1 75%? No). Wait, no—C's redundancy fits data precisely; epistasis may be error, but question has \"at least one TF upstream.\"\n  - Data strongest for C (redundancy standard for synergistic doubles post-TF). Epistasis claims in A/C misfit, but C's model (G2 → redundant G1/G3) explains all.\n\nFinal: **C** best matches (common in resistance pathways; TF → redundant effectors).\n\n**ANSWER: C**"
+        },
+        {
+          "model": "google-gemini-flash",
+          "status": "completed",
+          "time_s": 3.0487959384918213,
+          "response": "To determine the relationship between genes G1, G2, and G3, we must analyze the phenotypic data provided for the single and double mutants.\n\n### 1. Analyze the Data\n*   **Wild-type (WT):** 100% resistance.\n*   **g1:** 75% resistance (mild reduction).\n*   **g2:** 0% resistance (severe reduction).\n*   **g3:** 50% resistance (moderate reduction).\n*   **g1g2:** 0% resistance (same as g2).\n*   **g2g3:** 0% resistance (same as g2).\n*   **g1g3:** 10% resistance (significantly lower than either g1 or g3 alone).\n\n### 2. Evaluate Gene Interactions\n*   **The role of G2:** Since the double mutants involving G2 (g1g2 and g2g3) show 0% resistance—the same as the single mutant g2—G2 is **epistatic** to both G1 and G3. In genetic pathways, if a mutation in one gene masks the effects of mutations in others, the epistatic gene is typically the one acting upstream (often a master regulator or transcription factor). Thus, G2 is the transcription factor.\n*   **The relationship between G1 and G3:** The single mutants g1 (75%) and g3 (50%) show partial resistance. When combined (g1g3), the resistance drops to 10%. This synergistic effect (the double mutant is much worse than either single mutant) is a classic hallmark of **gene redundancy**. This means G1 and G3 likely function in parallel pathways that compensate for one another to provide resistance.\n*   **Epistasis between G1 and G3:** In the context of the options provided, we look for the best fit. Option C suggests G1 and G3 show redundancy and G1 is epistatic to G3. However, looking at the data, the interaction between G1 and G3 is clearly redundant. \n\n### 3. Evaluate the Options\n*   **A:** Incorrect. G3 is not epistatic to G1; the data shows redundancy.\n*   **B:** Incorrect. Pleiotropy refers to one gene affecting multiple traits, which is not the primary conclusion here.\n*   **C:** This option correctly identifies G2 as the transcription factor and identifies the relationship between G1 and G3 as redundant. While the \"epistatic\" label in the option might be a distractor or a specific interpretation of the pathway hierarchy, it is the only option that correctly identifies the **redundancy** between G1 and G3 and the **transcription factor** role of G2.\n*   **D:** Incorrect. G1 is not the transcription factor; G2 is, based on the epistasis data.\n\nGiven the data, G2 acts as a master regulator (transcription factor) whose loss renders the plant completely susceptible regardless of the status of G1 or G3. G1 and G3 act in parallel (redundantly) to contribute to the remaining resistance.\n\nANSWER: C"
+        },
+        {
+          "model": "openai-gpt-mini",
+          "status": "completed",
+          "time_s": 6.766507148742676,
+          "response": "Let’s reason through the mutant phenotypes.\n\n### 1) What the question is asking\nWe want to infer **gene interaction order** and whether one gene is likely an **upstream transcription factor** from the single and double mutant resistance levels.\n\nKey idea:\n- If a mutation in one gene causes the strongest phenotype, and combining it with other mutations does **not** make things worse, that gene is often **epistatic** and may act **upstream**.\n- If two genes together give a much stronger phenotype than either alone, they may have **partially redundant** or **additive** roles.\n\n---\n\n### 2) Analyze the data\n\n#### Single mutants\n- **g1 = 75%** resistance → mild effect\n- **g2 = 0%** resistance → very strong effect\n- **g3 = 50%** resistance → moderate effect\n\nSo **G2 seems the most essential** for resistance.\n\n#### Double mutants\n- **g1g2 = 0%**\n- **g2g3 = 0%**\n- **g1g3 = 10%**\n\nInterpretation:\n- Since **g2 is already 0% alone**, adding g1 or g3 does not reduce resistance below 0%. That means **g2 masks the effect of the other genes** → **G2 is epistatic**.\n- The **g1g3** double mutant is **much worse than either single mutant**, suggesting **G1 and G3 both contribute to resistance**, possibly in parallel or overlapping pathways.\n- The fact that g1g3 is worse than expected from either alone argues more for **functional redundancy / partial overlap**, not same promoter or pleiotropy.\n\n---\n\n### 3) Evaluate the answer choices\n\n#### A) G2 is a transcription factor, G1 and G3 has the same promoter, G3 is epistatic towards G1\n- Wrong because **G3 is not epistatic to G1**: the **g1g3** double mutant (10%) is worse than g3 alone (50%), so G1 clearly still matters.\n- “Same promoter” is not supported by these phenotypes.\n\n#### B) G2 is a transcription factor, G1 and G3 show pleiotropy, G1 is epistatic towards G3\n- Wrong because **G1 is not epistatic to G3**: g1g3 is much worse than g1 alone.\n- “Pleiotropy” is not the right inference here.\n\n#### C) G2 is a transcription factor, G1 and G3 show gene redundancy, G1 is epistatic towards G3\n- The **first part fits well**: G2 is the best candidate for an upstream transcription factor because its loss abolishes resistance and masks the other mutations.\n- The **G1/G3 redundancy** idea fits the fact that the double mutant is far worse than either single mutant.\n- However, the statement **“G1 is epistatic towards G3”** is not well supported; if anything, the double mutant shows they both contribute, but neither cleanly masks the other.\n- Still, among the choices, this is the **closest overall** to the data.\n\n#### D) G1 is a transcription factor, G2 and G3 show pleiotropy, G2 is epistatic towards G1\n- Wrong because **G1 is not the strongest/most epistatic mutation**.\n- G2, not G1, is the one that masks the others.\n\n---\n\n### Conclusion\nThe best-supported conclusion is that **G2 is the upstream, epistatic gene**, and **G1 and G3 have partially redundant roles in resistance**.\n\nAmong the provided options, the closest match is **C**.\n\nANSWER: C"
+        },
+        {
+          "model": "anthropic-haiku",
+          "status": "completed",
+          "time_s": 8.272087097167969,
+          "response": "Let me work through this systematically.\n\n## Step 1: Analyze the Data\n\n| Genotype | Resistance |\n|----------|-----------|\n| g1 | 75% |\n| g2 | 0% |\n| g3 | 50% |\n| g1g2 | 0% |\n| g1g3 | 10% |\n| g2g3 | 0% |\n\n## Step 2: Identify the Key Patterns\n\n**Pattern 1: G2's behavior**\n- g2 alone = 0% resistance\n- g1g2 = 0% resistance (no improvement when adding g1)\n- g2g3 = 0% resistance (no improvement when adding g3)\n- This suggests G2 loss is completely epistatic - knocking out G2 makes other mutations irrelevant\n\n**Pattern 2: G1 and G3 interaction**\n- g1 alone = 75% (mild effect)\n- g3 alone = 50% (moderate effect)\n- g1g3 = 10% (severely compromised - much worse than either single mutant)\n- This suggests G1 and G3 have partially redundant functions\n\n**Pattern 3: G1g2 and g2g3 interactions**\n- Both result in 0%, same as g2 alone\n- G2 loss masks the effects of G1 or G3 loss\n- This indicates G2 is upstream/epistatic to both G1 and G3\n\n## Step 3: Evaluate Each Option\n\n**Option A:** G2 is a transcription factor, G1 and G3 same promoter, G3 epistatic to G1\n- G2 being TF is correct (epistatic to others)\n- But G3 epistatic to G1? NO - g1 (75%) > g1g3 (10%), so G1 loss makes G3 loss worse, not the reverse\n\n**Option B:** G2 is a transcription factor, G1 and G3 show pleiotropy, G1 epistatic to G3\n- G2 being TF ✓\n- Pleiotropy (one gene affecting multiple traits)? This doesn't fit the data pattern\n- G1 epistatic to G3? When g1 is lost, g3 loss becomes catastrophic (75% → 10%), suggesting G1 masks G3's importance\n\n**Option C:** G2 is a transcription factor, G1 and G3 show gene redundancy, G1 epistatic to G3\n- G2 being TF ✓\n- Gene redundancy: YES - g1 alone loses 25%, g3 alone loses 50%, but g1g3 together = 10% (synergistic negative effect suggests partial redundancy) ✓\n- G1 epistatic to G3: YES - g1 loss (75%) is less severe than g3 loss (50%) alone, but g1g3 shows G1 is critical for masking G3's defects ✓\n\n**Option D:** G1 is a transcription factor...\n- But G1 loss alone only reduces to 75%, while G2 loss completely eliminates resistance (0%)\n- G2 shows more dramatic epistasis, suggesting G2 is the upstream TF, not G1\n\n## Step 4: Final Reasoning for Option C\n\n- **G2 is a transcription factor**: G2's epistatic effect (0% in all combinations) indicates it's a master regulator\n- **G1 and G3 gene redundancy**: They can partially compensate for each other (g1 or g3 alone have partial function), but losing both is catastrophic\n- **G1 epistatic to G3**: G3 alone (50%) vs g1g3 (10%) shows that G1 loss makes the phenotype much worse, meaning G1 normally masks or compensates for G3 function\n\nANSWER: C"
+        }
+      ],
+      "aggregation": {
+        "findings": [
+          {
+            "id": "light_F1",
+            "category": "valuable_perspective",
+            "description": "Correctly deduced that G2 is the upstream transcription factor and G1/G3 exhibit gene redundancy based on the mutant phenotypes.",
+            "found_by": [
+              "alibaba-qwen-flash",
+              "xai-grok-fast",
+              "google-gemini-flash",
+              "openai-gpt-mini",
+              "anthropic-haiku"
+            ]
+          },
+          {
+            "id": "light_F2",
+            "category": "valuable_perspective",
+            "description": "Correctly identified that the epistasis claim in Option C contradicts the data, but logically deduced it was still the best available choice.",
+            "found_by": [
+              "alibaba-qwen-flash",
+              "xai-grok-fast",
+              "google-gemini-flash",
+              "openai-gpt-mini"
+            ]
+          },
+          {
+            "id": "light_F3",
+            "category": "critical_bug",
+            "description": "Incorrectly justified the flawed epistasis claim in Option C by misapplying the genetic definition of epistasis.",
+            "found_by": [
+              "anthropic-haiku"
+            ]
+          }
+        ],
+        "request_type": "other",
+        "per_model_responses": {
+          "xai-grok-fast": "### Step 1: Analyze What the Question is Asking\nThe question requires inferring the genetic interactions among G1, G2, and G3, given that at least one is a transcription factor (TF) acting upstream of others. Resistance phenotypes from knock-out mutants reveal:\n- **Single mutants**: g1 (75%: mild loss), g2 (0%: complete loss), g3 (50%: moderate loss).\n- **Double mutants**:\n  - g1g2 and g2g3: both 0% (identical to g2 alone → G2 phenotype dominates).\n  - g1g3: 10% (synergistic/additive loss, far worse than g1 or g3 alone → G1 and G3 contribute overlapping/independently to residual resistance when G2 is present).\n\nKey genetic principles:\n- **Upstream TF**: Its loss blocks the pathway entirely; doubles including it match its severe phenotype (epistatic).\n- **G1-G3 interaction**: Mild singles but severe double suggests **functional overlap/redundancy** (each compensates for the other's loss; both needed for full function).\n- **Epistasis**: Double matches the single of the downstream gene.\n- **Redundancy**: Double worse than expected (synergistic).\n- **Pleiotropy**: One gene affecting multiple traits (irrelevant here; we're analyzing pathway interactions for one trait).\n- Data excludes simple linear paths without redundancy.\n\n### Step 2: Synthesize Model Reasonings\n#### Key Insights from Each Model:\n- **alibaba-qwen-flash**:\n  - Correctly IDs **G2 as TF**: g2 = 0% dominates all doubles with it (upstream/epistatic).\n  - G1-G3: **Redundancy** (mild singles, synergistic g1g3=10%).\n  - Rejects pleiotropy (\"same trait\"), \"same promoter\" (unsupported), G1 as TF.\n  - Accepts C despite epistasis phrasing (focuses on TF + redundancy as core).\n  - **Strength**: Clear TF logic; precise redundancy definition.\n\n- **xai-grok-fast**:\n  - Also IDs **G2 as TF** (same dominance logic).\n  - G1-G3: Synergistic = **additive/independent/redundancy**.\n  - Rejects A (no \"same promoter\"; G3 not epistatic, as g1g3 ≠ g3), B (no pleiotropy; G1 not epistatic, as g1g3 ≠ g1), D (G1 not TF).\n  - Notes C's epistasis phrasing odd (g1g3 ≠ g1=75%, so G1 not epistatic to G3), but incomplete (cuts off).\n  - **Strength**: Thorough option rejections; flags epistasis issue in C.\n\n#### Agreements:\n- Both strongly agree: **G2 is the TF** (0% dominates g1g2/g2g3 → upstream of G1/G3).\n- Both see **G1-G3 synergy** → overlapping roles (additive/redundancy).\n- Both eliminate D (G1 not TF), B (pleiotropy irrelevant), A (\"same promoter\" speculative; epistasis wrong).\n\n#### Disagreements:\n- **Epistasis phrasing in C** (\"G1 is epistatic towards G3\"): grok-fast questions it (correctly; epistasis requires g1g3 ≈ g1=75%, but 10% is synergistic). qwen accepts it loosely.\n  - Reality: No epistasis between G1/G3 (synergy indicates **parallel/redundant paths**). Epistasis phrasing is likely a distractor/flaw, but C is closest overall.\n- grok-fast incomplete (cuts off at \"g1 (75%\"), but implies C via process of elimination.\n\n#### Which Reasoning is Most Sound?\n- **qwen-flash**: More complete; directly picks C with strong TF/redundancy logic. Treats epistasis as secondary (valid, as options share phrasing).\n- **grok-fast**: Sound critiques, but highlights C's weakness without final synthesis.\n- **Synthesis**: G2=TF and G1/G3=redundancy are **unassailable** (data-driven). C uniquely combines them. Other options fail critically (wrong TF, wrong G1-G3 term). Epistasis mismatch is minor/possibly misworded in question (common in MCQs); redundancy is the key insight for g1g3.\n\n### Step 3: Consider Each Option\n| Option | G2 TF? | G1-G3 Relation | Epistasis | Correct? | Why? |\n|--------|--------|-----------------|-----------|----------|------|\n| **A** | ✅ Yes (dominance) | Same promoter | G3 > G1 | ❌ No | \"Same promoter\" unsupported (speculative); G3 not epistatic (g1g3=10% ≠50%) |\n| **B** | ✅ Yes | Pleiotropy | G1 > G3 | ❌ No | Pleiotropy irrelevant (multi-trait, not inter-gene here); G1 not epistatic (10% ≠75%) |\n| **C** | ✅ Yes | **Redundancy** | G1 > G3 | ✅ Best | Redundancy perfect (synergy); epistasis phrasing weak but secondary |\n| **D** | ❌ No (G1 TF) | Pleiotropy | G2 > G1 | ❌ No | Wrong TF (g1=75% not dominant) |\n\n**Final Synthesis**: C is correct. G2 upstream TF; G1/G3 redundant downstream effectors (G2 activates both parallel paths; losing one retains partial resistance via the other).\n\nANSWER: C",
+          "openai-gpt-mini": "1. The key goal is to infer gene interaction from mutant resistance phenotypes.\n2. Since **g2** alone gives **0% resistance**, and both **g1g2** and **g2g3** are also **0%**, **G2** most likely acts **upstream** as the transcription factor: when it is lost, the pathway is shut down regardless of G1 or G3.\n3. For **G1 and G3**, the single mutants reduce resistance only partially (**75%** and **50%**), but the **g1g3** double mutant drops to **10%**, much worse than either single mutant. That pattern is most consistent with **functional redundancy** or overlapping contributions to resistance.\n4. Among the choices, only **C** matches both conclusions: **G2 is the transcription factor**, and **G1 and G3 show gene redundancy**. The epistasis wording is not ideal, but C is still the best-supported option.\n\nANSWER: C",
+          "google-gemini-flash": "To determine the correct conclusion, we must analyze the phenotypic data provided for the single and double mutants:\n\n1.  **Identify the Transcription Factor (TF):**\n    *   The mutant $g2$ shows 0% resistance.\n    *   The double mutants $g1g2$ and $g2g3$ also show 0% resistance.\n    *   Because the phenotype of $g2$ is dominant in all combinations (the presence of $g2$ mutation results in 0% resistance regardless of the status of $g1$ or $g3$), $G2$ must be the upstream regulator (transcription factor) that controls the pathway. If $G2$ is absent, the entire resistance mechanism fails. This eliminates Option D.\n\n2.  **Analyze the interaction between $G1$ and $G3$:**\n    *   $g1$ has 75% resistance and $g3$ has 50% resistance.\n    *   The double mutant $g1g3$ has 10% resistance.\n    *   When two genes are knocked out and the resulting phenotype is significantly more severe than either single mutant, it indicates that the genes perform overlapping or compensatory functions. This is the definition of **gene redundancy**.\n    *   Option A suggests they share a promoter (not supported by functional data).\n    *   Option B suggests pleiotropy (which refers to one gene affecting multiple traits, not the interaction between two genes affecting one trait).\n\n3.  **Evaluate Epistasis:**\n    *   Epistasis occurs when the effect of one gene masks the effect of another. In the context of $G1$ and $G3$, the data shows they are redundant (they work together to maintain resistance). While the phrasing \"G1 is epistatic towards G3\" in Option C is a standard way to describe the hierarchical relationship in some genetic models, the key identifiers are the identification of $G2$ as the TF and the identification of $G1$ and $G3$ as redundant.\n\nComparing the options:\n*   **A:** Incorrect because G3 is not epistatic to G1 (the double mutant is worse than the single).\n*   **B:** Incorrect because pleiotropy is not the correct term for this interaction.\n*   **C:** Correctly identifies $G2$ as the TF and $G1/G3$ as redundant.\n*   **D:** Incorrect because $G1$ is not the TF.\n\nThe experimental results clearly demonstrate that $G2$ is the upstream regulator and $G1$ and $G3$ exhibit gene redundancy.\n\nANSWER: C",
+          "alibaba-qwen-flash": "### Analysis of Model Reasoning Approaches\n\n**1. Key Insights Provided by Each Model**\n*   **Model 1 (alibaba-qwen-flash):**\n    *   **TF Identification:** Correctly identifies G2 as the transcription factor. It bases this on the observation that the `g2` single mutant (0% resistance) dictates the phenotype of all double mutants involving G2 (`g1g2`, `g2g3`). This indicates G2 is essential and upstream.\n    *   **Interaction Type:** Correctly interprets the `g1` (75%), `g3` (50%), and `g1g3` (10%) data as indicative of **gene redundancy**. It notes that the drastic drop in resistance in the double mutant compared to single mutants implies overlapping functions rather than a linear pathway where one masks the other completely.\n    *   **Terminology Handling:** Explicitly addresses the potential confusion regarding the term \"epistasis\" in the options. It argues that between Options B and C (which share the same epistasis claim), Option C is superior because \"Redundancy\" is the scientifically accurate term for the observed gene interaction, whereas \"Pleiotropy\" applies to single-gene effects on multiple traits.\n*   **Model 2 (xai-grok-fast):**\n    *   **Systematic Elimination:** Uses a process of elimination across options. It validates the G2 TF status first.\n    *   **Definition Correction:** Points out that \"Pleiotropy\" (Option B) is irrelevant because the experiment measures the interaction of two genes on a single trait (resistance), not one gene affecting multiple traits.\n    *   **Mechanism Rejection:** Dismisses Option A's \"same promoter\" claim as speculative/unproven compared to the functional knockout data. Like Model 1, it recognizes that the synergy (`g1g3` << `g1` + `g3`) negates simple epistasis (masking), making Redundancy the strongest descriptor despite the confusing option text.\n\n**2. Agreements and Disagreements**\n*   **Agreement:** Both models arrive at the exact same conclusion: **Option C**. Both agree that G2 is the upstream Transcription Factor and that G1 and G3 exhibit gene redundancy. Both acknowledge that the experimental data rules out G1 as the primary TF.\n*   **Disagreement:** There is no substantive disagreement. Model 1 provides a slightly more detailed explanation of *why* the epistasis term in the option is accepted (by weighing it against the alternative of Pleiotropy), whereas Model 2 focuses more on why the other options (A and B) are structurally incorrect definitions. Model 2 truncates mid-sentence but its logic aligns perfectly with Model 1.\n\n**3. Evaluation of Soundness**\n*   **Most Sound Reasoning:** Both models employ sound genetic logic.\n    *   **Model 1** is particularly strong in explaining the hierarchy: Upstream regulators (TFs) typically display dominant phenotypes in double mutants (epistasis), which matches the G2 data. It distinguishes itself by clarifying the distinction between gene-gene redundancy and gene-centric pleiotropy.\n    *   **Model 2** is strong on definition rigor, explicitly rejecting \"Pleiotropy\" as a misnomer for this context.\n    *   Together, they confirm that while the term \"epistasis\" might be applied loosely in the question options (as it usually denotes hierarchical masking, whereas the data shows redundancy/synergy), Option C is the only choice that gets the Gene Roles (G2=TF) and the Gene Relationship (Redundancy) biologically correct.\n\n**Synthesized Conclusion:**\nThe experimental data shows G2 is essential for resistance (0% in `g2` and double mutants), identifying it as the likely upstream TF. G1 and G3 contribute partially to resistance individually (75% and 50%), but their combined loss causes a synergistic collapse (10%), indicating functional redundancy. Option C captures G2 as the TF and G1/G3 redundancy. Options A and B fail due to incorrect terms (\"promoter\", \"pleiotropy\"), and D fails on the TF identity. Both models correctly identify C as the answer.\n\nANSWER: C",
+          "anthropic-haiku": "## Analysis of Model Reasoning\n\n### Key Insights from Each Model:\n\n**alibaba-qwen-flash:**\n- Correctly identifies G2 as the transcription factor based on the 0% resistance in g2 and persistence of 0% in all double mutants containing g2\n- Recognizes gene redundancy between G1 and G3 based on synergistic defect (g1g3 = 10% << g1 or g3 alone)\n- Correctly dismisses pleiotropy as the wrong description\n- Concludes Option C is correct\n\n**xai-grok-fast:**\n- Also correctly identifies G2 as the TF using the same epistasis logic\n- Also recognizes the synergistic defect pattern indicating redundancy/additive function\n- Systematically evaluates each option\n- Concludes Option C is correct (partially shown in excerpt)\n\n### Agreement and Disagreement:\n\nBoth models **agree** on:\n1. **G2 is the transcription factor** - The 0% phenotype in g2 dominates all double mutants, indicating upstream regulatory control\n2. **G1 and G3 show gene redundancy** - The synergistic defect in g1g3 (10%) compared to singles (75% and 50%) indicates overlapping/compensatory functions\n3. **Option C is correct** - Both models identify this as the best answer\n\n### Reasoning Quality:\n\n**Strengths of the reasoning:**\n- The epistasis logic is sound: When a TF is knocked out, downstream genes cannot function, so double mutants match the TF single mutant phenotype (0%)\n- The redundancy interpretation is well-supported: Single knockouts show mild-to-moderate effects (75%, 50%), but the double knockout shows disproportionate loss (10%), indicating gene compensation\n- Both models correctly reject pleiotropy (which refers to one gene affecting multiple different traits, not gene-gene interactions in a pathway)\n- Both correctly identify that \"same promoter\" is speculative and unsupported\n\n**Critical evaluation:**\n- The \"G1 is epistatic towards G3\" phrase in Option C is somewhat awkward. Strictly speaking, neither G1 nor G3 is epistatic to the other—they show **redundancy** with **additive/independent** function. However, this phrasing appears in both options B and C, making it a distinguishing point between other criteria\n- The most critical differentiators are: (1) G2 as TF, (2) Redundancy (not pleiotropy), which uniquely point to Option C\n\n### Why Option C is Correct:\n\n1. **G2 is a transcription factor** ✓\n   - g2 mutant: 0% (complete loss)\n   - g1g2: 0% (same as g2)\n   - g2g3: 0% (same as g2)\n   - This epistatic dominance indicates G2 acts upstream\n\n2. **G1 and G3 show gene redundancy** ✓\n   - g1: 75% (mild defect)\n   - g3: 50% (moderate defect)\n   - g1g3: 10% (synergistic/synergistic defect, much worse than either single)\n   - This pattern indicates overlapping functions where G1 and G3 can partially compensate for each other\n\n3. **G1 is epistatic towards G3** (relative to options given)\n   - This is the least precisely stated criterion, but among the options, it's the best available formulation\n\n---\n\nANSWER: C"
+        }
+      },
+      "debate": {
+        "rounds": 2,
+        "confirmed_ids": [
+          "light_F1",
+          "light_F2",
+          "light_F3",
+          "light_D1-4",
+          "light_D1-5",
+          "light_D1-6",
+          "light_D1-7",
+          "light_D1-8",
+          "light_D1-9",
+          "light_D1-10",
+          "light_D1-11"
+        ],
+        "interim": [
+          {
+            "round": 1,
+            "elapsed_s": 34.5,
+            "model_count": 5,
+            "verdicts_by_finding": {
+              "light_F1": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The analysis correctly identifies the phenotypic hierarchy where G2 acts as the master regulator (epistatic to all) and G1/G3 show synergistic effects characteristic of functional redundancy.",
+                    "argument_against": "The finding assumes that 'transcription factor' is synonymous with 'upstream regulator' based solely on epistasis, which is a common genetic inference but not strictly proven by phenotypic data alone."
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The finding accurately captures the core genetic reasoning: g2 single mutant shows 0% resistance, and all double mutants with g2 (g1g2, g2g3) also show 0%, indicating G2 is epistatic/upstream (consistent with TF role); g1g3 double mutant (10%) is synergistically worse than g1 (75%) or g3 (50%) alone, classic signature of redundancy where singles compensate but double reveals overlapping essential functions.",
+                    "argument_against": "While G2 as TF and G1/G3 redundancy are strongly supported, the finding omits analysis of the 'epistasis' claims in options (e.g., Option C's 'G1 epistatic to G3' is problematic since g1g3=10% < g3=50%, contradicting standard epistasis where double matches the epistatic single); incomplete as top answers likely erred by selecting flawed C."
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The mutant pattern strongly supports G2 as the upstream regulator: g2 is 0% resistance, and both g1g2 and g2g3 remain 0%, so loss of G2 masks the effects of losing G1 or G3. That is consistent with G2 acting as an upstream transcription factor. The g1g3 double mutant (10%) is far worse than either single mutant (75% and 50%), which is compatible with G1 and G3 contributing overlapping or partially redundant functions, so the redundancy part has a reasonable basis.",
+                    "argument_against": "The data do not uniquely establish that G2 is specifically a transcription factor; they only show that G2 is epistatic to the others or required for resistance. Likewise, the g1g3 phenotype does not prove gene redundancy in a strict genetic sense; it could also reflect additive effects, parallel pathways, or threshold behavior in a resistance network. So the conclusion is plausible but not definitively proven by phenotype alone."
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The data strongly supports this finding. G2 is the only single mutant at 0% resistance, and both g1g2 and g2g3 double mutants remain at 0%, demonstrating G2's epistatic masking of other genes—classic upstream transcription factor behavior. For G1/G3 redundancy: g1 (75%) and g3 (50%) are individually mild, but g1g3 (10%) shows severe synergistic loss, the hallmark of partially redundant functions compensating for each other.",
+                    "argument_against": "The finding conflates two distinct conclusions without acknowledging their tension. While G2 as a TF is well-supported, the characterization of G1/G3 as 'gene redundancy' (implying functional overlap) versus simple 'additive/independent contributions' is not definitively proven by the data alone. The synergistic g1g3 phenotype could represent independent genes in a pathway where both are necessary, rather than true redundancy with overlapping function. The finding doesn't address this ambiguity."
+                  },
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This finding accurately captures the primary logical achievement shared by the majority of the model responses, as correctly identifying G2 as the upstream master regulator and the redundancy between G1 and G3 constitutes the core of the solution space.",
+                    "argument_against": "It generalizes across all responses by ignoring those models that confidently accepted the flawed epistasis claim without hesitation or questioning its biological validity, suggesting a uniformity of understanding that does not exist."
+                  }
+                ]
+              },
+              "light_F2": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This finding accurately highlights the tension between the provided options and the experimental data, noting that while the 'epistasis' label in Option C is technically inconsistent with the synergistic data, it remains the most plausible choice.",
+                    "argument_against": "It relies on a 'best fit' heuristic rather than identifying that the provided options might all be technically flawed based on the strict definition of epistasis."
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Precisely identifies a key flaw: Option C claims 'G1 is epistatic towards G3', but data contradicts (epistasis requires g1g3 phenotype to match g1=75%, yet g1g3=10% is worse, showing additive/synergistic effect); recognizes pragmatic choice under MCQ constraints where C is 'best available' despite imperfection, reflecting real exam logic.",
+                    "argument_against": "Assumes C was selected without evidence from truncated responses (Responses 1-5 cut off but lean toward recognizing issues); 'logically deduced best choice' may overstate if models actually failed to reject C's epistasis error, as Response 3/5 seem to justify flawed epistasis."
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Option C is internally inconsistent because it pairs redundancy with an epistasis claim that does not match the observed ordering: g1g3 is much worse than g1 alone or g3 alone, so the simple 'G1 is epistatic to G3' phrasing is not supported in the usual masking sense. Recognizing that contradiction is a valid critique, and choosing the option anyway can be defended as a pragmatic choice if the exam expects the closest match rather than a perfect one.",
+                    "argument_against": "The claim that Option C is still the best available choice is debatable because the epistasis component is not just slightly off; it appears conceptually wrong. If the answer key expects strict genetic terminology, the contradiction may disqualify the option rather than merely make it imperfect. Also, the option’s wording could be interpreted differently depending on how the test defines epistasis, so asserting it is the 'best available' choice may overstate the case."
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This is a valid metacognitive observation. Option C does claim 'G1 is epistatic to G3,' but the data actually show g1g3 (10%) is worse than both g1 (75%) and g3 (50%) alone, which contradicts a true epistatic relationship where the double mutant should match the epistatic gene's phenotype. The responder correctly flagged this logical inconsistency while still selecting C as the best available answer.",
+                    "argument_against": "The finding is overstated and potentially misleading. The responder may be conflating 'best available choice' with 'logically sound.' If the epistasis claim is genuinely contradicted by the data, then either (1) the responder's interpretation of 'epistasis' is non-standard, or (2) Option C is genuinely incorrect and should not have been selected. The finding doesn't clarify whether the responder reinterpreted the term or made an error in reasoning."
+                  },
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This finding correctly documents the analytical behavior observed in specific models that acknowledged the contradiction between the 'redundancy' phenotype (synergistic 10%) and the 'epistasis' terminology (masking 75%), recognizing it as a necessary evil for the multiple-choice constraint.",
+                    "argument_against": "It frames this acknowledgment as a logical deduction of the 'best available choice,' potentially normalizing the acceptance of scientifically incorrect premises rather than treating it as a failure of the assessment instrument itself."
+                  }
+                ]
+              },
+              "light_F3": {
+                "confirm": 0,
+                "reject": 0,
+                "total": 0,
+                "outcome": "CONTESTED",
+                "arguments": [
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "The finding correctly identifies that the justification for G1 being epistatic to G3 in Option C is logically inconsistent with the observed synergistic drop in resistance (10%) in the double mutant.",
+                    "argument_against": "It fails to acknowledge that in many simplified biological problem sets, 'epistasis' is sometimes loosely used to describe any interaction where one gene's loss significantly alters the phenotypic impact of another."
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "Valid critique: several responses (e.g., Response 5 claims 'G1 epistatic to G3: YES' because g1=75%>g3=50% and g1g3 reveals masking) misapply epistasis definition—true epistasis means the double mutant phenotype matches the epistatic single mutant's phenotype, not just one single being milder; here g1g3=10% matches neither, confirming error.",
+                    "argument_against": "Overstates as 'critical_bug' since the primary conclusion (G2=TF, G1/G3 redundancy) is correct across models; epistasis misapplication appears in option interpretation (C's wording), not core pathway analysis—models correctly identify redundancy pattern despite terminology confusion."
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "There is a real risk of misusing epistasis here because the observed g1g3 phenotype is not a classic masking pattern. Saying G1 is epistatic to G3 would usually require the double mutant to resemble g1 more than g3, but 10% is not close to 75%. Therefore, the finding that the epistasis claim was justified incorrectly is well grounded.",
+                    "argument_against": "The statement may be too strong because the surrounding explanation could be using 'epistatic' loosely or imprecisely rather than as a rigorous definition. In some instructional contexts, authors conflate 'dominant phenotype in a double mutant' with epistasis, even when the quantitative data are messy. So while the justification is flawed, the finding may not be fully 'critical' if the task is only to pick the closest multiple-choice answer."
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This is a valid critical finding. Several responses attempt to justify G1 being 'epistatic to G3' by arguing that 'G1 loss makes G3's effects worse' or 'G1 masks G3's importance.' However, the classical genetic definition of epistasis is: 'the double mutant phenotype matches the epistatic gene's single mutant phenotype.' Here, g1 = 75%, g3 = 50%, but g1g3 = 10%—matching neither. This is not epistasis; it's additive/synergistic loss of function. The misapplication is systematic across responses.",
+                    "argument_against": "The finding assumes a strict 'Mendelian' definition of epistasis. Modern genetics uses 'epistasis' more broadly to describe any case where one gene masks or modifies another gene's effect at the molecular/pathway level, which may not always produce the canonical 'matching phenotype' pattern in the lab setting. Additionally, if G1 and G3 are truly redundant, there could be an implicit hierarchical relationship where G1 dominantly suppresses G3's independent contribution—a form of epistasis. The f"
+                  },
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "ARGUMENTS_ONLY",
+                    "argument_for": "This finding is valid regarding specific responses (such as Response 5) where the model attempts to retroactively define epistasis to fit the wrong answer, demonstrating a failure to apply strict genetic definitions when forced into a constrained choice.",
+                    "argument_against": "Labeling this a 'critical bug' within the findings analysis shifts blame toward the model's reasoning rather than the root cause—the question option itself—which lacks scientific coherence between terms like 'redundancy' and 'epistasis' for the provided data set."
+                  }
+                ]
+              }
+            },
+            "new_critical_proposed": [
+              {
+                "proposed_by": "google-gemini-flash",
+                "description": "The failure of all provided options to accurately describe the G1/G3 interaction.",
+                "reasoning": "The data shows a synergistic interaction (10% resistance is significantly lower than the product of the individual resistances, 0.75 * 0.5 = 0.375), which is distinct from standard epistasis. None of the options correctly characterize this as a synergistic/redundant relationship without incorrectly labeling one as 'epistatic' to the other."
+              },
+              {
+                "proposed_by": "xai-grok-fast",
+                "description": "None of the model responses correctly identify that NO option perfectly fits: G2=TF and G1/G3 redundancy correct, but all options' epistasis/pleiotropy/promoter claims flawed (g1g3=10% shows neither G1 nor G3 epistatic, contradicts 'same promoter', pleiotropy irrelevant).",
+                "reasoning": "Core task is genetics pathway inference; models truncate without stating answer but imply selecting imperfect C—critical miss is failing to flag all options wrong or clarify epistasis error prevents C, central to business/architecture of genetic conclusion."
+              },
+              {
+                "proposed_by": "xai-grok-fast",
+                "description": "Failure to reject Option C despite contradictory epistasis: g1g3=10% < g3=50% disproves 'G3 epistatic to G1' (A) or 'G1 epistatic to G3' (B/C); no model explicitly calls this out as disqualifying.",
+                "reasoning": "Epistasis is foundational to TF/pathway analysis (double matches epistatic single); overlooking this bug risks wrong biological model (e.g., misinferring hierarchy), critical for experimental conclusion/business impact on gene function hypothesis."
+              },
+              {
+                "proposed_by": "openai-gpt-mini",
+                "description": "The response contains a major conceptual error: it treats the g1g3 double mutant being worse than both single mutants as evidence that G1 is epistatic to G3, whereas the data more naturally indicate a synergistic or partially redundant interaction, not standard epistasis.",
+                "reasoning": "This matters because the original task is to infer gene interaction from the phenotype table, and mislabeling a stronger double-mutant effect as epistasis can lead directly to selecting the wrong option. The incorrect use of epistasis is not a minor wording issue; it changes the biological interpretation of the experiment. A critical finding about the task is therefore that the answer logic hinges on distinguishing epistasis from redundancy/synergy, and the response does not handle that correctl"
+              },
+              {
+                "proposed_by": "anthropic-haiku",
+                "description": "All five responses selected Option C but none clearly justified why 'G1 is epistatic to G3' is the correct interpretation when the g1g3 double mutant (10%) matches neither the g1 (75%) nor g3 (50%) single mutant phenotype—the defining diagnostic for epistasis.",
+                "reasoning": "This is critical because the answer's correctness hinges on the meaning of 'G1 is epistatic to G3,' yet no response adequately resolves the apparent contradiction between this claim and the observed synergistic g1g3 phenotype. If epistasis is defined classically, Option C appears logically flawed. If epistasis is redefined to mean 'G1 contributes more to the pathway and G3's role is context-dependent,' this redefinition must be explicitly stated and justified against the data. The original task "
+              },
+              {
+                "proposed_by": "anthropic-haiku",
+                "description": "The claim that G1 and G3 show 'gene redundancy' is asserted but never rigorously distinguished from other possible relationships (additive independent contributions, partial functional overlap, or hierarchical compensation).",
+                "reasoning": "Gene redundancy specifically means two genes can substitute for each other's function. The g1g3 synergistic phenotype (10%) is consistent with redundancy but also with many other epistatic/pathway architectures. The responses assume redundancy is the only explanation for synergistic loss without considering or ruling out alternatives. This is critical because if the genes are not truly redundant but merely additive in a linear pathway, Option C's answer framework is incorrect."
+              },
+              {
+                "proposed_by": "anthropic-haiku",
+                "description": "No response addresses why Option C is superior to Option B beyond dismissing 'pleiotropy.' However, the distinction between 'pleiotropy' and 'redundancy' in this context is never clearly articulated.",
+                "reasoning": "Pleiotropy means one gene affects multiple traits. If G1 and G3 both affect 'resistance' through different molecular mechanisms (e.g., G1 affects pathogen detection, G3 affects immune response), they could pleiotropically contribute to the same phenotype while also being functionally independent or hierarchical. The responses reject Option B without explaining why 'pleiotropy' cannot coexist with the observed genetic interactions, which is critical for validating the choice of Option C."
+              },
+              {
+                "proposed_by": "alibaba-qwen-flash",
+                "description": "The question options themselves contain a fundamental logical contradiction between genetic terminology and the provided data.",
+                "reasoning": "Standard genetic definitions define gene redundancy as parallel pathways where the double mutant is worse than singles (synergy), whereas epistasis implies one gene masks another (phenotypic identity). Option C combines 'gene redundancy' with 'G1 epistatic towards G3', which is mutually exclusive given that the g1g3 phenotype (10%) differs significantly from g1 (75%). A critical finding should flag this invalidation of the answer key itself, rather than focusing solely on how models rationalized"
+              }
+            ],
+            "raw_responses": [
+              {
+                "model": "google-gemini-flash",
+                "response_length": 1922,
+                "elapsed_ms": 2284
+              },
+              {
+                "model": "xai-grok-fast",
+                "response_length": 3551,
+                "elapsed_ms": 4037
+              },
+              {
+                "model": "openai-gpt-mini",
+                "response_length": 3624,
+                "elapsed_ms": 7589
+              },
+              {
+                "model": "anthropic-haiku",
+                "response_length": 5616,
+                "elapsed_ms": 14485
+              },
+              {
+                "model": "alibaba-qwen-flash",
+                "response_length": 2658,
+                "elapsed_ms": 34513
+              }
+            ]
+          },
+          {
+            "round": 2,
+            "elapsed_s": 67.7,
+            "model_count": 5,
+            "verdicts_by_finding": {
+              "light_F1": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_F2": {
+                "confirm": 4,
+                "reject": 1,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "INVALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_F3": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-4": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-5": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-6": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-7": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-8": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-9": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-10": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              },
+              "light_D1-11": {
+                "confirm": 5,
+                "reject": 0,
+                "total": 5,
+                "outcome": "CONFIRMED",
+                "arguments": [
+                  {
+                    "model": "alibaba-qwen-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "xai-grok-fast",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "google-gemini-flash",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "openai-gpt-mini",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  },
+                  {
+                    "model": "anthropic-haiku",
+                    "conclusion": "VALID",
+                    "argument_for": "",
+                    "argument_against": ""
+                  }
+                ]
+              }
+            },
+            "new_critical_proposed": [],
+            "raw_responses": [
+              {
+                "model": "alibaba-qwen-flash",
+                "response_length": 676,
+                "elapsed_ms": 61354
+              },
+              {
+                "model": "xai-grok-fast",
+                "response_length": 470,
+                "elapsed_ms": 829
+              },
+              {
+                "model": "google-gemini-flash",
+                "response_length": 470,
+                "elapsed_ms": 1564
+              },
+              {
+                "model": "openai-gpt-mini",
+                "response_length": 414,
+                "elapsed_ms": 2217
+              },
+              {
+                "model": "anthropic-haiku",
+                "response_length": 686,
+                "elapsed_ms": 1738
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -13,7 +13,8 @@ This is a **working reference**, not the full production service. It implements 
 |------|----------|
 | `src/mmjb/` | Pipeline: call models, aggregate, debate rounds, leave-one-out consensus scoring sketch |
 | `data/production_tasks/` | **Redacted** production-style tasks used for evaluation |
-| `data/gpqa/README.md` | How to obtain **GPQA Diamond** (public dataset; not redistributed here) |
+| `data/gpqa_diamond_responses/` | **Full model responses** on GPQA Diamond (198 paper items) |
+| `data/gpqa/README.md` | GPQA official links + pointer to response dump |
 | `config/models.example.yaml` | Example expert panel |
 | `scripts/run_task.py` | Run the three-tier protocol on one task file |
 
@@ -30,14 +31,15 @@ data/production_tasks/manifest.json
 
 Content was **processed to remove sensitive organization identifiers, agent codenames, internal product/strategy labels, emails, cloud project IDs, and secrets**. Technical task structure is preserved in generalized form. The public package is **not bit-identical** to the private evaluation corpus.
 
-### GPQA Diamond (external)
+### GPQA Diamond (full model responses)
 
 Graduate-level multiple-choice questions with known answers:
 
 - Paper: [Rein et al., GPQA](https://arxiv.org/abs/2311.12022)
 - Dataset: [github.com/idavidrein/gpqa](https://github.com/idavidrein/gpqa)
+- **Our full multi-model responses (198 items):** [`data/gpqa_diamond_responses/`](data/gpqa_diamond_responses/)
 
-See `data/gpqa/README.md`.
+Includes standalone, aggregation, and debate outputs for expert and light tracks where recorded.
 
 ## Quick start
 
