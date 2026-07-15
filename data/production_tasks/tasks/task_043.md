@@ -6,7 +6,6 @@ redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Code Review — LLM-generated code
-# 
 
 You are a code review gate. Review this branch diff before push.
 Check for bugs, security issues, ground rules compliance, missing tests, regressions.
