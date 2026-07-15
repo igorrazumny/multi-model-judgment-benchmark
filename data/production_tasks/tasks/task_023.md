@@ -2,7 +2,7 @@
 id: task_023
 category: architecture
 char_count: 2224
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval Prompt: Configurable service-eval data collection via voice transcription
@@ -14,7 +14,7 @@ Design a configurable system for collecting service-eval data points from voice 
 - panel CLI voice transcription appends a [service-eval] instruction to clipboard text
 - agent-zeta implemented it in native panel-voice app (commit ae9663f) and bash fallback
 - Some agents (agent-eta) execute it and save context-rich service-eval prompt files
-- Some agents (agent-sigma, agent-alpha) ignored it — Claude Code prompt injection detection triggered by "save silently" / "do not mention"
+- Some agents (agent-sigma, agent-alpha) ignored it — one panel model Code prompt injection detection triggered by "save silently" / "do not mention"
 - User decided to KEEP the appendix (partial data is better than none) but make it configurable
 - Config should control: (1) enabled/disabled toggle, (2) the full prompt text
 - The prompt text should be transparent: "User requested this. User will see you doing it. Create the file."

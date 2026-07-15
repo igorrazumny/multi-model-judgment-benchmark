@@ -2,7 +2,7 @@
 id: task_007
 category: code_review
 char_count: 1429
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 ---

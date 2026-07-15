@@ -34,8 +34,9 @@ data/production_tasks/manifest.json
 ```
 
 Prompts were processed to remove organization identifiers, PII, product/strategy
-labels, agent codenames, cloud project IDs, and secrets. They are illustrative,
-not bit-identical to the private corpus.
+labels, agent codenames, cloud project IDs, secrets, and **specific model/vendor
+names** (code under review is labeled *LLM-generated*, not a named model). They
+are illustrative, not bit-identical to the private corpus.
 
 ### GPQA Diamond — full model responses (public track)
 

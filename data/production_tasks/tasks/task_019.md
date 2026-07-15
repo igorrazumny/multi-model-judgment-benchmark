@@ -2,7 +2,7 @@
 id: task_019
 category: architecture
 char_count: 1212
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval: Session Continuity — Handover Reliability
@@ -14,7 +14,7 @@ redaction: org-names-agents-pii-strategy-labels-removed
 The user has experienced sessions where the handover/memory written by the previous session was not found or not read by the next session. This breaks continuity and forces the user to re-explain everything.
 
 ## Current Memory Architecture
-- Memory files: `~/.claude/projects/-Users-igorrazumny/memory/`
+- Memory files: `~/.panel-member/projects/-Users-igorrazumny/memory/`
 - MEMORY.md is the index — loaded into every conversation automatically (first 200 lines)
 - Individual memory files are referenced from MEMORY.md
 - Handover file: `handover_oracle_session_2026-03-28.md` (just written)

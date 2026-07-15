@@ -2,7 +2,7 @@
 id: task_044
 category: architecture
 char_count: 1488
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 ---

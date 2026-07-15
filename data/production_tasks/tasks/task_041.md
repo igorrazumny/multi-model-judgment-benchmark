@@ -2,10 +2,10 @@
 id: task_041
 category: code_review
 char_count: 23520
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
-# Code Generation: openai-gpt-5.4
+# Code Generation: llm
 # Task: REQ-BENCH-315 (light models through full pipeline)
 # Time: 59.8s, Status: completed
 # Length: 23337 chars
@@ -15,21 +15,21 @@ redaction: org-names-agents-pii-strategy-labels-removed
 +++ b/src/pipeline/run_benchmark.py
 @@ -26,6 +26,18 @@
  OPEN_MODELS = [
-     "alibaba-qwen3.5-plus", "moonshot-kimi-k2.5",
-     # GLM-5 dropped: 0% aggregation, 0% debate, 28K chars of noise. Tested 2026-04-01.
+     "alibaba-reviewer-model", "moonshot-reviewer-model",
+     # a fallback model dropped: 0% aggregation, 0% debate, 28K chars of noise. Tested 2026-04-01.
 +]
 +LIGHT_MODELS = [
-+    "google-gemini-3.1-flash-lite", "zhipu-glm-4.7-flash",
-+    "openai-gpt-5.4-mini", "anthropic-haiku-4.5",
-+    "xai-grok-4.2-fast", "alibaba-qwen3.5-flash",
++    "light-model-d", "light-model-f",
++    "light-model-b", "light-model-a",
++    "reviewer-model-fast", "light-model-e",
 +]
 +LIGHT_ALIASES = {
-+    "google-gemini-3.1-flash-lite": "gemini_flash_lite",
-+    "zhipu-glm-4.7-flash": "glm_4_7_flash",
-+    "openai-gpt-5.4-mini": "gpt_5_4_mini",
-+    "anthropic-haiku-4.5": "haiku_4_5",
-+    "xai-grok-4.2-fast": "grok_4_2_fast",
-+    "alibaba-qwen3.5-flash": "qwen3_5_flash",
++    "light-model-d": "light_slot_d",
++    "light-model-f": "glm_4_7_flash",
++    "light-model-b": "gpt_5_4_mini",
++    "light-model-a": "light_slot_a",
++    "reviewer-model-fast": "grok_4_2_fast",
++    "light-model-e": "qwen3_5_flash",
  ]
  
  # === process_file SIGNATURE (line 302) ===
@@ -409,17 +409,17 @@ redaction: org-names-agents-pii-strategy-labels-removed
 -
 -    # Step 6: Light model backfill — proper extraction against debate baseline
 -    LIGHT_MODELS = [
--        "google-gemini-3.1-flash-lite", "zhipu-glm-4.7-flash",
--        "openai-gpt-5.4-mini", "anthropic-haiku-4.5",
--        "xai-grok-4.2-fast", "alibaba-qwen3.5-flash",
+-        "light-model-d", "light-model-f",
+-        "light-model-b", "light-model-a",
+-        "reviewer-model-fast", "light-model-e",
 -    ]
 -    LIGHT_ALIASES = {
--        "google-gemini-3.1-flash-lite": "gemini_flash_lite",
--        "zhipu-glm-4.7-flash": "glm_4_7_flash",
--        "openai-gpt-5.4-mini": "gpt_5_4_mini",
--        "anthropic-haiku-4.5": "haiku_4_5",
--        "xai-grok-4.2-fast": "grok_4_2_fast",
--        "alibaba-qwen3.5-flash": "qwen3_5_flash",
+-        "light-model-d": "light_slot_d",
+-        "light-model-f": "glm_4_7_flash",
+-        "light-model-b": "gpt_5_4_mini",
+-        "light-model-a": "light_slot_a",
+-        "reviewer-model-fast": "grok_4_2_fast",
+-        "light-model-e": "qwen3_5_flash",
 -    }
 -    if expert_only:
 -        log.info("Step 6: Skipped (--expert-only)")

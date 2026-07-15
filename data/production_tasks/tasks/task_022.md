@@ -2,7 +2,7 @@
 id: task_022
 category: code_review
 char_count: 9256
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Code Review: fix: R22e CRITICALs — model health auth + streaming timeouts
@@ -13,7 +13,7 @@ Type: code_review
 ## PR Description
 ## Summary
 - `/api/health/models` moved behind auth → `/api/v1/health/models` (was public, exposed model inventory)
-- Streaming timeouts increased: IDLE 5s→120s, FIRST_RESPONSE 15s→120s, STRAGGLER 15s→300s (Kimi/GLM-5 need >60s)
+- Streaming timeouts increased: IDLE 5s→120s, FIRST_RESPONSE 15s→120s, STRAGGLER 15s→300s (one panel model/a fallback model need >60s)
 - Makefile updated for new endpoint path
 
 ## Test plan
@@ -58,23 +58,23 @@ index bfa30f3..8086078 100644
  ## Timeline
  
  - 2026-03-28T10:00 [agent-epsilon] docs: OPERATIONS.md — full ops runbook with monitoring commands, deployment procedures, API endpoint reference, model registry summary, known issues, GCP infrastructure overview. Covers make targets: health, check-models, model-health, logs-cloud, deploy-gcp.
-+- 2026-03-28T05:30 [agent-eta] fix: R22e CRITICALs — /api/health/models moved behind auth (was public, exposed model names), streaming timeouts increased (5s→120s idle, 15s→120s first response, 15s→300s straggler) to accommodate Kimi/GLM-5
++- 2026-03-28T05:30 [agent-eta] fix: R22e CRITICALs — /api/health/models moved behind auth (was public, exposed model names), streaming timeouts increased (5s→120s idle, 15s→120s first response, 15s→300s straggler) to accommodate one panel model/a fallback model
 +- 2026-03-26T18:00 [agent-pi] Progress-based timeout: replaced fixed/calculated timeout with stall detection. Monitor vLLM container logs — as long as progress, keep waiting. Fail only if: preempted, container dead, or no progress for 5min. Max safety cap 2h (for 750GB models). Model-agnostic, SSD-agnostic.
 +- 2026-03-26T17:00 [agent-pi] Smart timeout v1 (superseded by progress-based): HF API model size query + speed estimate.
 +- 2026-03-26T15:00 [agent-pi] bugs R26 fixes: INT8 no longer maps to gptq (split INT8/GPTQ/FP8), vLLM image pinned to v0.18.0, provisioning scripts require explicit --project (no silent default). Scope issue registered as tracked bug (needs dedicated SA).
 +- 2026-03-26T14:00 [agent-pi] Phase 3 code: added --port and --tensor-parallel to provision.sh, vllm-startup.sh, health.sh, test-inference.sh. Dynamic container naming (vllm-{port}), scaled shm-size, firewall tcp:8000-8001. Ready for multi-model testing when H100 Spot available.
  - 2026-03-26T08:00 [agent-pi] Phase 1 PROVEN: 3/3 e2e tests pass (Qwen2.5-7B, H100 Spot, us-central1-b, ~8min each). Updated ARCHITECTURE.md + GPU_OPERATIONS.md with full lifecycle docs, quick-start, scripts reference. Next: Phase 2 (Qwen3.5-27B-FP8 x3), then Phase 3 (2 models on 1 GPU).
- - 2026-03-26T07:30 [agent-epsilon] fix: panel review findings (2 rounds) — dedicated _EmptyResponseError (was swallowing config errors), model+model_id ambiguity check moved before mode dispatch, multi mode works without model field, REQUIREMENTS.md updated (REQ-015/018/021). Health check script tested on prod: 21/27 OK, 5 fail (Gemini Pro, GPT-5 Mini, Qwen Coder, MiniMax, vllm×2), 1 empty. agent-eta investigating broken models.
+ - 2026-03-26T07:30 [agent-epsilon] fix: panel review findings (2 rounds) — dedicated _EmptyResponseError (was swallowing config errors), model+model_id ambiguity check moved before mode dispatch, multi mode works without model field, REQUIREMENTS.md updated (REQ-015/018/021). Health check script tested on prod: 21/27 OK, 5 fail (one panel model Pro, one panel model-5 Mini, one panel model Coder, MiniMax, vllm×2), 1 empty. agent-eta investigating broken models.
  - 2026-03-26T07:15 [agent-pi] PR #1 merged. E2e test: stockout in zone a, zone b worked but grep -P fails on macOS. Fixed to sed. gpu-down teardown confirmed working. Retesting.
 diff --git a/docs/handover/HANDOVER_rama.md b/docs/handover/HANDOVER_rama.md
 index a284460..eb473e1 100644
 --- a/docs/handover/HANDOVER_rama.md
 +++ b/docs/handover/HANDOVER_rama.md
 @@ -1,3 +1,4 @@
-+- 2026-03-28T05:30 fix: R22e CRITICALs — /api/health/models moved behind auth (was public, exposed model names), streaming timeouts increased (5s→120s idle, 15s→120s first response, 15s→300s straggler) to accommodate Kimi/GLM-5
- - 2026-03-26T07:00 docs: 200K token verification for all 7 models in ops/DECISIONS.md. GLM-5 confirmed at 197K tokens (605s). All others pass. REQ-038 added (provider-specific routing).
- - 2026-03-24T14:00 fix: GLM-5 route agent-chi — Vertex AI MaaS (zai-org/glm-5-maas) returns 429 on large diffs, RedPill (redpill/z-ai/glm-5) works. Switched all review modes to RedPill route. Tested: 46.82s/2642 chars on 22KB diff via RedPill vs instant 429 via Vertex AI.
- - 2026-03-24T13:30 fix: GLM-5 empty responses on code reviews — add max_tokens to Vertex AI OpenAPI request, log finish_reason on empty responses. Root cause: large code diffs exceeded context without max_tokens param. Tests added.
++- 2026-03-28T05:30 fix: R22e CRITICALs — /api/health/models moved behind auth (was public, exposed model names), streaming timeouts increased (5s→120s idle, 15s→120s first response, 15s→300s straggler) to accommodate one panel model/a fallback model
+ - 2026-03-26T07:00 docs: 200K token verification for all 7 models in ops/DECISIONS.md. a fallback model confirmed at 197K tokens (605s). All others pass. REQ-038 added (provider-specific routing).
+ - 2026-03-24T14:00 fix: a fallback model route agent-chi — a cloud AI platform MaaS (zai-org/fallback-model-maas) returns 429 on large diffs, RedPill (redpill/z-ai/fallback-model) works. Switched all review modes to RedPill route. Tested: 46.82s/2642 chars on 22KB diff via RedPill vs instant 429 via a cloud AI platform.
+ - 2026-03-24T13:30 fix: a fallback model empty responses on code reviews — add max_tokens to a cloud AI platform OpenAPI request, log finish_reason on empty responses. Root cause: large code diffs exceeded context without max_tokens param. Tests added.
 diff --git a/src/api/server.py b/src/api/server.py
 index d17f466..9dcb619 100644
 --- a/src/api/server.py
@@ -118,7 +118,7 @@ index 5460224..3a64877 100644
 -IDLE_TIMEOUT = 5              # Max wait with no events before we consider it dead
 -STRAGGLER_THRESHOLD = 15      # Drop models this many seconds behind the last completion
 -AGGREGATION_TIMEOUT = 30      # Max wait for aggregation model
-+# GLM-5 takes up to 340s at 200K tokens, Kimi K2.5 up to 112s on typical diffs.
++# a fallback model takes up to 340s at 200K tokens, reviewer-model up to 112s on typical diffs.
 +# Timeouts must accommodate slowest model without dropping it.
 +FIRST_RESPONSE_TIMEOUT = 120  # Max wait for first model to complete
 +IDLE_TIMEOUT = 120            # Max wait with no events (models are processing, not streaming)
@@ -151,14 +151,14 @@ index 37b676c..9fa0636 100644
      assert r.json()["status"] == "healthy"
  
 @@ -45,7 +51,7 @@ def test_health_models_after_calls(client):
-     record_success("gpt-5.4", 2.0, 200)
-     record_error("glm-5", 0.3, "Empty response")
+     record_success("reviewer-model", 2.0, 200)
+     record_error("fallback-model", 0.3, "Empty response")
  
 -    r = client.get("/api/health/models")
 +    r = client.get("/api/v1/health/models", headers=AUTH)
      data = r.json()
      assert data["total_models_seen"] == 2
-     assert data["models"]["gpt-5.4"]["success"] == 2
+     assert data["models"]["reviewer-model"]["success"] == 2
 @@ -129,7 +135,7 @@ def test_degraded_status(client):
      record_error("model-b", 0.5, "timeout")
      record_success("model-b", 1.0, 50)

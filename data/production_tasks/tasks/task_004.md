@@ -2,7 +2,7 @@
 id: task_004
 category: code_review
 char_count: 20749
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Pre-push brainstorm — agent-delta / service-vault
@@ -10,19 +10,19 @@ Date: 2026-03-29T10:48:16Z
 Branch: agent-delta/2026-03-29
 Files: 11 | Diff lines: 1001
 
-panel: gemini-3.1-pro-preview (0.28s), gpt-5.4 (9.65s), claude-opus-4-6 (33.62s), grok-4.20-experimental-beta-0304-reasoning (36.97s), dashscope/qwen3.5-plus (82.44s), redpill/moonshotai/kimi-k2.5 (175.22s)
+panel: reviewer-model (0.28s), reviewer-model (9.65s), llm (33.62s), reviewer-model (36.97s), reviewer-model (82.44s), reviewer-model (175.22s)
 
-=== gemini-3.1-pro-preview (0.28s) ===
+=== reviewer-model (0.28s) ===
 
 
-=== gpt-5.4 (9.65s) ===
+=== reviewer-model (9.65s) ===
 [BLOCK] src/collectors/manifest_metrics.py:172-180 violates REQ-203 for nodes configured with `monitoring.metrics: []`. The requirement says if metrics are not configured, the node shows `"not monitored"` status, but `poll_all_manifest_nodes()` only adds nodes where `node.get("monitoring", {}).get("metrics")` is truthy. That skips explicitly empty lists, so `secrets-platform` never enters `_metrics_cache`, `topology.py` never injects anything for it, and the frontend will keep whatever prior/default status it had instead of reliably showing `"not monitored"`. Add coverage for manifest nodes with explicit empty metrics lists in the manifest scan path, not just `_poll_node()` in isolation.
 
 [BLOCK] src/collectors/manifest_metrics.py:101-105 has incorrect protobuf oneof handling and can fabricate `0.0` values for non-numeric point types. `point.value` is a oneof (`bool_value`, `string_value`, etc. as well as numeric fields). The current logic falls through to `pv.double_value` whenever `int64_value` is falsy, which will also happen for boolean/string series, producing `0.0` and potentially marking a node `healthy`/`degraded` based on bogus data. This is a real correctness bug because REQ-203 says status must be determined by YAML-defined metrics, not invented default values. Use `pv.WhichOneof("value")` and only accept numeric/distribution variants. There’s also no test covering non-numeric point values.
 
 [CRITICAL] tests/test_manifest_metrics.py is missing tests for the two branch-critical behaviors introduced here: (1) manifest scan caching `"not monitored"` for nodes with `metrics: []`, and (2) `_poll_metric()` ignoring unsupported/non-numeric protobuf value kinds. Given both paths affect production status calculation, this test gap should block push under the “missing tests” rule.
 
-=== claude-opus-4-6 (33.62s) ===
+=== llm (33.62s) ===
 ## Code Review: REQ-203 YAML-driven monitoring
 
 Overall this is solid, well-tested work that aligns with REQ-203. The architecture is clean — YAML-driven thresholds, no hardcoded logic, healthy-first evaluation, proper test coverage. I have one blocking issue with the protobuf value extraction logic and several warnings.
@@ -61,7 +61,7 @@ This is the canonical way to handle protobuf oneof fields. The current heuristic
 
 [INFO] REQ-203 alignment is strong: YAML-driven thresholds, resource-level filters, no hardcoded metric logic in Python, "not monitored" for unconfigured nodes, healthy/degraded/error from thresholds. The requirement description was also updated to include "resource-level filter" which matches the implementation.
 
-=== grok-4.20-experimental-beta-0304-reasoning (36.97s) ===
+=== reviewer-model (36.97s) ===
 **Review of branch `agent-delta/2026-03-29` (REQ-203)**
 
 [INFO] Ground rules compliance is strong: every commit references `Req: REQ-203`, includes `Test-Plan:` with passing test counts, updates `docs/REQUIREMENTS.md` + `docs/test-cases/REQ-203.yaml` in the same commits, and maintains handover files. No secrets, no unauthorized dependencies, no direct main pushes.
@@ -84,7 +84,7 @@ This is the canonical way to handle protobuf oneof fields. The current heuristic
 
 No security issues, no data loss paths, no broken functionality, and no violations of REQ-203 or REQ-204. The branch is ready to push after addressing the minor thread-shutdown observation if desired.
 
-=== dashscope/qwen3.5-plus (82.44s) ===
+=== reviewer-model (82.44s) ===
 [BLOCK] **Blast radius exceeded** — This branch contains ~670 lines of code changes across 7 code files (manifest_metrics.py: 233, test_manifest_metrics.py: 261, NodeDetailModal.jsx: ~40, nodeDetailGating.test.js: ~50, topology.py: ~30, server.py: ~5, platform.yaml: ~50). Ground Rule #1 hard limit is 300 lines per commit. This is a feature implementation that should have been split into smaller commits (e.g., backend poller + tests first, then frontend UI, then wiring).
 
 [CRITICAL] **Missing concurrency tests** — The manifest_metrics.py module uses shared state (`_metrics_cache`, `_client`) with threading locks, but tests/test_manifest_metrics.py has no tests for concurrent access patterns. Race conditions in cache reads/writes during poll cycles are untested. Add tests that simulate multiple threads calling `get_all_statuses()` while `poll_all_manifest_nodes()` is running.
@@ -105,7 +105,7 @@ No security issues, no data loss paths, no broken functionality, and no violatio
 
 [INFO] **REQ-203 alignment verified** — Implementation matches requirement: YAML declares metrics/thresholds, no hardcoded logic, polls GCP with resource filters, evaluates thresholds, injects status into topology. No scope creep detected.
 
-=== redpill/moonshotai/kimi-k2.5 (175.22s) ===
+=== reviewer-model (175.22s) ===
  [BLOCK] Missing shutdown hook for manifest_metrics thread in server.py
 The metrics_loop is started as a daemon thread (line 103) but never signaled to stop on shutdown. This violates the F-007 pattern established in the codebase where STORAGE_ENABLED and RETENTION_ENABLED threads are explicitly stopped in the shutdown handler (lines 108-115). While daemon threads exit when the process exits, they may interrupt active GCP API calls or corrupt state during test suite shutdown. Add `manifest_metrics.stop()` or similar hook to the `@app.on_event("shutdown")` handler.
 
@@ -137,30 +137,30 @@ The test case expects "unknown" status when no data, but the requirement text sa
 As a synthesizer, I have aggregated the reviews from the five models. There is a strong consensus that while the feature is functionally aligned with REQ-203, the implementation contains significant architectural risks that must be addressed before merging.
 
 ### **Summary of Disagreement**
-*   **Blast Radius:** There is a sharp divide on whether the current commit structure is acceptable. While some models (grok) accept the current state as compliant with documentation exemptions, others (qwen) flag the ~670-line change as a violation of the 300-line-per-commit ground rule.
-*   **Protobuf Handling:** While all models agree the current heuristic is fragile, there is a split between those who view it as a "latent bug" (claude) and those who view it as a "critical correctness bug" (gpt-5.4) that could lead to false health reporting.
-*   **Concurrency:** There is a notable disagreement on the severity of the threading implementation. Some models (grok) praise the double-checked locking, while others (kimi-k2.5) identify deep-seated race conditions regarding shared object mutation and shallow-copy exposure.
+*   **Blast Radius:** There is a sharp divide on whether the current commit structure is acceptable. While some models (panel-member-a) accept the current state as compliant with documentation exemptions, others (panel-member-d) flag the ~670-line change as a violation of the 300-line-per-commit ground rule.
+*   **Protobuf Handling:** While all models agree the current heuristic is fragile, there is a split between those who view it as a "latent bug" (panel-member-c) and those who view it as a "critical correctness bug" (reviewer-model) that could lead to false health reporting.
+*   **Concurrency:** There is a notable disagreement on the severity of the threading implementation. Some models (panel-member-a) praise the double-checked locking, while others (reviewer-model) identify deep-seated race conditions regarding shared object mutation and shallow-copy exposure.
 
 ### **Key Findings**
 
 **[BLOCK]**
-*   **Concurrency/Race Conditions:** The `_metrics_cache` returns shallow copies, and `topology.py` mutates these shared objects directly. This will cause data races and potential JSON serialization errors in concurrent environments (kimi-k2.5).
-*   **Missing Shutdown Hooks:** The `metrics_loop` lacks a clean shutdown mechanism, violating the established F-007 pattern and risking state corruption during test suite or process teardown (kimi-k2.5, claude).
-*   **Protobuf Fragility:** The current heuristic for `oneof` field extraction is brittle. It must be replaced with `WhichOneof("value")` to prevent the fabrication of `0.0` values for non-numeric types (gpt-5.4, claude, qwen).
-*   **Blast Radius:** The total line count (~670) significantly exceeds the 300-line limit per commit. This must be refactored into smaller, logical units (qwen).
+*   **Concurrency/Race Conditions:** The `_metrics_cache` returns shallow copies, and `topology.py` mutates these shared objects directly. This will cause data races and potential JSON serialization errors in concurrent environments (reviewer-model).
+*   **Missing Shutdown Hooks:** The `metrics_loop` lacks a clean shutdown mechanism, violating the established F-007 pattern and risking state corruption during test suite or process teardown (reviewer-model, panel-member).
+*   **Protobuf Fragility:** The current heuristic for `oneof` field extraction is brittle. It must be replaced with `WhichOneof("value")` to prevent the fabrication of `0.0` values for non-numeric types (reviewer-model, panel-member, panel-member).
+*   **Blast Radius:** The total line count (~670) significantly exceeds the 300-line limit per commit. This must be refactored into smaller, logical units (panel-member-d).
 
 **[CRITICAL]**
-*   **Missing Concurrency Tests:** There are no tests simulating concurrent access to the cache during poll cycles, which is a major oversight given the shared state (qwen).
-*   **Test Coverage Gaps:** Missing coverage for manifest nodes with explicitly empty metrics lists and non-numeric protobuf point values (gpt-5.4).
+*   **Missing Concurrency Tests:** There are no tests simulating concurrent access to the cache during poll cycles, which is a major oversight given the shared state (panel-member-d).
+*   **Test Coverage Gaps:** Missing coverage for manifest nodes with explicitly empty metrics lists and non-numeric protobuf point values (reviewer-model).
 
 **[WARNING]**
-*   **Operational Visibility:** Blanket `Exception` catching in `_poll_metric` masks critical issues like IAM/Auth failures, making production debugging impossible (kimi-k2.5).
-*   **Resource Management:** Creating a new `ThreadPoolExecutor` every 60 seconds is inefficient; consider a persistent executor (kimi-k2.5).
-*   **Threshold Parsing:** The parser is overly sensitive to whitespace (e.g., `<500` vs `< 500`), which is prone to user error (kimi-k2.5).
+*   **Operational Visibility:** Blanket `Exception` catching in `_poll_metric` masks critical issues like IAM/Auth failures, making production debugging impossible (reviewer-model).
+*   **Resource Management:** Creating a new `ThreadPoolExecutor` every 60 seconds is inefficient; consider a persistent executor (reviewer-model).
+*   **Threshold Parsing:** The parser is overly sensitive to whitespace (e.g., `<500` vs `< 500`), which is prone to user error (reviewer-model).
 
 **[INFO]**
-*   **Test Case Naming:** The distinction between "unknown" (configured-no-data) and "not monitored" (unconfigured) is implemented correctly but should be clarified in the test documentation (kimi-k2.5).
-*   **Configurability:** The 60s poll interval is hardcoded; consider moving this to a configuration file (qwen).
+*   **Test Case Naming:** The distinction between "unknown" (configured-no-data) and "not monitored" (unconfigured) is implemented correctly but should be clarified in the test documentation (reviewer-model).
+*   **Configurability:** The 60s poll interval is hardcoded; consider moving this to a configuration file (panel-member-d).
 
 ### **Recommendation**
 **Do not push.** The branch is currently in a "fix-forward" state that has accumulated significant technical debt. 

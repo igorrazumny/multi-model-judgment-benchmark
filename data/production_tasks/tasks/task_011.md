@@ -2,7 +2,7 @@
 id: task_011
 category: architecture
 char_count: 453
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval: Session Restart Readiness

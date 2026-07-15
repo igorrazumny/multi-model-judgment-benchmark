@@ -2,21 +2,21 @@
 id: task_020
 category: general_analysis
 char_count: 53729
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Multi-model brainstorm — internal evaluation task
 Mode: brainstorm
-Models: grok-4.20-experimental-beta-0304-reasoning (9.4s), gpt-5.4 (52.85s), gemini-3.1-pro-preview (55.72s), claude-opus-4-6 (59.2s), dashscope/qwen3.5-plus (69.79s), redpill/moonshotai/kimi-k2.5 (89.16s)
+Models: reviewer-model (9.4s), reviewer-model (52.85s), reviewer-model (55.72s), llm (59.2s), reviewer-model (69.79s), reviewer-model (89.16s)
 is_code_review: false
-code_generated_by: unknown
+code_generated_by: llm
 
 ## Prompt
 ````
 ## Context
 Living service-eval (service-eval.product.example.com) with adversarial consensus — 5 expert models debate findings on real production tasks (code reviews, brainstorms, architecture). 22 data points, 134 findings.
 
-Current service-eval data shows debate dramatically improves most models (+15-40pp) but GPT-5.4 gains 0pp (contrarian). Opus is best debater (90% after debate).
+Current service-eval data shows debate dramatically improves most models (+15-40pp) but reviewer-model gains 0pp (contrarian). one panel model is best debater (90% after debate).
 
 We are implementing severity-weighted scoring. Here is the requirement:
 
@@ -68,7 +68,7 @@ We are implementing severity-weighted scoring. Here is the requirement:
 
 ## Individual Responses
 
-### grok-4.20-experimental-beta-0304-reasoning (9.4s)
+### reviewer-model (9.4s)
 **Strategic Assessment**
 
 This is a strong direction. Prioritizing Material findings is the correct strategic move. Most benchmarks optimize for volume; you're optimizing for *production value*. That's rare and valuable.
@@ -119,7 +119,7 @@ Two significant ones:
 **Reasoning:**
 - 10x makes the service-eval almost entirely about Material detection. This sounds good until you realize many tasks have only 0-2 Material findings. The signal becomes extremely sparse.
 - 5x gives Material findings dominant but not overwhelming weight. It still heavily rewards models that find what matters while preserving some signal from Minor findings (which still correlate with general capability).
-- Opus being the best debater at 90% suggests the current setup already surfaces high-quality findings. We don't need to amplify the weighting to extremes.
+- one panel model being the best debater at 90% suggests the current setup already surfaces high-quality findings. We don't need to amplify the weighting to extremes.
 
 **Final Recommendation Summary:**
 - Proceed with separate classification step
@@ -131,7 +131,7 @@ Two significant ones:
 
 This system, once tuned, will give you something genuinely useful: a leaderboard that tells you which models to trust with your most important code and decisions. Most companies are still grading on style points. You're grading on what actually matters.
 
-### gpt-5.4 (52.85s)
+### reviewer-model (52.85s)
 Here’s the blunt take: the overall design is directionally right, but your biggest risk is **turning “severity” into a noisy popularity contest** and then hard-baking that noise into a 10x multiplier. The scoring mechanics are fine. The weak point is the **classification process**.
 
 ## Bottom line answers
@@ -481,13 +481,13 @@ That would make the design much harder to misinterpret.
 
 If you want, I can also turn this into a concrete PRD review comment set or an implementation checklist for REQ-BENCH-311.
 
-### gemini-3.1-pro-preview (55.72s)
+### reviewer-model (55.72s)
 Here is my direct assessment of your design for REQ-BENCH-311. I am going to challenge several of your foundational assumptions because you are applying a product-engineering mindset (e.g., "safety-first") to service-eval design, which will destroy your signal-to-noise ratio.
 
 ### 1. Is the classification vote the right approach? Part of debate or separate?
 **Keep it as a separate step, but do not use a democratic vote.** 
 *Reasoning:* If you mix severity classification into the validity debate, models will conflate the two. A model might reject a valid finding simply because it disagrees with the proposed severity. Establishing ground truth (the golden set) is a binary question of fact. Severity is a question of impact. 
-*Disagreement:* Do not use a 5-model vote for classification. You already know Opus is your best debater (90% accuracy). Use your single best reasoning model (or a strict panel of the top 3) to classify the confirmed golden set. Democratic voting among models of varying quality degrades the ground truth of your service-eval.
+*Disagreement:* Do not use a 5-model vote for classification. You already know one panel model is your best debater (90% accuracy). Use your single best reasoning model (or a strict panel of the top 3) to classify the confirmed golden set. Democratic voting among models of varying quality degrades the ground truth of your service-eval.
 
 ### 2. Should classification happen within groups or across all models?
 **Across all models (or rather, a curated subset of the absolute best).**
@@ -512,8 +512,8 @@ If Model A finds 1 Material issue (10 pts) and Model B finds 10 Minor typos (10 
 You are mixing objective facts (critical bugs) with subjective opinions (paradigm-shifting insights) into the same 10x bucket. Models will debate endlessly over whether an architectural suggestion is "Material," introducing massive variance into your golden set. 
 *Fix:* Keep `valuable_perspective` as a separate axis, or explicitly define Material *only* as objective, outcome-altering facts (bugs, security, hard performance bottlenecks).
 
-**Issue C: The GPT-5.4 Contrarian Data.**
-You noted GPT-5.4 gains 0pp from debate. It is highly likely GPT-5.4 is already ignoring Minor findings and only focusing on Material ones. By forcing it through a debate where other models badger it into accepting Minor findings, you are penalizing a highly efficient model. Tracking "Material Recall" separately will likely prove GPT-5.4 is already operating exactly how you want a production reviewer to act.
+**Issue C: The reviewer-model Contrarian Data.**
+You noted reviewer-model gains 0pp from debate. It is highly likely reviewer-model is already ignoring Minor findings and only focusing on Material ones. By forcing it through a debate where other models badger it into accepting Minor findings, you are penalizing a highly efficient model. Tracking "Material Recall" separately will likely prove reviewer-model is already operating exactly how you want a production reviewer to act.
 
 ### 6. Does the 10x weight ratio feel right?
 **10x is mathematically dangerous for a blended score.**
@@ -521,7 +521,7 @@ You noted GPT-5.4 gains 0pp from debate. It is highly likely GPT-5.4 is already 
 If you insist on a single blended score, the multiplier needs to be dynamic based on the ratio of findings in the golden set, ensuring that Material findings always account for at least 80% of the total possible points. 
 *Better approach:* Abandon the blended weighted score entirely. Report **Material Recall** as the primary P0 metric, and **Minor Recall** as a secondary diagnostic metric. This perfectly aligns with your goal of deciding "which models to use in production review panels."
 
-### claude-opus-4-6 (59.2s)
+### llm (59.2s)
 # Review of REQ-BENCH-311: Severity-Weighted Scoring
 
 This is well-designed. The core insight — that finding a critical security vulnerability should count for more than spotting a style issue — is obviously correct, and the requirement is unusually clear about *why* each decision was made. Let me take the questions seriously.
@@ -540,7 +540,7 @@ One thing to nail down: which models vote on classification? If it's the same 5 
 
 **Across all models together.** This isn't close.
 
-The golden set is already unified — you don't have a "proprietary golden set" and an "open golden set." The classification of a finding's severity is a property of the finding itself, not a property of which models are being scored against it. A critical SQL injection is Material regardless of whether you're evaluating GPT-5.4 or Llama.
+The golden set is already unified — you don't have a "proprietary golden set" and an "open golden set." The classification of a finding's severity is a property of the finding itself, not a property of which models are being scored against it. A critical SQL injection is Material regardless of whether you're evaluating reviewer-model or Llama.
 
 Splitting by group would also halve your voter pool, making tie-breaking noisier and classification less stable.
 
@@ -608,19 +608,19 @@ The requirement is solid. The main things to get right in implementation:
 
 Everything else in the requirement is well-reasoned. Ship it.
 
-### dashscope/qwen3.5-plus (69.79s)
+### reviewer-model (69.79s)
 Here is the strategic review of **REQ-BENCH-311**.
 
 ### 1. Is the classification vote (Material vs Minor) the right approach? Should it be part of the existing debate rounds or a separate step after?
 **Keep it separate, but change the voters.**
 A democratic vote among the participating models is structurally weak for severity classification. Models exhibit herd behavior; if the majority are weak at assessing business impact, the "wisdom of the crowd" becomes the "mediocrity of the crowd."
-*   **Recommendation:** Do not use the participating models for the classification vote. Use a dedicated **Judge Model** (e.g., the current highest-performing debater, Opus) or a human-in-the-loop for the golden set classification.
+*   **Recommendation:** Do not use the participating models for the classification vote. Use a dedicated **Judge Model** (e.g., the current highest-performing debater, one panel model) or a human-in-the-loop for the golden set classification.
 *   **Reasoning:** Validity (is this a bug?) and Severity (does this matter?) are distinct cognitive tasks. Your debate process handles validity well. Severity requires context about production risk that general models may lack. A dedicated judge ensures consistency across service-eval runs. If you must vote, do it as a separate step using the debate transcript as context, not as raw findings.
 
 ### 2. Should classification happen within each group (proprietary/open separately) or across all models together?
 **Across all models together.**
 You are building a **universal standard of value**, not a comparative study of model ecosystems.
-*   **Reasoning:** If you segregate, proprietary models might define "Material" as "complex logic errors" while open models define it as "security vulnerabilities." This creates incomparable scores. To decide "which models to use in production review panels," you need a single currency of value. A security bug is Material regardless of whether GPT or Llama found it. Unified classification ensures the 10x weight means the same thing for every entity.
+*   **Reasoning:** If you segregate, proprietary models might define "Material" as "complex logic errors" while open models define it as "security vulnerabilities." This creates incomparable scores. To decide "which models to use in production review panels," you need a single currency of value. A security bug is Material regardless of whether one panel model or Llama found it. Unified classification ensures the 10x weight means the same thing for every entity.
 
 ### 3. Are there edge cases where 'found it = full credit regardless of model label' breaks down?
 **Yes: The "Vague Hint" Edge Case.**
@@ -639,7 +639,7 @@ I disagree with the `Tie = Material` rule. While "safety-first" is correct for *
 **Three critical structural risks:**
 1.  **Gaming the Weight:** Once models know Material = 10x, they will optimize their outputs to *claim* findings are Material. They will use alarmist language ("Critical Security Risk") to trigger matching algorithms or influence classification votes.
     *   *Mitigation:* The classification step must be blind to the model's own output label (which you have covered), but the Judge/Voters must be robust against alarmist language.
-2.  **The GPT-5.4 Anomaly:** Your data shows GPT-5.4 gains 0pp from debate. Weighted scoring might reveal it finds mostly Minor issues. However, if GPT-5.4 is your baseline for "standard," and it ignores Material findings, your golden set might be biased towards what GPT-5.4 *can* find, not what *exists*.
+2.  **The reviewer-model Anomaly:** Your data shows reviewer-model gains 0pp from debate. Weighted scoring might reveal it finds mostly Minor issues. However, if reviewer-model is your baseline for "standard," and it ignores Material findings, your golden set might be biased towards what reviewer-model *can* find, not what *exists*.
     *   *Mitigation:* Ensure the golden set generation isn't dominated by models that struggle with Material findings.
 3.  **Pipeline Cost:** Re-running the pipeline for weight changes is noted, but re-running for *classification* changes is heavier. If you agent-chi from Model Vote to Judge Model, you invalidate historical data comparability.
     *   *Mitigation:* Version the scoring schema explicitly (e.g., `Score_v1_10x`, `Score_v2_JudgeClassified`). Do not overwrite historical scores.
@@ -655,17 +655,17 @@ I disagree with the `Tie = Material` rule. While "safety-first" is correct for *
 3.  **Tighten Matching.** Ensure "found it" requires semantic specificity, not just topic alignment.
 4.  **Monitor Inflation.** Track the % of findings classified as Material. If it exceeds 30%, your definition of Material is too loose.
 
-### redpill/moonshotai/kimi-k2.5 (89.16s)
+### reviewer-model (89.16s)
  Direct answers below, followed by critical structural concerns.
 
 **1. Classification vote: Keep it separate, but isolate it from debate contamination.**
 Do not use the debate panel for classification. Debate induces polarization and anchoring—models dig into positions. Severity assessment requires neutral, contextual evaluation of impact, not argumentative stance. Run classification as a distinct step with fresh model instances (or at minimum, fresh context windows with no debate history). 
 
 **2. Classification pooling: Across all models, but weighted by calibration.**
-Universal standards matter more than tribal knowledge. However, apply inverse-variance weighting: if Anthropic models historically over-index on "Material" compared to OpenAI, weight their votes proportionally less. Do not split by proprietary/open; that creates divergent severity standards and makes your service-eval incomparable across the ecosystem.
+Universal standards matter more than tribal knowledge. However, apply inverse-variance weighting: if Provider A models historically over-index on "Material" compared to Provider B, weight their votes proportionally less. Do not split by proprietary/open; that creates divergent severity standards and makes your service-eval incomparable across the ecosystem.
 
 **3. Edge case—The "Dismissal Trap":**
-"Found it = full credit" collapses if a model mentions a finding only to dismiss it as false/irrelevant. Example: *"Some might think this is a race condition [Material], but it's actually thread-safe due to the guard clause."* Under your matching logic, this model gets 10x credit for "finding" the race condition, when in fact it **denied** it. You must add an "affirmative intent" classifier: the model must endorse the finding's validity, not merely reference its existence. Without this, you will systematically reward contrarian models (like your GPT-5.4 outlier) for refuting critical bugs.
+"Found it = full credit" collapses if a model mentions a finding only to dismiss it as false/irrelevant. Example: *"Some might think this is a race condition [Material], but it's actually thread-safe due to the guard clause."* Under your matching logic, this model gets 10x credit for "finding" the race condition, when in fact it **denied** it. You must add an "affirmative intent" classifier: the model must endorse the finding's validity, not merely reference its existence. Without this, you will systematically reward contrarian models (like your reviewer-model outlier) for refuting critical bugs.
 
 **4. Tie = Material creates guaranteed severity inflation.**
 With binary classification and safety-first defaults, your golden set will asymptotically approach 100% Material weighting. This destroys discriminative power. If 60% of findings become Material-weighted, the 10x multiplier becomes noise. You are optimizing for recall at the expense of measurement precision. **Challenge the assumption:** In production, "uncertain severity" does not default to Action Required; it defaults to Triage. Treat ties as "Uncertain/Major" (3x weight), not Material (10x). This preserves the safety signal without destroying the scale.
@@ -676,7 +676,7 @@ With binary classification and safety-first defaults, your golden set will asymp
   
 - **Sparsity Distortion:** With 134 findings across 22 tasks (~6 per task), a single Material finding carries massive leverage. A model that finds 1 Material bug but misses 5 Minor issues scores 10/15 = 67%. A model finding 0 Material but 5 Minor scores 5/15 = 33%. You are selecting for "lucky lottery ticket" models, not thorough reviewers. Production code review requires **density** of Minor fixes; Material bugs are rare and often caught by compilers. Your weighting inverts this utility.
 
-- **GPT-5.4's Zero-Gain Signals a Deeper Problem:** If debate improves Claude/Opus (+40pp) but not GPT-5.4, GPT-5.4 is either (a) already at ceiling, (b) non-conformist to groupthink, or (c) gaming the current consensus mechanism. If (b), your new system will marginalize it further because debate consensus drives golden set selection, and ties go to Material (majority preference). You risk optimizing your service-eval for agreeable models, not correct ones.
+- **reviewer-model's Zero-Gain Signals a Deeper Problem:** If debate improves one panel model/one panel model (+40pp) but not reviewer-model, reviewer-model is either (a) already at ceiling, (b) non-conformist to groupthink, or (c) gaming the current consensus mechanism. If (b), your new system will marginalize it further because debate consensus drives golden set selection, and ties go to Material (majority preference). You risk optimizing your service-eval for agreeable models, not correct ones.
 
 **6. 10x is too high for your n; use 3x or dynamic weighting.**
 With 134 findings, a 10x ratio creates unacceptable variance. If Material findings naturally occur at 10% base rate (13 findings), they represent 130/251 = 52% of total score weight. One false positive in Material classification swings aggregate scores by 7-10 percentage points. 
@@ -697,9 +697,9 @@ REQ-BENCH-311 as specified will **corrupt your service-eval's ability to select 
 2. **Change tie rule:** Uncertain = 3x (not 10x) or force human adjudication on ties.
 3. **Reduce weight ratio to 3x-5x** until you have >500 findings.
 4. **Remove models from severity voting for their own tier** (standalone models don't vote on standalone classification; debate models don't vote on debate classification) to eliminate conflict of interest.
-5. **Investigate GPT-5.4's null debate gains.** If it's identifying false consensus (correctly rejecting bad findings that the panel accepts), your golden set is contaminated with false positives. Do not proceed with weighting until you audit whether the "improved" models are actually agreeing on truth or mutually reinforcing hallucinations.
+5. **Investigate reviewer-model's null debate gains.** If it's identifying false consensus (correctly rejecting bad findings that the panel accepts), your golden set is contaminated with false positives. Do not proceed with weighting until you audit whether the "improved" models are actually agreeing on truth or mutually reinforcing hallucinations.
 
-REQ-BENCH-312 (versioning) is critical—ensure GPT-4-0314 and GPT-4-1106 are treated as distinct entities; otherwise your time-series data becomes meaningless as models drift.
+REQ-BENCH-312 (versioning) is critical—ensure one panel model-4-0314 and one panel model-4-1106 are treated as distinct entities; otherwise your time-series data becomes meaningless as models drift.
 
 Stop calling this "severity-weighted scoring" until you fix the dismissal trap. Right now it's "mention-weighted scoring," which selects for verbose, contrarian models, not accurate ones.
 
@@ -707,26 +707,26 @@ Stop calling this "severity-weighted scoring" until you fix the dismissal trap. 
 As your moderator, I have synthesized the perspectives of six expert models regarding **REQ-BENCH-311**. There is a strong consensus on the *strategic necessity* of weighting, but significant disagreement on the *mechanics* of implementation.
 
 ### 1. Where Experts Disagree (The Signal)
-*   **The "Tie" Rule:** There is a sharp divide. Some models (Grok, Opus) support `Tie = Material` as a necessary safety-first heuristic. Others (Gemini, Kimi) argue this will cause "severity inflation," where the service-eval loses its ability to discriminate because too many findings become "Material."
-*   **The "Dismissal Trap":** A critical, creative insight emerged: your current "found it = full credit" rule is vulnerable to models that mention a critical bug only to dismiss it. Kimi and Gemini argue this rewards "mentioning" rather than "understanding," which could lead to selecting models that are verbose but wrong.
+*   **The "Tie" Rule:** There is a sharp divide. Some models (one panel model, one panel model) support `Tie = Material` as a necessary safety-first heuristic. Others (one panel model, one panel model) argue this will cause "severity inflation," where the service-eval loses its ability to discriminate because too many findings become "Material."
+*   **The "Dismissal Trap":** A critical, creative insight emerged: your current "found it = full credit" rule is vulnerable to models that mention a critical bug only to dismiss it. one panel model and one panel model argue this rewards "mentioning" rather than "understanding," which could lead to selecting models that are verbose but wrong.
 *   **The Role of Models in Voting:** There is a consensus that using the debate panel to vote on severity is a conflict of interest. Models may vote to protect their own findings or manipulate the weighted denominator.
 
 ### 2. Unique & Creative Insights
-*   **Affirmative Intent:** Kimi suggests that a match should only count if the model *endorses* the finding. If a model says "This is a race condition, but it's fine," it should not get 10x credit.
-*   **Severity Calibration Metric:** GPT-5.4 and others suggest that while the *main* score should be detection-based, you should track a secondary "calibration" metric: *Does the model's own severity label match the golden set?* This identifies models that find bugs but don't understand their impact.
-*   **The "GPT-5.4 Anomaly":** Several models noted that GPT-5.4’s 0pp gain from debate is a red flag. It may be a "contrarian" model that correctly rejects false consensus. If your golden set is built on consensus, you might be penalizing the most accurate model.
+*   **Affirmative Intent:** one panel model suggests that a match should only count if the model *endorses* the finding. If a model says "This is a race condition, but it's fine," it should not get 10x credit.
+*   **Severity Calibration Metric:** reviewer-model and others suggest that while the *main* score should be detection-based, you should track a secondary "calibration" metric: *Does the model's own severity label match the golden set?* This identifies models that find bugs but don't understand their impact.
+*   **The "reviewer-model Anomaly":** Several models noted that reviewer-model’s 0pp gain from debate is a red flag. It may be a "contrarian" model that correctly rejects false consensus. If your golden set is built on consensus, you might be penalizing the most accurate model.
 
 ### 3. Majority View vs. Minority Insights
 *   **Majority:** Keep the classification step separate from the debate; use a 10x weight; apply the classification across all models (no silos).
-*   **Minority/Nuanced:** Use a "Judge Model" (Opus) for classification rather than a democratic vote; consider a 3-tier system (Critical/Major/Minor) to avoid the "binary cliff" of 10x vs 1x; track confidence intervals because your sample size (22 tasks) is too small for high-variance weighting.
+*   **Minority/Nuanced:** Use a "Judge Model" (one panel model) for classification rather than a democratic vote; consider a 3-tier system (Critical/Major/Minor) to avoid the "binary cliff" of 10x vs 1x; track confidence intervals because your sample size (22 tasks) is too small for high-variance weighting.
 
 ### 4. Moderator’s Recommendation
 To preserve the integrity of your service-eval while achieving your goal of identifying "production-ready" reviewers, I recommend the following adjustments to REQ-BENCH-311:
 
 1.  **Adopt "Affirmative Intent" Matching:** Do not grant 10x credit if the model explicitly dismisses the finding. The model must identify the issue *and* acknowledge its validity.
-2.  **Replace Democratic Voting with a "Judge":** Use your highest-performing debater (Opus) as the sole arbiter for severity classification. This eliminates the "herd behavior" and strategic voting risks identified by the panel.
+2.  **Replace Democratic Voting with a "Judge":** Use your highest-performing debater (one panel model) as the sole arbiter for severity classification. This eliminates the "herd behavior" and strategic voting risks identified by the panel.
 3.  **Refine the Tie Rule:** Instead of `Tie = Material`, use `Tie = Major (3x)`. This prevents the "severity inflation" that would otherwise render your 10x multiplier meaningless, while still erring on the side of caution.
 4.  **Add a "Calibration" Diagnostic:** Do not let the model's own label affect the score, but *do* report a "Severity Calibration Score" as a secondary metric. This will help you see if a model is "severity blind."
-5.  **Audit the Consensus:** Before finalizing the golden set, have a human or a high-capability model review the findings where GPT-5.4 disagreed with the panel. If GPT-5.4 is right, your golden set is currently biased toward "consensus hallucinations."
+5.  **Audit the Consensus:** Before finalizing the golden set, have a human or a high-capability model review the findings where reviewer-model disagreed with the panel. If reviewer-model is right, your golden set is currently biased toward "consensus hallucinations."
 
 **Final Verdict:** Proceed with the 10x weighting, but treat it as a "living" variable. Store the raw vote distributions and the "affirmative intent" metadata so you can re-run the leaderboard if you decide to adjust the weights or the matching logic later.

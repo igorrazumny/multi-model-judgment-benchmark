@@ -2,7 +2,7 @@
 id: task_028
 category: code_review
 char_count: 1454
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval Prompt: Consensus validation for findings — majority vote before counting

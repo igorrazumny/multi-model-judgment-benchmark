@@ -2,14 +2,14 @@
 id: task_051
 category: code_review
 char_count: 100652
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Multi-model brainstorm — internal evaluation task
 Mode: brainstorm
-Models: gpt-5.4 (15.02s), grok-4.20-0309-reasoning (20.7s), claude-opus-4-6 (44.56s), gemini-3.1-pro-preview (98.08s), dashscope/qwen3.5-plus (112.4s), redpill/moonshotai/kimi-k2.5 (149.37s)
+Models: reviewer-model (15.02s), moderator-model (20.7s), llm (44.56s), reviewer-model (98.08s), reviewer-model (112.4s), reviewer-model (149.37s)
 is_code_review: false
-code_generated_by: unknown
+code_generated_by: llm
 
 ## Prompt
 ````
@@ -190,18 +190,18 @@ index 0cf6355..d0b9ebb 100644
  )
  
 -# Model groups — 4 tracks
--EXPERT_PROP = ["anthropic-opus-4.6", "openai-gpt-5.4", "google-gemini-3.1-pro", "xai-grok-4.2"]
--EXPERT_OPEN = ["alibaba-qwen3.5-plus", "moonshot-kimi-k2.5"]
--LIGHT_PROP = ["openai-gpt-5.4-mini", "anthropic-haiku-4.5", "xai-grok-fast", "google-gemini-3.1-flash-lite"]
--LIGHT_OPEN = ["alibaba-qwen3.5-flash", "zhipu-glm-4.7-flash"]
+-EXPERT_PROP = ["reviewer-model", "llm", "google-reviewer-model", "reviewer-model"]
+-EXPERT_OPEN = ["alibaba-reviewer-model", "moonshot-reviewer-model"]
+-LIGHT_PROP = ["light-model-b", "light-model-a", "light-model-c", "light-model-d"]
+-LIGHT_OPEN = ["light-model-e", "light-model-f"]
 +# Model groups — 2 tracks (no proprietary/open split)
 +EXPERT_MODELS = [
-+    "anthropic-opus-4.6", "openai-gpt-5.4", "google-gemini-3.1-pro",
-+    "xai-grok-4.2", "alibaba-qwen3.5-plus", "moonshot-kimi-k2.5",
++    "reviewer-model", "llm", "google-reviewer-model",
++    "reviewer-model", "alibaba-reviewer-model", "moonshot-reviewer-model",
 +]
 +LIGHT_MODELS = [
-+    "openai-gpt-5.4-mini", "anthropic-haiku-4.5", "xai-grok-fast",
-+    "google-gemini-3.1-flash-lite", "alibaba-qwen3.5-flash",
++    "light-model-b", "light-model-a", "light-model-c",
++    "light-model-d", "light-model-e",
 +]
  
 -# Debate thresholds per track
@@ -290,7 +290,7 @@ index 0cf6355..d0b9ebb 100644
 +        agg_per_model[r.get("model", "")] = r.get("response", "")
 +        log.info(f"    {r.get('model','?'):40} {len(r.get('response',''))} chars")
 +
-+    # Extraction — Gemini extracts unified findings from all standalone responses
++    # Extraction — one panel model extracts unified findings from all standalone responses
 +    extraction_prompt = META_EVAL_PROMPT.format(
          original_prompt_preview=content[:2000],
          model_responses=responses_text,
@@ -513,10 +513,10 @@ index 0cf6355..d0b9ebb 100644
      valid_ids = {f.get("id", "") for f in findings}
      ids_str = ", ".join(valid_ids)
  
-+    # Debate-style extraction: Gemini + Opus argue FOR/AGAINST, Grok moderates
-+    SCORER_A = "google-gemini-3.1-pro"
-+    SCORER_B = "anthropic-opus-4.6"
-+    MODERATOR = "xai-grok-4.2"
++    # Debate-style extraction: one panel model + one panel model argue FOR/AGAINST, one panel model moderates
++    SCORER_A = "google-reviewer-model"
++    SCORER_B = "reviewer-model"
++    MODERATOR = "reviewer-model"
 +
 +    example_id = list(valid_ids)[0] if valid_ids else "F1"
 +
@@ -893,7 +893,7 @@ index 0000000..2251b65
 +        "classifications": [{"id": f["id"], "class": "material"} for f in a_findings + b_findings]
 +    })
 +    responses = iter([
-+        {"response": match_json, "status": "completed", "time": 1, "model": "gemini"},
++        {"response": match_json, "status": "completed", "time": 1, "model": "panel-model"},
 +        # Cross-verification responses (accept everything)
 +        {"response": json.dumps({"votes": [{"id": f["id"], "accept": True} for f in a_findings + b_findings]}),
 +         "status": "completed", "time": 1, "model": "m1"},
@@ -937,11 +937,11 @@ index 0000000..2251b65
 +            {"id": "expert_open_F1", "description": "SQL injection vulnerability", "category": "critical_bug"},
 +        ]
 +
-+        # Gemini returns a match
++        # one panel model returns a match
 +        mock_call.return_value = {"response": json.dumps({
 +            "matches": [{"a_id": "expert_prop_F1", "b_id": "expert_open_F1"}],
 +            "a_only": [], "b_only": []
-+        }), "status": "completed", "time": 1, "model": "gemini"}
++        }), "status": "completed", "time": 1, "model": "panel-model"}
 +
 +        # Classification vote
 +        mock_parallel.return_value = [
@@ -978,7 +978,7 @@ index 0000000..2251b65
 +            if call_count[0] == 1:  # Semantic matching
 +                return {"response": json.dumps({
 +                    "matches": [], "a_only": ["expert_prop_F1"], "b_only": ["expert_open_F1"]
-+                }), "status": "completed", "time": 1, "model": "gemini"}
++                }), "status": "completed", "time": 1, "model": "panel-model"}
 +            return {"response": "", "status": "completed", "time": 1, "model": model}
 +
 +        mock_call.side_effect = side_effect
@@ -1055,14 +1055,14 @@ index 0000000..2251b65
 +            {"id": "expert_open_F1", "description": "Bug matching both", "category": "critical_bug"},
 +        ]
 +
-+        # Gemini incorrectly maps both A findings to same B finding
++        # one panel model incorrectly maps both A findings to same B finding
 +        mock_call.return_value = {"response": json.dumps({
 +            "matches": [
 +                {"a_id": "expert_prop_F1", "b_id": "expert_open_F1"},
 +                {"a_id": "expert_prop_F2", "b_id": "expert_open_F1"},  # duplicate b_id
 +            ],
 +            "a_only": [], "b_only": []
-+        }), "status": "completed", "time": 1, "model": "gemini"}
++        }), "status": "completed", "time": 1, "model": "panel-model"}
 +
 +        mock_parallel.return_value = [
 +            {"response": json.dumps({"classifications": [
@@ -1108,7 +1108,7 @@ index 0000000..2251b65
 +        track_data = {
 +            "track_name": "expert_open",
 +            "standalone": [
-+                {"model": "alibaba-qwen3.5-plus", "response": "Found SQL injection", "time": 1, "status": "completed"},
++                {"model": "alibaba-reviewer-model", "response": "Found SQL injection", "time": 1, "status": "completed"},
 +            ],
 +            "aggregation": {"findings": []},
 +            "debate": {
@@ -1117,23 +1117,23 @@ index 0000000..2251b65
 +                "interim": [
 +                    {"verdicts_by_finding": {
 +                        "expert_open_F1": {"arguments": [
-+                            {"model": "alibaba-qwen3.5-plus", "conclusion": "VALID"}
++                            {"model": "alibaba-reviewer-model", "conclusion": "VALID"}
 +                        ]},
 +                    }},
 +                ],
 +            },
 +        }
 +
-+        # Mock Gemini scoring calls — return matched IDs
++        # Mock one panel model scoring calls — return matched IDs
 +        mock_call.return_value = {
 +            "response": json.dumps({"matched_ids": ["expert_prop_F1"]}),
-+            "status": "completed", "time": 1, "model": "gemini",
++            "status": "completed", "time": 1, "model": "panel-model",
 +        }
 +
 +        scores = score_track(track_data, golden_set, "test content")
 +
-+        # Qwen should get credit for expert_prop_F1 via alias resolution
-+        qwen_scores = scores.get("alibaba-qwen3.5-plus", {})
++        # one panel model should get credit for expert_prop_F1 via alias resolution
++        qwen_scores = scores.get("alibaba-reviewer-model", {})
 +        self.assertGreater(qwen_scores.get("debate_pct", 0), 0)
 +        self.assertIn("expert_prop_F1", qwen_scores.get("debate_ids", []))
 +
@@ -1155,7 +1155,7 @@ index 0000000..2251b65
 +        track_data = {
 +            "track_name": "expert_prop",
 +            "standalone": [
-+                {"model": "openai-gpt-5.4", "response": "Found bug", "time": 1, "status": "completed"},
++                {"model": "llm", "response": "Found bug", "time": 1, "status": "completed"},
 +            ],
 +            "aggregation": {"findings": []},
 +            "debate": {
@@ -1164,7 +1164,7 @@ index 0000000..2251b65
 +                "interim": [
 +                    {"verdicts_by_finding": {
 +                        "expert_prop_F1": {"arguments": [
-+                            {"model": "openai-gpt-5.4", "conclusion": "VALID"}
++                            {"model": "llm", "conclusion": "VALID"}
 +                        ]},
 +                    }},
 +                ],
@@ -1173,16 +1173,16 @@ index 0000000..2251b65
 +
 +        mock_call.return_value = {
 +            "response": json.dumps({"matched_ids": ["expert_prop_F1"]}),
-+            "status": "completed", "time": 1, "model": "gemini",
++            "status": "completed", "time": 1, "model": "panel-model",
 +        }
 +
 +        scores = score_track(track_data, golden_set, "test content")
-+        gpt_scores = scores.get("openai-gpt-5.4", {})
++        gpt_scores = scores.get("llm", {})
 +        self.assertEqual(gpt_scores.get("debate_pct", 0), 100.0)
 +
 +    @patch("run_unified.call_model")
 +    def test_invalid_b_id_from_gemini_no_match(self, mock_call):
-+        """TC-06: Invalid b_id from Gemini rejected — real build_golden_set."""
++        """TC-06: Invalid b_id from one panel model rejected — real build_golden_set."""
 +        from run_unified import build_golden_set
 +        import json
 +
@@ -1193,11 +1193,11 @@ index 0000000..2251b65
 +        def side_effect(model, prompt):
 +            call_count[0] += 1
 +            if call_count[0] == 1:
-+                # Gemini returns match with INVALID b_id
++                # one panel model returns match with INVALID b_id
 +                return {"response": json.dumps({
 +                    "matches": [{"a_id": "expert_prop_F1", "b_id": "expert_open_FAKE"}],
 +                    "a_only": [], "b_only": ["expert_open_F1"]
-+                }), "status": "completed", "time": 1, "model": "gemini"}
++                }), "status": "completed", "time": 1, "model": "panel-model"}
 +            return {"response": "", "status": "completed", "time": 1, "model": model}
 +
 +        mock_call.side_effect = side_effect
@@ -1353,7 +1353,7 @@ index 0000000..2251b65
 +
 +
 +class TestScoreByIdsDebateStyle(unittest.TestCase):
-+    """Tests for debate-style score_by_ids (Gemini+Opus argue, Grok moderates)."""
++    """Tests for debate-style score_by_ids (one panel model+one panel model argue, one panel model moderates)."""
 +
 +    def _make_golden(self, findings):
 +        return {
@@ -1520,7 +1520,7 @@ index 0000000..2251b65
 +        call_log = []
 +        def tracking_call(model, prompt):
 +            call_log.append({"model": model, "prompt": prompt})
-+            if model == "xai-grok-4.2":  # moderator
++            if model == "reviewer-model":  # moderator
 +                # Moderator should only see F2 (disputed), not F1 (agreed)
 +                disputed_section = prompt.split("DISPUTED FINDINGS:")[-1] if "DISPUTED" in prompt else ""
 +                # F2 args should be present, F1 args should not
@@ -1528,12 +1528,12 @@ index 0000000..2251b65
 +                assert "\nF1:" not in disputed_section, "Moderator should NOT see F1 (agreed)"
 +                return {"response": json.dumps({"verdicts": [
 +                    {"id": "F2", "verdict": "PRESENT"}]})}
-+            elif model == "google-gemini-3.1-pro":
++            elif model == "google-reviewer-model":
 +                return {"response": json.dumps({"arguments": [
 +                    {"id": "F1", "for": "present", "against": "none", "verdict": "PRESENT"},
 +                    {"id": "F2", "for": "maybe", "against": "unclear", "verdict": "PRESENT"},
 +                ]})}
-+            else:  # opus
++            else:  # panel-model-b
 +                return {"response": json.dumps({"arguments": [
 +                    {"id": "F1", "for": "present", "against": "none", "verdict": "PRESENT"},
 +                    {"id": "F2", "for": "weak", "against": "not found", "verdict": "ABSENT"},
@@ -1546,7 +1546,7 @@ index 0000000..2251b65
 +        self.assertEqual(scores["test-model"]["standalone_pct"], 100.0)
 +        # Moderator was called (3 total calls: scorer A, scorer B, moderator)
 +        self.assertEqual(len(call_log), 3)
-+        self.assertEqual(call_log[2]["model"], "xai-grok-4.2")
++        self.assertEqual(call_log[2]["model"], "reviewer-model")
 +
 +    @patch("run_unified.call_model")
 +    def test_empty_golden_set_returns_zero(self, mock_call):
@@ -1614,7 +1614,7 @@ index 0000000..2251b65
 
 ## Individual Responses
 
-### gpt-5.4 (15.02s)
+### reviewer-model (15.02s)
 Yes: I’d flag **one CRITICAL issue** that is sufficient to stop the pipeline before collecting data.
 
 ## CRITICAL: scoring can deadlock / massively stall due to nested thread pools and provider fan-out
@@ -1688,13 +1688,13 @@ There are several weaker issues, but I would not stop the pipeline for them alon
 **Stop the pipeline.**
 The nested executor introduced in `score_track()` is a **critical operational/data-integrity risk** for service-eval collection.
 
-### grok-4.20-0309-reasoning (20.7s)
+### moderator-model (20.7s)
 **CRITICAL ISSUES (stop the pipeline)**
 
 ### 1. Frontend will break on null scores (highest priority)
 The new scoring system intentionally returns `None` (→ `null` in JSON) in two cases:
 - Model API failure (`status != "completed"`)
-- Scorer failure (both Gemini/Opus return unparseable output → "scorer failure, not model failure")
+- Scorer failure (both one panel model/one panel model return unparseable output → "scorer failure, not model failure")
 
 `Overview.jsx` does:
 ```js
@@ -1723,11 +1723,11 @@ This is the exact class of bug the old `id_aliases` machinery was trying to solv
 - Test file is messy (many skipped tests with deprecation messages). Acceptable for internal tooling but signals the refactor was large.
 
 ### Overall assessment
-The *intent* of REQ-BENCH-318 is sound: simplify tracks, make scoring more intelligent via debate-style argument, stop pretending open/expert split was magically better. The new scorer (Gemini+Opus argue, Grok moderates) is genuinely clever.
+The *intent* of REQ-BENCH-318 is sound: simplify tracks, make scoring more intelligent via debate-style argument, stop pretending open/expert split was magically better. The new scorer (one panel model+one panel model argue, one panel model moderates) is genuinely clever.
 
 However, the combination of **null scores + duplicated ID logic** is enough to corrupt both the database and the displayed results. Fix those two things before turning this on for real data collection. Do not merge more data until the frontend safely excludes `null` scores from "best" calculations and the ID resolution is centralized and hardened.
 
-### claude-opus-4-6 (44.56s)
+### llm (44.56s)
 # Post-Merge Review: REQ-BENCH-318
 
 ## CRITICAL Issues — Stop Pipeline
@@ -1813,7 +1813,7 @@ But inside `run_debate`, the `per_finding_votes` keys use unprefixed IDs. The fu
 
 **Stop the pipeline.** Issues #1 and #2 are independently pipeline-breaking under normal operating conditions. #2 in particular means no useful data will be collected — debates will crash at round 2, producing no golden set and therefore no scores.
 
-### gemini-3.1-pro-preview (98.08s)
+### reviewer-model (98.08s)
 This commit introduces a **CRITICAL logic flaw in how debate scores are calculated for the `light` track**, which will result in all light models receiving a **0% debate score**. You must stop the pipeline and fix this before collecting data, or your debate metrics for half your models will be invalid.
 
 ### The Issue: Missing Cross-Track Semantic Mapping
@@ -1832,7 +1832,7 @@ deb_matched = list(deb_valid & baseline_ids)
 ```
 Because `fid` is `light_F1` and `baseline_ids` contains
 
-### dashscope/qwen3.5-plus (112.4s)
+### reviewer-model (112.4s)
 STOP THE PIPELINE. Do not collect data with this merge.
 
 While the architectural simplification (4 tracks → 2 tracks) reduces operational overhead, it introduces critical code defects that will crash the pipeline and corrupt the dashboard, alongside strategic degradations to the service-eval's scientific validity.
@@ -1871,10 +1871,10 @@ The merge removes the cross-verification step between Proprietary and Open Sourc
 
 ### 4. OPERATIONAL: API Cost & Latency Explosion
 **The new scoring mechanism is unsustainable.**
-The `score_by_ids` function implements a "debate-style" scorer (Gemini + Opus argue, Grok moderates) for *every* model response being evaluated.
+The `score_by_ids` function implements a "debate-style" scorer (one panel model + one panel model argue, one panel model moderates) for *every* model response being evaluated.
 *   **Math:** 11 Models × 2 Metrics (Standalone + Aggregation) × 2 Scorers = **44 API calls per data point** just for scoring, excluding the actual service-eval runs.
 *   **Impact:** This triples the API cost per service-eval run and significantly increases latency. It also increases the surface area for rate-limit failures, which triggers the `None` score bug mentioned in #2.
-*   **Recommendation:** Revert to a single-call evaluator (e.g., Gemini extracts matches) or use embedding-based semantic similarity. Using a multi-model debate to *score* a service-eval is over-engineering that introduces more variance than it resolves.
+*   **Recommendation:** Revert to a single-call evaluator (e.g., one panel model extracts matches) or use embedding-based semantic similarity. Using a multi-model debate to *score* a service-eval is over-engineering that introduces more variance than it resolves.
 
 ### 5. HIGH RISK: Fragile ID Resolution (`run_unified.py` & `debate.py`)
 **Data integrity relies on brittle string matching.**
@@ -1890,11 +1890,11 @@ The `resolve_id` function (line 66) and similar logic in `debate.py` rely on suf
 4.  **Re-evaluate Golden Set:** Restore cross-family verification to ensure service-eval validity.
 5.  **Simplify Scorer:** Replace the debate-style scorer with a single-pass evaluator to control costs and latency.
 
-### redpill/moonshotai/kimi-k2.5 (149.37s)
+### reviewer-model (149.37s)
  **CRITICAL ISSUE 1: Fragile string filtering in Round 2+ debate destroys argument context**
 The Round 2+ debate logic filters `previous_arguments` using `if mn not in line` (line ~224 in debate.py). This is a naive substring match that will:
-- Filter out arguments **from** other models if the model name appears in the argument text (e.g., "Anthropic claims X" when filtering for model "anthropic-opus-4.6")
-- Fail to filter correctly if model names are substrings of each other (e.g., "gpt-5.4" vs "gpt-5.4-mini")
+- Filter out arguments **from** other models if the model name appears in the argument text (e.g., "Provider A claims X" when filtering for model "reviewer-model")
+- Fail to filter correctly if model names are substrings of each other (e.g., "reviewer-model" vs "reviewer-model-mini")
 - **Impact:** Debate votes will be cast on incomplete or corrupted context, invalidating the consensus mechanism. Models will see partial arguments or miss rebuttals entirely.
 
 **CRITICAL ISSUE 2: ID resolution gaps cause silent data loss in debate votes**
@@ -1910,7 +1910,7 @@ In `db_writer.py` (lines ~229-240), `model_standalone_ids` is passed to link mod
 - **Impact:** Database will be missing `model_findings` relationships for valid matches, breaking downstream analytics that rely on standalone coverage. The warning will spam logs but the data loss is permanent.
 
 **CRITICAL ISSUE 4: Scoring infrastructure failures mask model failures**
-The new `score_by_ids()` returns `(None, [])` when both scorers (Gemini/Opus) fail to return parseable JSON or raise exceptions. This `None` is stored as the score and treated as "excluded from scoring" rather than 0%.
+The new `score_by_ids()` returns `(None, [])` when both scorers (one panel model/one panel model) fail to return parseable JSON or raise exceptions. This `None` is stored as the score and treated as "excluded from scoring" rather than 0%.
 - **Impact:** If the scorer models are flaky (rate limits, bad JSON), target models get excluded from aggregation statistics rather than scored 0. This creates survival bias—only "lucky" models that got successful scorer calls get measured, invalidating service-eval comparability.
 
 **CRITICAL ISSUE 5: Methodology discontinuity invalidates historical baseline**
@@ -1925,22 +1925,22 @@ As a synthesizer of these expert perspectives, I have categorized the findings r
 ### 1. The "Stop-the-Line" Consensus (Critical Failures)
 The experts identified three categories of failure that will cause immediate, non-recoverable data corruption or system crashes:
 
-*   **The `None` Propagation/Crash:** Multiple models (Claude, Grok, Qwen, Kimi) highlight that `score_by_ids` returns `None` on scorer failure, which then propagates into arithmetic operations (`TypeError`) or database writes. This will crash the pipeline mid-run.
-*   **The `NameError` / Missing Logic:** Qwen identified a specific `NameError` where `weighted_total` is used but not defined in `score_track`. Claude identified a `NameError` where `_call_model` is called in debate round 2 but is not defined in the scope.
-*   **The UI/Dashboard Collapse:** Grok and Qwen point out that `None` values (from scorer failures) will be passed to the frontend, where JavaScript `sort` and `Math.round` operations will encounter `NaN` or `null`, effectively breaking the leaderboard and rendering the dashboard unusable.
+*   **The `None` Propagation/Crash:** Multiple models (panel members) highlight that `score_by_ids` returns `None` on scorer failure, which then propagates into arithmetic operations (`TypeError`) or database writes. This will crash the pipeline mid-run.
+*   **The `NameError` / Missing Logic:** one panel model identified a specific `NameError` where `weighted_total` is used but not defined in `score_track`. one panel model identified a `NameError` where `_call_model` is called in debate round 2 but is not defined in the scope.
+*   **The UI/Dashboard Collapse:** one panel model and one panel model point out that `None` values (from scorer failures) will be passed to the frontend, where JavaScript `sort` and `Math.round` operations will encounter `NaN` or `null`, effectively breaking the leaderboard and rendering the dashboard unusable.
 
 ### 2. Areas of Disagreement & Nuance
 While all agree on stopping, the experts offer distinct perspectives on the *nature* of the risk:
 
 *   **Operational vs. Strategic:** 
-    *   **GPT-5.4** focuses on **concurrency/deadlock**, arguing that the nested `ThreadPoolExecutor` is a ticking time bomb for system stability.
-    *   **Qwen and Kimi** focus on **scientific validity**, arguing that the removal of cross-family verification (the "Golden Set" change) is a strategic degradation that makes the service-eval susceptible to systemic bias.
-*   **The "Debate" Scorer:** There is a creative tension here. While some models (Grok) find the "debate-style" scorer "genuinely clever," others (Qwen) view it as "over-engineering" that triples API costs and introduces unnecessary variance.
-*   **ID Resolution:** There is a recurring debate on whether the ID resolution logic is a "bug" or a "design flaw." Some suggest it is a simple coding error (duplicated logic), while others (Kimi) argue it is a fundamental architectural failure that will lead to permanent, silent data loss.
+    *   **reviewer-model** focuses on **concurrency/deadlock**, arguing that the nested `ThreadPoolExecutor` is a ticking time bomb for system stability.
+    *   **one panel model and one panel model** focus on **scientific validity**, arguing that the removal of cross-family verification (the "Golden Set" change) is a strategic degradation that makes the service-eval susceptible to systemic bias.
+*   **The "Debate" Scorer:** There is a creative tension here. While some models (one panel model) find the "debate-style" scorer "genuinely clever," others (one panel model) view it as "over-engineering" that triples API costs and introduces unnecessary variance.
+*   **ID Resolution:** There is a recurring debate on whether the ID resolution logic is a "bug" or a "design flaw." Some suggest it is a simple coding error (duplicated logic), while others (one panel model) argue it is a fundamental architectural failure that will lead to permanent, silent data loss.
 
 ### 3. Unique/Creative Insights
-*   **Survival Bias:** Kimi-k2.5 notes that by returning `None` instead of `0` for scorer failures, the system creates **survival bias**. Only models that successfully trigger the scorer are measured, while others are excluded, making the resulting leaderboard statistically invalid.
-*   **The "Light" Track Logic:** Gemini-3.1-pro-preview identified a specific logic flaw where the `light` track will receive a 0% score because the `resolved_fid` mapping fails to bridge the gap between `light_F1` and the `expert` baseline IDs.
+*   **Survival Bias:** one panel model-k2.5 notes that by returning `None` instead of `0` for scorer failures, the system creates **survival bias**. Only models that successfully trigger the scorer are measured, while others are excluded, making the resulting leaderboard statistically invalid.
+*   **The "Light" Track Logic:** one panel model-3.1-pro-preview identified a specific logic flaw where the `light` track will receive a 0% score because the `resolved_fid` mapping fails to bridge the gap between `light_F1` and the `expert` baseline IDs.
 
 ### Moderator Recommendation
 **Stop the pipeline immediately.** 
@@ -1949,6 +1949,6 @@ The code is currently in a state that will produce "silent" data corruption (via
 
 **Immediate Action Plan:**
 1.  **Patch the Crashes:** Define `weighted_total`, fix the `_call_model` import, and ensure `None` scores are coerced to `0.0` or handled via a robust default before they reach the DB or UI.
-2.  **Flatten Concurrency:** Remove the nested `ThreadPoolExecutor` to prevent the deadlock/throttling cascades identified by GPT-5.4.
-3.  **Centralize ID Logic:** Refactor the ID resolution into a single, hardened utility function to prevent the silent data loss identified by Kimi and Grok.
+2.  **Flatten Concurrency:** Remove the nested `ThreadPoolExecutor` to prevent the deadlock/throttling cascades identified by reviewer-model.
+3.  **Centralize ID Logic:** Refactor the ID resolution into a single, hardened utility function to prevent the silent data loss identified by one panel model and one panel model.
 4.  **Re-evaluate the Golden Set:** Before resuming, address the strategic concern regarding the loss of cross-family verification. If the service-eval is to remain a "ground truth" source, the current "consensus-only" approach is likely insufficient.

@@ -23,6 +23,9 @@ Prompts were processed so that:
 - Internal repository names map to `service-*`  
 - Emails, API keys, and cloud project IDs are removed  
 - Strategy / roadmap phrasing is generalized  
+- **Specific model / vendor names are removed** — code-under-review is labeled
+  **LLM-generated** (not “Claude Opus …” / “GPT …”); panel reviewers are
+  generic “panel models,” not named products  
 
 **Illustrative only** — not bit-identical to the private evaluation set.
 

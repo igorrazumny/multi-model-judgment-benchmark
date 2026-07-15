@@ -2,7 +2,7 @@
 id: task_035
 category: code_review
 char_count: 927
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval Prompt: Remove unique_insight category + fix tooltip styling

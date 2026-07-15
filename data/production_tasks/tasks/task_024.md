@@ -2,7 +2,7 @@
 id: task_024
 category: code_review
 char_count: 14550
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Pre-push brainstorm — agent-sigma / service-web
@@ -10,14 +10,14 @@ Date: 2026-03-29T08:17:45Z
 Branch: agent-sigma/2026-03-29-save-fix
 Files: 1 | Diff lines: 28
 
-panel: gpt-5.4 (5.55s), grok-4.20-experimental-beta-0304-reasoning (14.26s), dashscope/qwen3.5-plus (20.18s), claude-opus-4-6 (23.19s), redpill/moonshotai/kimi-k2.5 (66.39s), gemini-3.1-pro-preview (70.24s)
+panel: reviewer-model (5.55s), reviewer-model (14.26s), reviewer-model (20.18s), llm (23.19s), reviewer-model (66.39s), reviewer-model (70.24s)
 
-=== gpt-5.4 (5.55s) ===
+=== reviewer-model (5.55s) ===
 [CRITICAL] dashboard/app.jsx:1109-1118 catches **all** `createWritable()` failures and treats them as a stale handle. That changes required behavior for ordinary write errors (permission denied, OS/file lock, quota, disk full, transient I/O failure): instead of surfacing “Save failed”, the app now clears the existing handle and prompts Save As, which can mislead the user and break REQ-418’s “Save writes back to the exact same file silently.” Only stale-handle / permission-revoked cases should fall through; other errors must still be reported.
 
 [CRITICAL] Missing automated test coverage for this code-path change. Ground rules explicitly say manual-only testing is not acceptable for feasible code changes, and REQ-418 is marked testable/E2E. This diff changes save error-handling logic and needs at least a unit/integration test covering: valid handle saves silently, stale handle falls through to `showSaveFilePicker`, and non-stale write errors do not trigger Save As.
 
-=== grok-4.20-experimental-beta-0304-reasoning (14.26s) ===
+=== reviewer-model (14.26s) ===
 **Review of db1a36c**
 
 **[CRITICAL]** `dashboard/app.jsx:1130` Broad `catch {}` swallows all errors, not just stale handles.  
@@ -46,7 +46,7 @@ The functional intent of the fix is sound (stale handles after reload are a real
 
 **Push blocked.** Fix the broad catch and update the requirement + test case before pushing again.
 
-=== dashscope/qwen3.5-plus (20.18s) ===
+=== reviewer-model (20.18s) ===
 [BLOCK] Missing automated tests for P0 file save functionality — Test-Plan states "manual" but no user confirmation for Test-Skip shown. Per Ground Rule #3, Test-Skip requires explicit human confirmation for code files. File save is testable via E2E (mock File System Access API or puppeteer). This is a P0 requirement (REQ-418) with data loss implications if save fails silently. Automated regression tests are feasible and expected.
 
 [WARNING] Bare `catch {}` swallows all errors, not just stale handle errors — If `createWritable()` throws for other reasons (quota exceeded, permission denied, file locked), the code will incorrectly fall through to Save As, potentially confusing users. Should catch specific error types or check `error.name` (e.g., `NotFoundError` indicates stale handle per File System Access API spec).
@@ -57,7 +57,7 @@ The functional intent of the fix is sound (stale handles after reload are a real
 
 [INFO] Blast radius acceptable — 1 file, 28 lines changed. File size (1409 lines) under 1500 limit. No dependency changes, no secrets, no config modifications.
 
-=== claude-opus-4-6 (23.19s) ===
+=== llm (23.19s) ===
 ## Review: Stale file handle fallthrough to Save As
 
 ### Diff Analysis
@@ -82,7 +82,7 @@ The diff correctly handles a gap in the original implementation: stale handles a
 
 The code change itself is correct and well-scoped. The one blocking issue is the missing test coverage for a P0 behavioral change — the stale-handle-to-Save-As fallthrough is straightforward to test with a mock file handle. Add a test that verifies: (1) when `fileHandle.createWritable()` throws, `setFileHandle` is called with `null`, and (2) the code proceeds to the `showSaveFilePicker` branch.
 
-=== redpill/moonshotai/kimi-k2.5 (66.39s) ===
+=== reviewer-model (66.39s) ===
  [CRITICAL] Unconditional error catch violates REQ-418 scope: The bare `catch` block catches **all** errors (permissions denied, disk full, file locked), not just stale handles. This triggers Save As flow for errors that should surface to the user as failures, violating REQ-418's "Save writes back to the exact same file silently" behavior. The requirement distinguishes Save (silent) from Save As (picker); conflating them on arbitrary errors is unrequested behavior change (Ground Rules: "building things nobody asked for").
 
 [CRITICAL] Destructive state mutation on transient errors: `setFileHandle(null)` clears the persistent handle on **any** write failure, including potentially transient ones (network timeout, temporary file lock). This forces users to re-select files they already imported, losing the "persistent file handle" UX guarantee of REQ-418. State should only be cleared upon confirmed stale handle or explicit user action.
@@ -93,7 +93,7 @@ The code change itself is correct and well-scoped. The one blocking issue is the
 
 [INFO] Consider discriminating stale handle errors: The File System Access API typically throws `NotFoundError` or `InvalidStateError` for stale handles after reload. Checking `e.name === 'NotFoundError'` before falling through would allow legitimate write errors to surface correctly while handling the specific stale case.
 
-=== gemini-3.1-pro-preview (70.24s) ===
+=== reviewer-model (70.24s) ===
 [CRITICAL] Missing test case update. Per Rule #17, every commit that changes product behavior must update the corresponding test cases in the same commit. You added a new fallback behavior for stale file handles (falling back to Save As), which is a testable edge case, but `docs/test-cases/REQ-418.yaml` was not updated in this diff.
 
 [INFO] The commit message states "File System Access API handles go stale after page reload." However, `fileHandle` is stored in standard React state (`useState`), which is cleared entirely on a page reload anyway (it becomes `null`). The stale handle issue you fixed was likely caused by the browser revoking permissions after idle time, or the file being modified/deleted externally, rather than a page reload. The fix itself is correct and robust.
@@ -106,11 +106,11 @@ As your moderator, I have synthesized the reviews from the six models. There is 
 ### Summary of Expert Perspectives
 
 *   **The "Broad Catch" Consensus:** Every model identified the `catch {}` block as a critical flaw. By failing to discriminate between a "stale handle" (which justifies a fallback to Save As) and "transient/fatal write errors" (like disk full, permission denied, or quota exceeded), the code risks masking genuine system failures and forcing unnecessary "Save As" prompts on the user.
-*   **The Testing Disagreement:** There is a nuanced disagreement regarding the "Manual" test plan. While some models (e.g., `claude-opus`, `qwen3.5`) argue that the logic is testable via mocks and therefore requires automated tests, others focus on the procedural violation of Ground Rule #17 (updating `REQUIREMENTS.md` or test documentation).
+*   **The Testing Disagreement:** There is a nuanced disagreement regarding the "Manual" test plan. While some models (e.g., `panel-model`, `panel-model`) argue that the logic is testable via mocks and therefore requires automated tests, others focus on the procedural violation of Ground Rule #17 (updating `REQUIREMENTS.md` or test documentation).
 *   **Unique Insights:**
-    *   `gemini-3.1` provides a valuable technical correction: the "stale handle" is likely due to permission revocation or external file modification, not page reloads (as React state is wiped on reload).
-    *   `kimi-k2.5` highlights a "destructive state mutation" concern: clearing the handle on *any* error is a poor UX pattern that forces users to re-import files unnecessarily.
-    *   `grok-4.20` provides a concrete code snippet for error discrimination, which is the recommended path forward.
+    *   `panel-model` provides a valuable technical correction: the "stale handle" is likely due to permission revocation or external file modification, not page reloads (as React state is wiped on reload).
+    *   `reviewer-model` highlights a "destructive state mutation" concern: clearing the handle on *any* error is a poor UX pattern that forces users to re-import files unnecessarily.
+    *   `reviewer-model provides a concrete code snippet for error discrimination, which is the recommended path forward.
 
 ---
 

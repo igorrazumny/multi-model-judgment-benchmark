@@ -2,14 +2,14 @@
 id: task_042
 category: general_analysis
 char_count: 53257
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Multi-model brainstorm — internal evaluation task
 Mode: brainstorm
-Models: grok-4.20-experimental-beta-0304-reasoning (11.05s), gemini-3.1-pro-preview (45.05s), dashscope/qwen3.5-plus (51.85s), gpt-5.4 (57.11s), claude-opus-4-6 (60.2s), redpill/moonshotai/kimi-k2.5 (166.72s)
+Models: reviewer-model (11.05s), reviewer-model (45.05s), reviewer-model (51.85s), reviewer-model (57.11s), llm (60.2s), reviewer-model (166.72s)
 is_code_review: false
-code_generated_by: unknown
+code_generated_by: llm
 
 ## Prompt
 ````
@@ -69,13 +69,13 @@ QUESTIONS:
 
 ## Individual Responses
 
-### grok-4.20-experimental-beta-0304-reasoning (11.05s)
+### reviewer-model (11.05s)
 **1. How many videos total? What goes in each? Duration?**
 
 **Total: 3 videos.** (Strongly recommend against 4+.)
 
 - **Video 1: Company Overview ("The Leak Era")** - 60 seconds  
-  Hook with the anonymous Anthropic-class leak story. Explain the new reality: AI systems leak by default. Position ExampleOrg as the company built from day one for the post-leak world. Mention you built a platform that makes encrypted inference, compliance (GxP/Annex 22), and model pinning table stakes. Tease products lightly. End with "See it working" → Product.
+  Hook with the anonymous Provider A-class leak story. Explain the new reality: AI systems leak by default. Position ExampleOrg as the company built from day one for the post-leak world. Mention you built a platform that makes encrypted inference, compliance (GxP/Annex 22), and model pinning table stakes. Tease products lightly. End with "See it working" → Product.
 
 - **Video 2: Product - The Secure AI Platform** - 2 minutes  
   This is your *actual* hero product. Show the real UI. Demonstrate Vault Mode vs Partner Mode. Show encrypted history. Show switching between models. Explain TEEs without getting too technical. This video sells the platform better than any abstract explanation. Product *is* the platform in visible form.
@@ -145,7 +145,7 @@ Direct. No fluff. No "we are excited to..." corporate speak. The leak story does
 
 **My genuine perspective:** You're overthinking this. You have a legitimate category-defining story with the leak + real working products in Product and service-vault. Most AI security companies are vaporware. You aren't. Stop trying to explain everything. Hammer the leak story, show the real product, and get to the meeting. Three videos done right beats six videos done mediocre.
 
-### gemini-3.1-pro-preview (45.05s)
+### reviewer-model (45.05s)
 Here is my direct, strategic advice on your video rollout. 
 
 I am going to disagree with your initial instinct on a few points—specifically regarding separating the "leak/security" narrative from the company overview, and the use of animation versus real product footage. 
@@ -200,12 +200,12 @@ Here is the exact narrative arc for your 60-second Company Overview. It must be 
 *   **0:30 - 0:45 (The Proof/Products):** "But a secure platform is useless without tools. So we built them. *Product* for encrypted, multi-model AI access. *service-vault* for AI-driven network monitoring. And *TestRobin* for verbal-prompt automation."
 *   **0:45 - 0:60 (The CTA):** "You can build your own tools on our secure API, or use ours out of the box. Stop risking your IP. Explore the products below, or book a demo to see the ExampleOrg platform in action."
 
-### dashscope/qwen3.5-plus (51.85s)
+### reviewer-model (51.85s)
 Here is the strategic assessment for ExampleOrgAI's video strategy.
 
 ### Executive Verdict
 **Stop planning for three videos. Build two.**
-Your constraint is not content volume; it is cognitive load. Investors and enterprise buyers do not buy "platforms"; they buy solutions to bleeding necks. The "Anthropic-style leak" is your strongest asset. It validates the problem instantly.
+Your constraint is not content volume; it is cognitive load. Investors and enterprise buyers do not buy "platforms"; they buy solutions to bleeding necks. The "Provider A-style leak" is your strongest asset. It validates the problem instantly.
 
 Conventional wisdom says "keep it under 60 seconds." **I disagree.** For deep tech security sales, 60 seconds is insufficient to establish trust. You need 90 seconds to move from Problem → Mechanism → Proof. However, you must cut the fat. Do not make a video for BatchGuard. Do not make an abstract "Platform" video.
 
@@ -293,7 +293,7 @@ Creating more dilutes your focus and burdens your sales team with decision paral
 
 This strategy positions ExampleOrg as the mature, security-first alternative in a chaotic market, rather than just another AI tool vendor.
 
-### gpt-5.4 (57.11s)
+### reviewer-model (57.11s)
 Here’s the blunt answer:
 
 Do **not** cram everything into one video. That will produce a vague, dense, forgettable asset that satisfies the founder’s urge to “cover it all” but does not help buyers understand anything.
@@ -731,7 +731,7 @@ If you want, I can next turn this into:
 1. a **full video matrix by audience/channel**, or  
 2. **actual scripts for all 5 videos**.
 
-### claude-opus-4-6 (60.2s)
+### llm (60.2s)
 # Nine Robots Video Strategy
 
 ## The Core Tension
@@ -883,7 +883,7 @@ VO: "Nine Robots. AI infrastructure you can actually trust."
 
 Build Video 1 this week. It unblocks every warm intro and gives the homepage its centerpiece. Script it tight, use real Product UI, open with the leak. Everything else follows.
 
-### redpill/moonshotai/kimi-k2.5 (166.72s)
+### reviewer-model (166.72s)
  Here is the strategic decision framework:
 
 **1. How many videos total? What goes in each? Duration?**

@@ -2,7 +2,7 @@
 id: task_037
 category: general_analysis
 char_count: 709
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 ---

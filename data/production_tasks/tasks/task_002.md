@@ -2,7 +2,7 @@
 id: task_002
 category: code_review
 char_count: 773
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval Prompt: Pipeline review iteration — fix 14 blocking findings

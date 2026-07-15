@@ -2,7 +2,7 @@
 id: task_016
 category: code_review
 char_count: 11181
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Pre-push brainstorm — agent-alpha / service-eval
@@ -10,9 +10,9 @@ Date: 2026-03-28T18:23:28Z
 Branch: agent-alpha/2026-03-28-ui
 Files: 8 | Diff lines: 300
 
-panel: Qwen3.5 Plus (9.83s), GPT-5.4 (12.72s), Grok 4.2 → Grok 4.1 Fast (5.67s), Claude Opus 4.6 (28.2s)
+panel: reviewer-model (9.83s), reviewer-model (12.72s), one panel model 4.2 → one panel model 4.1 Fast (5.67s), an LLM (28.2s)
 
-=== Qwen3.5 Plus (9.83s) ===
+=== reviewer-model (9.83s) ===
 [WARNING] `queries_raw.py:180` — Division by zero risk if `fp_total` is 0 and `found_all` is 0; current logic returns `None`, but the condition `if fp_total > 0` prevents the division, so it's safe. However, the fallback `999.0` for `found_all > 0` with `fp_total == 0` is correct per requirements. No bug, but worth noting the logic is slightly complex; consider a comment explaining the `999.0` sentinel value represents "perfect reliability" to aid future maintainers.
 
 [INFO] `Overview.jsx:56` — Sorting logic for `fp_ratio` uses `?? -1` as fallback for `null`. This places models with no FP data (null) at the bottom when sorting ascending, which is reasonable. Ensure this aligns with user expectation: models with undefined reliability should sort lower than those with measured low ratios.
@@ -21,7 +21,7 @@ panel: Qwen3.5 Plus (9.83s), GPT-5.4 (12.72s), Grok 4.2 → Grok 4.1 Fast (5.67s
 
 [INFO] Commit `c74f129` references three requirements (REQ-WEB-200/204/205) in one commit. While allowed, splitting UI column changes (200), tooltip fixes (204), and filtering logic (205) into separate commits would improve traceability and rollback granularity if needed. Not a block, but a suggestion for future work.
 
-=== GPT-5.4 (12.72s) ===
+=== reviewer-model (12.72s) ===
 [CRITICAL] Missing executable tests for code changes in this branch. Both commits use `Test-Skip` for UI/code changes without evidence that tests were impossible, and the added YAML files are manual test-case docs only, not automated or run tests. Per ground rules, code changes should have written/run tests when feasible; push should not proceed without at least backend coverage for `get_raw_stats()` FP ratio + hidden model behavior and frontend coverage for the new column/rendering/sort behavior.
 
 [WARNING] `src/web/api/queries_raw.py:118-124` counts false positives from all participated `model_responses`, but `model_found_all` only counts findings attached via `model_findings`. If `false_positive_count` is populated for participated responses that produced no confirmed findings, `fp_ratio` becomes `0 / fp_total = 0`, which may be intended; however models with no participated findings history but stale/partial FP data will render as `0.00` instead of dash, conflating “no successful findings” with “data unavailable.” Consider basing the nullability on participation/data presence explicitly.
@@ -32,9 +32,9 @@ panel: Qwen3.5 Plus (9.83s), GPT-5.4 (12.72s), Grok 4.2 → Grok 4.1 Fast (5.67s
 
 [INFO] `src/web/api/queries_raw.py:191-193` hardcodes `HIDDEN_MODELS = {"glm_5"}` in application code. It satisfies the current requirement, but if this is expected to change by user decision later, moving it to config/DB would avoid another code deploy for a purely display-policy change.
 
-=== Grok 4.2 → Grok 4.1 Fast (5.67s) ===
+=== one panel model 4.2 → one panel model 4.1 Fast (5.67s) ===
 **[INFO] docs/REQUIREMENTS.md:17**
-REQ-WEB-200 status remains "in-progress" despite implementation of all listed columns, GLM-5 filter, tooltip fixes, and FP Ratio. Should be updated to "implemented".
+REQ-WEB-200 status remains "in-progress" despite implementation of all listed columns, a fallback model filter, tooltip fixes, and FP Ratio. Should be updated to "implemented".
 
 **[INFO] docs/REQUIREMENTS.md:39**
 REQ-WEB-204 status remains "in-progress (fix deployed but not working — caps lock persists)" but this commit implements the `!important` CSS fix and updates tooltip text. Status should be updated to "implemented".
@@ -65,8 +65,8 @@ The solo calculation query still uses global `total_findings` denominator, which
 
 **Summary:** Two [BLOCK]/[CRITICAL] issues must be fixed before push: inconsistent FP ratio denominator (should respect participation like other metrics) and mismatch between FP=0 behavior (999.0) vs test case expectation ("dash"). Requirements status updates also needed.
 
-=== Claude Opus 4.6 (28.2s) ===
-## Code Review: `agent-alpha/2026-03-28` — FP Ratio, Columns, GLM-5 Hidden
+=== an LLM (28.2s) ===
+## Code Review: `agent-alpha/2026-03-28` — FP Ratio, Columns, a fallback model Hidden
 
 ---
 
@@ -86,7 +86,7 @@ The solo calculation query still uses global `total_findings` denominator, which
 
 ---
 
-**Summary:** No BLOCK/CRITICAL findings. Three warnings — the most substantive is the `999.00` magic value displayed to end users, which will confuse anyone reading the table. The other two are about dead code paths and requirement definition consistency. Clean implementation overall; FP query, GLM-5 filtering, and column additions are correct.
+**Summary:** No BLOCK/CRITICAL findings. Three warnings — the most substantive is the `999.00` magic value displayed to end users, which will confuse anyone reading the table. The other two are about dead code paths and requirement definition consistency. Clean implementation overall; FP query, a fallback model filtering, and column additions are correct.
 
 === AGGREGATED ===
 Experts clash over the `999.0` FP ratio fallback: one defends it, another flags it as confusing UX, and a third elevates it to a CRITICAL violation of your new test case which explicitly expects a dash. Additionally, reviewers uniquely highlight a BLOCK-level math error where the FP ratio uses global totals instead of participated runs, alongside a sorting bug where `null ?? -1` incorrectly pushes no-data rows to the top. **Recommendation:** Block the push to fix the FP ratio denominator to use participated runs, replace the `999.0` magic number with `null` to render the expected dash, and adjust the sorting sentinel to handle nulls gracefully.

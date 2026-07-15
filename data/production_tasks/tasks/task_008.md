@@ -2,16 +2,16 @@
 id: task_008
 category: code_review
 char_count: 47818
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Multi-model debate — internal evaluation task
 Mode: debate
-Reviewers: grok-4.20-0309-non-reasoning, gpt-5.4, dashscope/qwen3.5-plus, claude-opus-4-6, gemini-3.1-pro-preview, redpill/moonshotai/kimi-k2.5
-Moderator: grok-4.20-0309-reasoning
+Reviewers: multi-model panel
+Moderator: panel moderator
 Elapsed: 182.228s
 is_code_review: true
-code_generated_by: claude-opus-4-6
+code_generated_by: llm
 
 ## Prompt
 ````
@@ -92,7 +92,7 @@ index 4a4d5b1..302f23b 100644
 +- 2026-04-07T06:40 [agent-gamma] feat: pre-push switched to panel debate (PR #33, advisory no blocking). Review rounds 2→10 (PR #34). Blast radius 300→600 (PR #35). example-org-site added to propagation (PR #36). CVC model tagging via yaml config (PR #37). SSH keepalive for debate timeout. Manifest guide added. Full hook audit — zero missing across 252 clones.
 +- 2026-04-06T14:50 [agent-gamma] fix: removed FULL_CONTENTS from pre-push hook (PR #30). Uses diff -U10 instead. Payload 119KB+→30-40K. Unblocks open model service-eval. v2 (AST-aware) if needed.
 +- 2026-04-06T02:30 [agent-gamma] feat: create-pr.sh — PR creation wrapper BLOCKS if docs/requirements/REQ-XXX.md missing. Auto-populates PR body with requirement text. Commits simplified to just Req: REQ-XXX (Req-Description/Req-Snapshot removed). INDEX.md updated with THE PROCESS section. Propagated to all 28 agents.
-+- 2026-04-05T14:00 [agent-gamma] feat: pre-push hook exports NINE_ROBOTS_CODE_REVIEW=1 + NINE_ROBOTS_CODE_MODEL=claude-opus-4-6 for service-eval. service-frontend→product in GROUND_RULES+scripts. agent-a1 agent created (company-wide infra). agent-delta providing manifest docs.
++- 2026-04-05T14:00 [agent-gamma] feat: pre-push hook exports NINE_ROBOTS_CODE_REVIEW=1 + NINE_ROBOTS_CODE_MODEL=llm for service-eval. service-frontend→product in GROUND_RULES+scripts. agent-a1 agent created (company-wide infra). agent-delta providing manifest docs.
  - 2026-04-04T17:00 [bugs] feat: review-cycle.sh committed (PR-based, v2026-03-28.1)
  - 2026-03-31T13:30 [agent-gamma] fix: removed file saving from pre-push hook (PR #21). panel CLI will save all outputs (agent-zeta implementing REQ-072). Dropped code-review tracking — all data points are brainstorms. Corrected agent-alpha and agent-zeta tasks. ~/product-service-eval/ restructured: code-reviews/ removed, everything in raw/brainstorms/.
  - 2026-03-31T12:00 [agent-gamma] feat: service-eval strategy finalized. Three-tier evaluation: single→aggregation(80%)→debate. /do skill updated (panel review is THE point). Dashboard: checkboxes per model, Aggregated+Debated rows, Debate Dividend. 4 brainstorms with panel on strategy, threshold, finding matching, presentation.
@@ -262,7 +262,7 @@ Version: 2026-04-07.1
 7. **No Secrets:** NEVER hardcode API keys, passwords, tokens. Use environment variables.
 8. **Multi-AI Review Gate:** Two-level AI review on every change.
    - **On commit (fast model, non-blocking):** Pre-commit hook runs a single fast model check after mechanical checks pass. It reads the `Req: REQ-XXX` trailer, looks up the requirement text, and checks the diff for alignment. This is NOT a gate — it's a perspective check. The agent sees the feedback and GROUND_RULES in their context, keeping rules fresh and catching drift early. If panel is down, commit proceeds (mechanical checks still enforce).
-   - **On push (debate review, advisory):** Pre-push hook runs `panel debate` on every branch push. Debate mode: reviewers (GPT-5.4, Opus, Gemini) argue FOR and AGAINST each finding, then a moderator (Grok) renders verdicts. Reviews full branch diff against main AND the requirements referenced in commits. Models verify: does the implementation match what the requirement describes? Review is advisory — agent reads findings and addresses confirmed ones before merging. If `panel` is down, wait — no unreviewed code gets pushed.
+   - **On push (debate review, advisory):** Pre-push hook runs `panel debate` on every branch push. Debate mode: panel reviewers argue FOR and AGAINST each finding, then a moderator (panel) renders verdicts. Reviews full branch diff against main AND the requirements referenced in commits. Models verify: does the implementation match what the requirement describes? Review is advisory — agent reads findings and addresses confirmed ones before merging. If `panel` is down, wait — no unreviewed code gets pushed.
    - **Scope:** Reviews `main...HEAD` — the entire branch diff, not just the latest commit. This means the review sees the full context of the work, including all fixes.
    - **Agent reads ALL model responses.** Each reviewer argues FOR and AGAINST, then the moderator issues verdicts. Read them, engage with findings.
    - **Agent MUST address confirmed findings.** The debate moderator renders verdicts on each finding. Read them carefully. Address confirmed findings before merging to main. The `/do` retro check verifies this was done.
@@ -365,8 +365,8 @@ service-docs canonical versions is legitimate propagation, not a violation.
 ## 1. Review Architecture (Updated 2026-04-07)
 
 The pre-push hook runs `panel debate` locally on every branch push.
-Debate mode: reviewers (GPT-5.4, Opus, Gemini) argue FOR and AGAINST each finding,
-then a moderator (Grok) renders verdicts based on argument quality.
+Debate mode: panel reviewers argue FOR and AGAINST each finding,
+then a moderator (panel) renders verdicts based on argument quality.
 The moderator renders verdicts on each finding. Agents must address confirmed findings before merging.
 
 **You are a reviewer in a structured debate.** For each finding, argue both FOR
@@ -499,7 +499,7 @@ Agents work on branches with local pre-push review:
 
 ### **Group 1: Violation of Requirement-First Ordering Rule (GROUND_RULES v2026-04-07.1)**
 
-**Reviewers who flagged**: grok (BLOCK + CRITICAL), gemini (BLOCK), dashscope (CRITICAL), gpt-5.4 (related CRITICAL), redpill (WARNING), claude (INFO, confidence 2).
+**Reviewers who flagged**: panel-member (BLOCK + CRITICAL), panel-member (BLOCK), dashscope (CRITICAL), reviewer-model (related CRITICAL), redpill (WARNING), panel-member (INFO, confidence 2).
 
 **FOR arguments**: 
 - Explicit new rule (2026-04-07) mandates requirement/doc updates must be in a *separate, earlier commit* than implementation. This branch has one commit that updates both handover docs *and* the script. 
@@ -507,7 +507,7 @@ Agents work on branches with local pre-push review:
 - Ground rules are clear: "the requirement IS the spec", "BLOCK same-commit requirement+code changes", "Requirement MUST exist and be user/SM-confirmed BEFORE you write code".
 
 **AGAINST arguments**: 
-- This is a forced migration because brainstorm was retired upstream (claude, redpill, grok acknowledges the timeline entry). 
+- This is a forced migration because brainstorm was retired upstream (panel-member, redpill, panel-member acknowledges the timeline entry). 
 - Core intent (retro-review of merged PRs) remains.
 
 **Analysis**: The AGAINST arguments do **not** refute the FOR arguments. The new rule was written precisely to prevent this kind of "we know what we meant" reasoning. The rule is recent, explicit, and was cited as the reason reviewers must BLOCK. Silence from no one is irrelevant — the rule is the rule.
@@ -521,7 +521,7 @@ Agents work on branches with local pre-push review:
 
 ### **Group 2: Shell Safety Regression — Command Substitution + ARG_MAX Risk**
 
-**Reviewers who flagged**: dashscope (BLOCK), gpt-5.4 (CRITICAL), grok (WARNING), claude (WARNING), redpill (WARNING). (5/6 reviewers).
+**Reviewers who flagged**: dashscope (BLOCK), one panel model (CRITICAL), panel-member (WARNING), panel-member (WARNING), redpill (WARNING). (5/6 reviewers).
 
 **FOR arguments**: 
 - Changes from safe stdin redirection to `PROMPT=$(cat "$PROMPT_FILE"); panel debate "$PROMPT"`.
@@ -545,14 +545,14 @@ Agents work on branches with local pre-push review:
 
 ### **Group 3: Insufficient Test Plan vs. REQ-PROC-202 Testability Requirements**
 
-**Reviewers who flagged**: grok (WARNING), gpt-5.4 (CRITICAL), dashscope (WARNING), claude (INFO).
+**Reviewers who flagged**: panel-member (WARNING), one panel model (CRITICAL), dashscope (WARNING), panel-member (INFO).
 
 **FOR arguments**: 
 - REQ-PROC-202 explicitly says "Testable: Yes API (run with --status, verify state file)" and "Only updates state for successfully reviewed repos".
 - Test-Plan only says "script syntax verified, paths confirmed". No execution of the actual review path, no verification of state updates, no checking of the new `panel debate` behavior.
 
 **AGAINST arguments**: 
-- It's a bash orchestration script; full testing may be impractical (claude, dashscope).
+- It's a bash orchestration script; full testing may be impractical (panel-member, dashscope).
 - The change is small.
 
 **Analysis**: The FOR arguments are stronger. The requirement itself defines what "tested" means. The test plan does not meet the stated bar for a P2 requirement.
@@ -566,11 +566,11 @@ Agents work on branches with local pre-push review:
 
 ### **Group 4: Handover_bugs.md Ordering + Aggregation Issues**
 
-**Reviewers who flagged**: grok (CRITICAL), claude (INFO, confidence 1).
+**Reviewers who flagged**: panel-member (CRITICAL), panel-member (INFO, confidence 1).
 
-**FOR (grok)**: New entry was added *after* existing entries instead of at the top, breaking the "newest-first" contract used by aggregation.
+**FOR (panel-member-a)**: New entry was added *after* existing entries instead of at the top, breaking the "newest-first" contract used by aggregation.
 
-**AGAINST**: Only claude's observation that this appears to be normal aggregation behavior from per-agent files.
+**AGAINST**: Only panel-member's observation that this appears to be normal aggregation behavior from per-agent files.
 
 **VERDICT**: **Needs Human Review**
 
@@ -580,7 +580,7 @@ Agents work on branches with local pre-push review:
 
 ### **Group 5: Repo Rename (example-org-platform → product-platform)**
 
-**Reviewers who flagged**: gemini (BLOCK as unrequested), grok (INFO — should have own requirement), claude (no issue, consistent).
+**Reviewers who flagged**: panel-member (BLOCK as unrequested), panel-member (INFO — should have own requirement), panel-member (no issue, consistent).
 
 **VERDICT**: **Rejected** (as a blocking finding)
 

@@ -2,7 +2,7 @@
 id: task_033
 category: general_analysis
 char_count: 13618
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Pre-push brainstorm — agent-epsilon / example-org-platform
@@ -10,21 +10,21 @@ Date: 2026-03-29T12:53:59Z
 Branch: agent-epsilon/2026-03-29-cleanup
 Files: 9 | Diff lines: 623
 
-panel: gemini-3.1-pro-preview (0.27s), gpt-5.4 (6.07s), grok-4.20-experimental-beta-0304-reasoning (19.54s), claude-opus-4-6 (22.63s), dashscope/qwen3.5-plus (43.72s), redpill/moonshotai/kimi-k2.5 (81.47s)
+panel: reviewer-model (0.27s), reviewer-model (6.07s), reviewer-model (19.54s), llm (22.63s), reviewer-model (43.72s), reviewer-model (81.47s)
 
-=== gemini-3.1-pro-preview (0.27s) ===
+=== reviewer-model (0.27s) ===
 
 
-=== gpt-5.4 (6.07s) ===
+=== reviewer-model (6.07s) ===
 [CRITICAL] `src/api/server.py:8,335,369` removes `/api/v1/review/stream`, but the file still imports and uses `StreamingResponse` for `/api/v1/inference?stream=true`. The commit message claims the import is still needed, and that is true. If this branch also deletes the import in a nearby unshown change before push, streaming inference will crash at runtime with `NameError: StreamingResponse is not defined`. Verify the final file still keeps `from fastapi.responses import JSONResponse, StreamingResponse`; otherwise push must not proceed.
 
 [WARNING] `docs/operations/OPERATIONS.md:169-172` still says multi-model inference is “7 models + aggregation,” while the review set is now 6 and the surrounding docs were updated to 6 elsewhere. This is a docs regression that will mislead operators validating val/prod behavior.
 
-[INFO] `src/api/server.py:400` review endpoint docstring still says “7 models + aggregation.” Harmless, but stale and inconsistent with REQ-023/ops docs after GLM-5 removal.
+[INFO] `src/api/server.py:400` review endpoint docstring still says “7 models + aggregation.” Harmless, but stale and inconsistent with REQ-023/ops docs after a fallback model removal.
 
 [INFO] `docs/REQUIREMENTS.md:257-263` marks REQ-015 as “Implemented,” but the architecture doc now states streaming is intentionally not implemented for review and only partially present on unified inference. That requirement text is broader than current reality; consider tightening it to explicitly scope streaming to `/api/v1/inference` only so future reviews don’t see a contradiction.
 
-=== grok-4.20-experimental-beta-0304-reasoning (19.54s) ===
+=== reviewer-model (19.54s) ===
 **Review of branch (commits 70f4490 + 1b0d3f6)**
 
 [INFO] The removal of `/api/v1/review/stream`, `src/api/streaming.py`, and `tests/test_streaming.py` exactly matches the updated REQ-023 spec ("Streaming review endpoint intentionally removed — zero consumers"). All callers use the sync `/api/v1/review` shim per investigation. No regression for existing consumers.
@@ -40,7 +40,7 @@ No bugs, no security issues, no broken functionality, and no violations of the r
 
 Push can proceed.
 
-=== claude-opus-4-6 (22.63s) ===
+=== llm (22.63s) ===
 ## Review Summary
 
 This diff removes the `/api/v1/review/stream` endpoint, its implementation (`streaming.py`), and its tests (`test_streaming.py`) — all with zero consumers. It also adds the val-first deployment process (REQ-053) and updates documentation accordingly. Clean, well-documented removal.
@@ -63,7 +63,7 @@ This diff removes the `/api/v1/review/stream` endpoint, its implementation (`str
 
 **No BLOCK or CRITICAL findings.** This is a clean removal of dead code with thorough documentation of the removal rationale and reintroduction plan. Push should proceed.
 
-=== dashscope/qwen3.5-plus (43.72s) ===
+=== reviewer-model (43.72s) ===
 [BLOCK] Blast radius violation: 623 lines across 9 files exceeds the 300-line hard limit (Ground Rule #1). Commit message states "user-approved --no-verify for bulk deletion" but I cannot verify this approval was actually received. Ground Rule #9 requires explicit user confirmation before skipping review. If this approval exists, document it explicitly in the commit body (e.g., "User approved --no-verify via chat 2026-03-29T14:55").
 
 [CRITICAL] Test count inconsistency: Handover entry at 14:30 states "79 total tests" after adding 4 new tests. This commit claims "74 total" (5 streaming tests removed). That math works (79-5=74), but the handover entry at 15:00 should explicitly note the test count change for traceability. Add "79→74 tests" to the handover entry.
@@ -80,7 +80,7 @@ This diff removes the `/api/v1/review/stream` endpoint, its implementation (`str
 
 [INFO] Consider adding a deprecation notice in the deleted `test_streaming.py` location (e.g., a stub file with a comment pointing to ARCHITECTURE.md) for 1-2 releases to catch any accidental re-creation of streaming tests.
 
-=== redpill/moonshotai/kimi-k2.5 (81.47s) ===
+=== reviewer-model (81.47s) ===
  [CRITICAL] Blast radius 623 lines across 9 files exceeds 300-line hard limit (GROUND_RULES rule #1). While the commit message indicates user-approved `--no-verify` for this bulk deletion, the blast radius limit is a hard safety mechanism. Deleting 236 lines of `streaming.py` and 98 lines of `test_streaming.py` plus documentation updates cannot be split, but the violation should be explicitly acknowledged as a process bypass. The approval is noted in the commit message.
 
 [INFO] `StreamingResponse` import retention in `src/api/server.py:11` is correctly justified — the import supports `/api/v1/inference?stream=true` via `stream_single` and `stream_multi` in `multi.py`, not the removed `/review/stream` endpoint. No zombie code.
@@ -93,22 +93,22 @@ This diff removes the `/api/v1/review/stream` endpoint, its implementation (`str
 As a synthesizer, I have reviewed the reports from the five models regarding the proposed branch. There is a clear divide between models that prioritize strict adherence to procedural "blast radius" limits and those that prioritize the technical correctness of the code removal.
 
 ### 1. Where Experts Disagree
-*   **Blast Radius Compliance:** There is a sharp disagreement on whether the 623-line change constitutes a [BLOCK] event. **Qwen** and **Kimi** argue that the 300-line hard limit is a safety mechanism that cannot be bypassed without explicit, documented verification of the user's `--no-verify` approval. **Grok** and **Claude** accept the user's noted approval as sufficient to proceed, viewing the bulk deletion as a logical, atomic unit that cannot be split.
-*   **Orphaned Code Risk:** **Qwen** raises a concern that `stream_single`/`stream_multi` in `multi.py` might be orphaned or "dead code" now that the review endpoint is gone. **Grok** and **Claude** disagree, asserting that these functions are correctly identified as part of the unified inference path and are intentionally preserved for future use (REQ-006).
+*   **Blast Radius Compliance:** There is a sharp disagreement on whether the 623-line change constitutes a [BLOCK] event. **one panel model** and **one panel model** argue that the 300-line hard limit is a safety mechanism that cannot be bypassed without explicit, documented verification of the user's `--no-verify` approval. **one panel model** and **one panel model** accept the user's noted approval as sufficient to proceed, viewing the bulk deletion as a logical, atomic unit that cannot be split.
+*   **Orphaned Code Risk:** **one panel model** raises a concern that `stream_single`/`stream_multi` in `multi.py` might be orphaned or "dead code" now that the review endpoint is gone. **one panel model** and **one panel model** disagree, asserting that these functions are correctly identified as part of the unified inference path and are intentionally preserved for future use (REQ-006).
 
 ### 2. Unique/Creative Insights
-*   **Operational Smoke Testing:** **Qwen** suggests a proactive "smoke test" for the new REQ-053 process (e.g., `make health-val`), moving beyond mere documentation to ensure the process requirement doesn't suffer from infra drift.
-*   **Deprecation Stubs:** **Qwen** also suggests leaving a stub file where `test_streaming.py` once existed to prevent accidental re-introduction of the deleted streaming tests, a creative way to enforce architectural intent.
-*   **Documentation Regression:** **GPT-5.4** identifies a specific documentation regression in `OPERATIONS.md` regarding model counts (7 vs 6), which other models missed. This is a high-value catch for maintaining consistency across the codebase.
+*   **Operational Smoke Testing:** **one panel model** suggests a proactive "smoke test" for the new REQ-053 process (e.g., `make health-val`), moving beyond mere documentation to ensure the process requirement doesn't suffer from infra drift.
+*   **Deprecation Stubs:** **one panel model** also suggests leaving a stub file where `test_streaming.py` once existed to prevent accidental re-introduction of the deleted streaming tests, a creative way to enforce architectural intent.
+*   **Documentation Regression:** **reviewer-model** identifies a specific documentation regression in `OPERATIONS.md` regarding model counts (7 vs 6), which other models missed. This is a high-value catch for maintaining consistency across the codebase.
 
 ### 3. Majority View
-The majority (Grok, Claude, Kimi) agree that the code changes are technically sound, the math regarding test counts is verified, and the documentation updates (REQ-023, REQ-048, REQ-053) are correctly handled. The consensus is that the `StreamingResponse` import is not a "zombie" and is correctly utilized by the unified inference endpoint.
+The majority (panel members) agree that the code changes are technically sound, the math regarding test counts is verified, and the documentation updates (REQ-023, REQ-048, REQ-053) are correctly handled. The consensus is that the `StreamingResponse` import is not a "zombie" and is correctly utilized by the unified inference endpoint.
 
 ### 4. Recommendation
 **The push may proceed, provided the following minor remediations are addressed:**
 
-1.  **Documentation Cleanup:** Address the regression noted by **GPT-5.4** in `docs/operations/OPERATIONS.md` (lines 169-172) to ensure the model count is consistently updated to 6.
+1.  **Documentation Cleanup:** Address the regression noted by **reviewer-model** in `docs/operations/OPERATIONS.md` (lines 169-172) to ensure the model count is consistently updated to 6.
 2.  **Traceability:** To satisfy the concerns of the more conservative models, explicitly append the user's approval timestamp to the commit message (e.g., "User approved --no-verify via chat 2026-03-29T14:55") to ensure the audit trail is indisputable.
-3.  **Verification:** Before finalizing, perform a quick grep to confirm that no `from src.api.streaming import` statements remain in `server.py` or other modules, as requested by **Qwen**.
+3.  **Verification:** Before finalizing, perform a quick grep to confirm that no `from src.api.streaming import` statements remain in `server.py` or other modules, as requested by **one panel model**.
 
 The technical work is clean; the remaining tasks are purely administrative and documentation-based.

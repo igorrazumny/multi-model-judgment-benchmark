@@ -2,7 +2,7 @@
 id: task_009
 category: architecture
 char_count: 3304
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # service-eval Prompt: Product Subscription Tier Design + Requirements

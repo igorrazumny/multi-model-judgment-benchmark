@@ -2,11 +2,11 @@
 id: task_014
 category: code_review
 char_count: 3536
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
-# Code Review — GPT-5.4 generated code
-# code_generated_by: openai-gpt-5.4
+# Code Review — LLM-generated code
+# code_generated_by: llm
 
 You are a code review gate. Review this branch diff before push.
 Check for bugs, security issues, ground rules compliance, missing tests, regressions.
@@ -20,7 +20,7 @@ diff --git a/README.md b/README.md
 index a5bb7d7..28df705 100644
 --- a/README.md
 +++ b/README.md
-@@ -17,9 +17,9 @@ export ANTHROPIC_API_KEY=sk-...
+@@ -17,9 +17,9 @@ export PROVIDER_A_API_KEY=sk-...
  Usage examples:
  
  ```bash

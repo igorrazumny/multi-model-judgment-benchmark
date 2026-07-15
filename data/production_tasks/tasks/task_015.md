@@ -2,22 +2,22 @@
 id: task_015
 category: general_analysis
 char_count: 6884
-redaction: org-names-agents-pii-strategy-labels-removed
+redaction: org-names-agents-pii-strategy-model-ids-removed
 ---
 
 # Multi-model debate — internal evaluation task
 Mode: debate
-Reviewers: grok-4.20-0309-non-reasoning, claude-opus-4-6, gpt-5.4, gemini-3.1-pro-preview, dashscope/qwen3.5-plus, redpill/moonshotai/kimi-k2.5
-Moderator: grok-4.20-0309-reasoning
+Reviewers: multi-model panel
+Moderator: panel moderator
 Elapsed: 166.525s
 is_code_review: false
-code_generated_by: unknown
+code_generated_by: llm
 
 ## Prompt
 ````
 Final refinement of a homepage section. Here is the near-final version:
 
-'When you send GxP data to GPT, Claude, Gemini or Grok, it is processed in plaintext. In March 2026, even a security-focused AI company exposed its multi-billion-revenue codebase through human error. Can you rule out the same happening to your GxP data after being sent to those providers? Product keeps your data encrypted during inference itself — memory dumps return only gibberish. Auditors are welcome. Swiss-headquartered, cloud or sovereign, both Annex 22 ready. Open-source models rival the best proprietary ones, as evaluated by public and our own'
+'When you send GxP data to frontier cloud LLMs, it is processed in plaintext. In March 2026, even a security-focused AI company exposed its multi-billion-revenue codebase through human error. Can you rule out the same happening to your GxP data after being sent to those providers? Product keeps your data encrypted during inference itself — memory dumps return only gibberish. Auditors are welcome. Swiss-headquartered, cloud or sovereign, both Annex 22 ready. Open-source models rival the best proprietary ones, as evaluated by public and our own'
 
 The last word 'service-eval' will be an inline link to service-eval.product.example.com followed by a period.
 
@@ -43,7 +43,7 @@ Propose final versions if you have improvements.
 **Verdict: Confirmed**  
 **Severity: [BLOCK]**
 
-**Reasoning:** The FOR arguments are overwhelming and unanimous among reviewers who addressed it (Gemini, Qwen, Moonshot, with Claude noting it). A future date presented in past tense destroys credibility with the exact audience (GxP/quality/compliance) that this copy must impress. The AGAINST arguments are all variations of “it’s probably a typo/placeholder,” which do not refute the core problem — it is currently wrong and cannot ship. Silence from Grok and GPT-5 is not strong counter-evidence; it is more likely they treated it as outside their mandate. This is an instant blocker.
+**Reasoning:** The FOR arguments are overwhelming and unanimous among reviewers who addressed it. A future date presented in past tense destroys credibility with the exact audience (GxP/quality/compliance) that this copy must impress. The AGAINST arguments are all variations of “it’s probably a typo/placeholder,” which do not refute the core problem — it is currently wrong and cannot ship. Silence from some panel members-5 is not strong counter-evidence; it is more likely they treated it as outside their mandate. This is an instant blocker.
 
 ### Group 2: Open-Source Model Ownership/Attribution (Constraint Violation)
 **Verdict: Confirmed**  
@@ -79,7 +79,7 @@ The near-final version contains two hard blockers ([BLOCK] date, [CRITICAL] mode
 
 **Final Version (61 words):**
 
-"When you send GxP data to GPT, Claude, Gemini or Grok, it is processed in plaintext. Even a security-focused AI company recently exposed its multi-billion-revenue codebase through human error. The same risk exists once that data leaves your control. Product keeps your data encrypted during inference itself — memory dumps return only gibberish. Auditors are welcome. Swiss-headquartered with cloud and sovereign deployments, both Annex 22 ready. We run open-source models on our infrastructure that rival the best proprietary ones, according to public benchmarks and our own."
+"When you send GxP data to frontier cloud LLMs, it is processed in plaintext. Even a security-focused AI company recently exposed its multi-billion-revenue codebase through human error. The same risk exists once that data leaves your control. Product keeps your data encrypted during inference itself — memory dumps return only gibberish. Auditors are welcome. Swiss-headquartered with cloud and sovereign deployments, both Annex 22 ready. We run open-source models on our infrastructure that rival the best proprietary ones, according to public benchmarks and our own."
 
 **Key changes:**
 - Fixed date (neutral “recently”)
