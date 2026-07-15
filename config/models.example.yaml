@@ -1,0 +1,18 @@
+# Example expert panel — model IDs must match your inference gateway routing keys.
+experts:
+  - id: anthropic-opus
+    label: Claude Opus
+  - id: openai-gpt
+    label: GPT
+  - id: google-gemini
+    label: Gemini
+  - id: xai-grok
+    label: Grok
+  - id: alibaba-qwen
+    label: Qwen
+  - id: moonshot-kimi
+    label: Kimi
+
+debate:
+  rounds: 2
+  confirm_threshold: 4   # of 6 experts must vote valid
