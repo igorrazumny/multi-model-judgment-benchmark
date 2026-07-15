@@ -20,26 +20,32 @@ This is a **working reference**, not the full production service. It implements 
 
 ## Data availability
 
-### Production tasks (this repo)
+### Production tasks — prompts only (proprietary)
 
-Redacted task prompts live under:
+The original production tasks and **all model responses on those tasks** contain
+**proprietary information**. We **do not share full production model responses**.
+
+What we *do* share is a set of **redacted prompts** so readers can see what
+*kinds* of tasks were used (code review, architecture, general analysis):
 
 ```text
 data/production_tasks/tasks/task_XXX.md
 data/production_tasks/manifest.json
 ```
 
-Content was **processed to remove sensitive organization identifiers, agent codenames, internal product/strategy labels, emails, cloud project IDs, and secrets**. Technical task structure is preserved in generalized form. The public package is **not bit-identical** to the private evaluation corpus.
+Prompts were processed to remove organization identifiers, PII, product/strategy
+labels, agent codenames, cloud project IDs, and secrets. They are illustrative,
+not bit-identical to the private corpus.
 
-### GPQA Diamond (full model responses)
+### GPQA Diamond — full model responses (public track)
 
-Graduate-level multiple-choice questions with known answers:
+Graduate-level multiple-choice questions with known answers (non-proprietary):
 
 - Paper: [Rein et al., GPQA](https://arxiv.org/abs/2311.12022)
 - Dataset: [github.com/idavidrein/gpqa](https://github.com/idavidrein/gpqa)
-- **Our full multi-model responses (198 items):** [`data/gpqa_diamond_responses/`](data/gpqa_diamond_responses/)
+- **Full multi-model responses (198 paper items):** [`data/gpqa_diamond_responses/`](data/gpqa_diamond_responses/)
 
-Includes standalone, aggregation, and debate outputs for expert and light tracks where recorded.
+Standalone, aggregation, and debate outputs for expert and light tracks where recorded.
 
 ## Quick start
 

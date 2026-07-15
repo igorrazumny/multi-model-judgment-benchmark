@@ -1,11 +1,22 @@
-# Production tasks (redacted)
+# Production tasks — redacted prompts only
 
-These are **production-style evaluation prompts** used in multi-model judgment
-quality experiments (code review, architecture, general analysis).
+## Why prompts only
+
+Production evaluation used **real proprietary work** (internal code reviews,
+architecture decisions, product-adjacent analysis). Both the raw tasks and the
+**full multi-model responses** on those tasks contain proprietary information.
+
+We therefore:
+
+- **Share only redacted prompts** — so readers can see the *kind* of tasks used  
+- **Do not share full production model responses** — they would re-expose proprietary content  
+
+For a complete response dump on a **public** benchmark, see
+`../gpqa_diamond_responses/` (GPQA Diamond).
 
 ## Processing
 
-Tasks were processed so that:
+Prompts were processed so that:
 
 - Organization brands and product names are generalized  
 - Internal agent codenames are replaced with `agent-alpha` / …  
@@ -13,17 +24,14 @@ Tasks were processed so that:
 - Emails, API keys, and cloud project IDs are removed  
 - Strategy / roadmap phrasing is generalized  
 
-The goal is that nothing here is easily associateable with a specific company
-or private product roadmap, while remaining useful as realistic tasks.
-
-**This corpus is not bit-identical to the private evaluation set.**
+**Illustrative only** — not bit-identical to the private evaluation set.
 
 ## Layout
 
 | File | Role |
 |------|------|
 | `manifest.json` | Task list, categories, redaction policy |
-| `tasks/task_XXX.md` | One task prompt per file |
+| `tasks/task_XXX.md` | One **prompt** per file (no model responses) |
 | `OWNER_RECONCILIATION.json` | Owner-only private ID map (optional; ignore for reuse) |
 
 ## Categories
@@ -34,5 +42,4 @@ or private product roadmap, while remaining useful as realistic tasks.
 
 ## License / use
 
-Research and evaluation use. Do not treat redacted text as ground-truth labels
-about any real organization.
+Research use. Do not treat redacted text as factual claims about any real organization.
