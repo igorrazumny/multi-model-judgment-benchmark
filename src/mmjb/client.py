@@ -5,8 +5,6 @@ from __future__ import annotations
 import os
 from typing import Any
 
-import requests
-
 
 class InferenceClient:
     """POST /v1/chat/completions-style calls; model id is gateway-specific."""
@@ -24,6 +22,8 @@ class InferenceClient:
             raise ValueError("INFERENCE_API_URL (or base_url) is required for live calls")
 
     def chat(self, model: str, messages: list[dict[str, str]], **kwargs: Any) -> str:
+        import requests  # lazy: dry-run needs no deps
+
         url = f"{self.base_url}/v1/chat/completions"
         # Some gateways use /api/v1/… — override with full chat path via env if needed
         if os.environ.get("INFERENCE_CHAT_PATH"):

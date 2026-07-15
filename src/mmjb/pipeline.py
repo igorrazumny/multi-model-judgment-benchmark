@@ -5,8 +5,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable
 
-from mmjb.client import InferenceClient
-
 
 STANDALONE_SYSTEM = (
     "You are an expert reviewer. Analyze the task carefully. "
@@ -56,7 +54,7 @@ def load_task_body(path: str) -> str:
 
 
 def run_standalone(
-    client: InferenceClient,
+    client,  # InferenceClient
     models: list[str],
     task: str,
     call: Callable[..., str] | None = None,
@@ -76,7 +74,7 @@ def run_standalone(
 
 
 def run_aggregation(
-    client: InferenceClient,
+    client,  # InferenceClient
     models: list[str],
     task: str,
     standalone: list[PanelResult],
@@ -101,7 +99,7 @@ def run_aggregation(
 
 
 def run_debate(
-    client: InferenceClient,
+    client,  # InferenceClient
     models: list[str],
     findings_block: str,
     call: Callable[..., str] | None = None,
